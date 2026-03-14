@@ -153,11 +153,12 @@ export default function AuditAIDemoPage() {
     "Unusual refund timing",
   ];
 
-  const pills = {
-    Critical: "bg-red-500/15 text-red-300 border-red-400/30",
-    High: "bg-amber-500/15 text-amber-300 border-amber-400/30",
-    Medium: "bg-sky-500/15 text-sky-300 border-sky-400/30",
-  };
+  // Add the type definition ": Record<string, string>" or cast it
+	const pills: Record<string, string> = {
+	  Critical: "bg-red-500/15 text-red-300 border-red-400/30",
+	  High: "bg-amber-500/15 text-amber-300 border-amber-400/30",
+	  Medium: "bg-sky-500/15 text-sky-300 border-sky-400/30",
+	};
 
   return (
     <div className="min-h-screen bg-[#07111f] text-slate-100">
