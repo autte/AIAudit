@@ -330,8 +330,8 @@ export default function AuditAIDemoPage() {
                       <td className="px-4 py-4 text-slate-300">{item.pattern}</td>
                       <td className="px-4 py-4 text-slate-300">{item.owner}</td>
                       <td className="px-4 py-4">
-                        <span className={`rounded-full border px-2.5 py-1 text-xs ${pills[item.status]}`}>
-                          {item.status}
+                        <span className={`rounded-full border px-2.5 py-1 text-xs ${pills[item.status as keyof typeof pills]}`}>     
+						{item.status}
                         </span>
                       </td>
                     </tr>
