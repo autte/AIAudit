@@ -428,7 +428,7 @@ export default function AuditAIDemoPage() {
   );
 }
 
-function MetricCard({ label, value, sub }) {
+function MetricCard({ label, value, sub }: any) {
   return (
     <div className="rounded-2xl border border-white/10 bg-[#081423] p-4">
       <div className="text-xs uppercase tracking-[0.16em] text-slate-400">{label}</div>
@@ -438,7 +438,7 @@ function MetricCard({ label, value, sub }) {
   );
 }
 
-function SmallStat({ title, value }) {
+function SmallStat({ title, value }: any) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
       <div className="text-xs uppercase tracking-[0.14em] text-slate-400">{title}</div>
@@ -447,7 +447,7 @@ function SmallStat({ title, value }) {
   );
 }
 
-function FeatureCard({ title, text }) {
+function FeatureCard({ title, text }: any) {
   return (
     <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur">
       <div className="mb-3 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2.5 py-1 text-xs text-cyan-200">
@@ -459,7 +459,7 @@ function FeatureCard({ title, text }) {
   );
 }
 
-function Node({ className, title, value, tone, delay = 0 }) {
+function Node({ className, title, value, tone, delay }: any) {
   const toneMap = {
     sky: "border-sky-400/30 bg-sky-400/10 text-sky-100",
     cyan: "border-cyan-400/30 bg-cyan-400/10 text-cyan-100",
