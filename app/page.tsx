@@ -51,6 +51,13 @@ export default function FraudRevenueLandingPage() {
     { label: 'Critical Alerts', value: '19', note: 'Need review' },
   ];
 
+  const cases = [
+    ['RF-104', 'POL-2201', 'Refund after bank change', 'Critical'],
+    ['RF-116', 'POL-1874', 'Shared bank account', 'High'],
+    ['RF-127', 'POL-0912', 'Abnormal refund volume', 'High'],
+    ['RF-133', 'POL-4028', 'Out-of-sequence approval', 'Review'],
+  ];
+
   return (
     <div className="min-h-screen bg-[#071a2f] text-white">
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#071a2f]/85 backdrop-blur">
@@ -61,27 +68,44 @@ export default function FraudRevenueLandingPage() {
             </div>
             <div>
               <div className="text-xl font-semibold tracking-tight">RevenueLeak AI</div>
-              <div className="text-xs text-slate-300">Recover Hidden Revenue from Payments & Refunds</div>
+              <div className="text-xs text-slate-300">
+                Recover Hidden Revenue from Payments & Refunds
+              </div>
             </div>
           </div>
 
           <nav className="hidden items-center gap-8 text-sm text-slate-200 md:flex">
-            <a href="#how" className="transition hover:text-white">How It Works</a>
-            <a href="#modules" className="transition hover:text-white">Modules</a>
-            <a href="#results" className="transition hover:text-white">Results</a>
-            <a href="#contact" className="transition hover:text-white">Contact</a>
+            <a href="#how" className="transition hover:text-white">
+              How It Works
+            </a>
+            <a href="#results" className="transition hover:text-white">
+              Results
+            </a>
+            <a href="#process" className="transition hover:text-white">
+              Process
+            </a>
+            <a href="#modules" className="transition hover:text-white">
+              Modules
+            </a>
+            <a href="#contact" className="transition hover:text-white">
+              Contact
+            </a>
           </nav>
 
           <a
-            href="mailto:hello@auditflow.space?subject=Demo%20Request&body=Hi%2C%20I%20would%20like%20to%20book%20a%20demo."
+            href="mailto:hello@auditflow.space?subject=Demo%20Request&body=Hi%2C%20I%20would%20like%20to%20request%20a%20live%20demo."
             className="inline-block rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400"
           >
-            Book a Demo
+            Request Live Demo
           </a>
         </div>
       </header>
 
-      <section className="bg-[linear-gradient(180deg,#071a2f_0%,#0b223d_55%,#102845_100%)] text-white">
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#071a2f_0%,#0b223d_55%,#102845_100%)] text-white">
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 flex justify-center overflow-hidden">
+          <div className="h-72 w-[42rem] rounded-full bg-blue-500/10 blur-3xl" />
+        </div>
+
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-24">
           <div>
             <div className="mb-4 inline-flex rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-1 text-sm text-blue-200">
@@ -93,13 +117,17 @@ export default function FraudRevenueLandingPage() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              Upload your data and instantly detect suspicious refunds, abnormal payment behavior, and control failures — before they turn into real losses.
+              Upload your data and instantly detect suspicious refunds, abnormal payment behavior,
+              and control failures — before they turn into real losses.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <button className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400">
-                Scan Your Data in 5 Minutes
-              </button>
+              <a
+                href="mailto:hello@auditflow.space?subject=Demo%20Request&body=Hi%2C%20I%20would%20like%20to%20request%20a%20live%20demo."
+                className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400"
+              >
+                Request Live Demo
+              </a>
 
               <a
                 href="https://flowviewerpy-gg9chu65rycqmr9qkklvxo.streamlit.app/"
@@ -113,8 +141,13 @@ export default function FraudRevenueLandingPage() {
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {stats.map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                  <div className="text-xs uppercase tracking-[0.18em] text-slate-400">{stat.label}</div>
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.28)]"
+                >
+                  <div className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                    {stat.label}
+                  </div>
                   <div className="mt-2 text-3xl font-semibold text-white">{stat.value}</div>
                   <div className="mt-1 text-sm text-slate-300">{stat.note}</div>
                 </div>
@@ -122,12 +155,25 @@ export default function FraudRevenueLandingPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-[#102b4f] p-5 shadow-2xl shadow-black/20">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <div className="text-xs uppercase tracking-[0.2em] text-blue-200">How fraud actually happens</div>
-                <div className="mt-1 text-xl font-semibold">Fraud flow & event timeline</div>
+          <div className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(16,43,79,0.96),rgba(10,28,50,0.96))] p-5 shadow-[0_25px_80px_rgba(0,0,0,0.45)]">
+            <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="flex gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+                </div>
+
+                <div>
+                  <div className="text-[11px] uppercase tracking-[0.2em] text-blue-200">
+                    Risk Investigation Workspace
+                  </div>
+                  <div className="mt-1 text-lg font-semibold text-white">
+                    Fraud flow & event timeline
+                  </div>
+                </div>
               </div>
+
               <a
                 href="https://flowviewerpy-gg9chu65rycqmr9qkklvxo.streamlit.app/"
                 target="_blank"
@@ -142,25 +188,38 @@ export default function FraudRevenueLandingPage() {
               <div className="rounded-2xl border border-white/10 bg-slate-950/30 p-4">
                 <div className="text-sm font-medium text-slate-200">Relationship signals</div>
                 <div className="mt-4 space-y-3 text-sm text-slate-300">
-                  <div className="rounded-xl border border-white/10 bg-slate-900/70 p-3">Bank account changed</div>
-                  <div className="ml-8 w-fit rounded-xl border border-amber-400/30 bg-amber-400/10 p-3 text-amber-100">Refund issued</div>
-                  <div className="rounded-xl border border-white/10 bg-slate-900/70 p-3">Customer reimbursement</div>
-                  <div className="ml-12 w-fit rounded-xl border border-purple-400/30 bg-purple-400/10 p-3 text-purple-100">Same account reused</div>
+                  <div className="rounded-xl border border-white/10 bg-slate-900/70 p-3">
+                    Bank account changed
+                  </div>
+                  <div className="ml-8 w-fit rounded-xl border border-amber-400/30 bg-amber-400/10 p-3 text-amber-100">
+                    Refund issued
+                  </div>
+                  <div className="rounded-xl border border-white/10 bg-slate-900/70 p-3">
+                    Customer reimbursement
+                  </div>
+                  <div className="ml-12 w-fit rounded-xl border border-purple-400/30 bg-purple-400/10 p-3 text-purple-100">
+                    Same account reused
+                  </div>
                 </div>
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-slate-950/30 p-4">
                 <div className="text-sm font-medium text-slate-200">Why this is suspicious</div>
                 <p className="mt-3 text-sm leading-6 text-slate-300">
-                  The refund was issued one day after a bank account update. The same account also appears on multiple unrelated customer records, raising potential diversion risk.
+                  The refund was issued one day after a bank account update. The same account
+                  also appears on multiple unrelated customer records, raising potential diversion
+                  risk.
                 </p>
+
                 <div className="mt-4 grid grid-cols-2 gap-3">
                   <div className="rounded-xl border border-white/10 bg-slate-900/70 p-3">
                     <div className="text-xs uppercase tracking-wide text-slate-400">Risk score</div>
                     <div className="mt-1 text-xl font-semibold text-white">78 / 100</div>
                   </div>
                   <div className="rounded-xl border border-white/10 bg-slate-900/70 p-3">
-                    <div className="text-xs uppercase tracking-wide text-slate-400">Pattern rarity</div>
+                    <div className="text-xs uppercase tracking-wide text-slate-400">
+                      Pattern rarity
+                    </div>
                     <div className="mt-1 text-xl font-semibold text-white">3.2%</div>
                   </div>
                 </div>
@@ -172,15 +231,25 @@ export default function FraudRevenueLandingPage() {
         <div className="h-20 bg-[linear-gradient(180deg,rgba(16,40,69,0)_0%,rgba(10,30,52,0.9)_100%)]" />
       </section>
 
-      <section id="how" className="bg-[#0b223d]">
+      <section
+        id="how"
+        className="relative overflow-hidden bg-[linear-gradient(180deg,#0b223d_0%,#0f2744_100%)]"
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 flex justify-center overflow-hidden">
+          <div className="h-64 w-[36rem] rounded-full bg-blue-400/8 blur-3xl" />
+        </div>
+
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-300">How it works</div>
+            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-300">
+              How it works
+            </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-white md:text-5xl">
               A simple workflow to detect, explain, and quantify hidden revenue loss.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-300">
-              Built for teams that want a clean, enterprise-style interface that feels credible to audit leaders, compliance teams, and prospective clients.
+              Built for teams that want a clean, enterprise-style interface that feels credible to
+              audit leaders, compliance teams, and prospective clients.
             </p>
           </div>
 
@@ -188,12 +257,14 @@ export default function FraudRevenueLandingPage() {
             {cards.map((card) => (
               <div
                 key={card.id}
-                className="rounded-3xl border border-white/10 bg-white/5 p-7 shadow-sm transition hover:-translate-y-1 hover:bg-white/[0.07] hover:shadow-xl"
+                className="rounded-3xl border border-blue-300/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] p-7 backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_60px_rgba(0,0,0,0.35)] transition hover:-translate-y-1 hover:bg-white/[0.07]"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-400/10 text-sm font-semibold text-blue-200">
                   {card.id}
                 </div>
-                <h3 className="mt-6 text-xl font-semibold tracking-tight text-white">{card.title}</h3>
+                <h3 className="mt-6 text-xl font-semibold tracking-tight text-white">
+                  {card.title}
+                </h3>
                 <p className="mt-4 text-sm leading-7 text-slate-300">{card.desc}</p>
               </div>
             ))}
@@ -203,22 +274,29 @@ export default function FraudRevenueLandingPage() {
 
       <section
         id="results"
-        className="bg-[linear-gradient(180deg,#0b223d_0%,#102845_45%,#12304f_100%)]"
+        className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(96,165,250,0.08),transparent_24%),linear-gradient(180deg,#0f2744_0%,#12304f_100%)]"
       >
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
           <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-300">What we found</div>
+            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-300">
+              What we found
+            </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-white md:text-5xl">
               See exactly how money leaks happen — and how much is at risk.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-300">
-              This section helps the page feel more professional by combining a realistic case summary with visual investigation elements.
+              This section helps the page feel more professional by combining a realistic case
+              summary with visual investigation elements.
             </p>
 
-            <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-7 shadow-sm backdrop-blur">
-              <div className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-300">Real Example</div>
+            <div className="mt-8 rounded-3xl border border-white/10 bg-white/[0.04] p-7 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-md">
+              <div className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-300">
+                Real Example
+              </div>
               <div className="mt-3 text-4xl font-bold tracking-tight text-white">$87,500</div>
-              <div className="mt-2 text-lg font-medium text-slate-200">Potential revenue leakage detected in 6 months</div>
+              <div className="mt-2 text-lg font-medium text-slate-200">
+                Potential revenue leakage detected in 6 months
+              </div>
 
               <ul className="mt-6 space-y-3 text-sm text-slate-300">
                 {findings.map((item) => (
@@ -231,39 +309,68 @@ export default function FraudRevenueLandingPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-[#f4f7fb] p-6 shadow-sm text-slate-900">
+          <div className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,#eef4fb_0%,#f8fbff_100%)] p-6 text-slate-900 shadow-[0_25px_70px_rgba(0,0,0,0.28)]">
             <div className="mb-5 flex items-center justify-between">
               <div>
-                <div className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Suspicious cases</div>
-                <div className="mt-1 text-2xl font-semibold tracking-tight">Prioritized investigation queue</div>
+                <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
+                  Investigation Console
+                </div>
+                <div className="mt-1 text-2xl font-semibold tracking-tight text-slate-900">
+                  Prioritized investigation queue
+                </div>
               </div>
-              <div className="rounded-full bg-slate-200 px-3 py-1 text-xs text-slate-600">Export cases</div>
+
+              <div className="flex items-center gap-2">
+                <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                <span className="text-xs font-medium text-slate-600">Live screening</span>
+              </div>
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-slate-200">
-              <div className="grid grid-cols-[0.8fr_1fr_1.4fr_0.8fr] bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                <div>Case</div>
-                <div>Policy</div>
-                <div>Pattern</div>
-                <div>Status</div>
+            <div className="mb-4 grid grid-cols-3 gap-3">
+              <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-slate-500">
+                  Open cases
+                </div>
+                <div className="mt-1 text-2xl font-semibold text-slate-900">24</div>
               </div>
+              <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-slate-500">
+                  Critical
+                </div>
+                <div className="mt-1 text-2xl font-semibold text-slate-900">7</div>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-slate-500">
+                  Potential loss
+                </div>
+                <div className="mt-1 text-2xl font-semibold text-slate-900">$87.5K</div>
+              </div>
+            </div>
 
-              {[
-                ['RF-104', 'POL-2201', 'Refund after bank change', 'Critical'],
-                ['RF-116', 'POL-1874', 'Shared bank account', 'High'],
-                ['RF-127', 'POL-0912', 'Abnormal refund volume', 'High'],
-                ['RF-133', 'POL-4028', 'Out-of-sequence approval', 'Review'],
-              ].map(([a, b, c, d]) => (
+            <div className="space-y-3">
+              {cases.map(([a, b, c, d]) => (
                 <div
                   key={a}
-                  className="grid grid-cols-[0.8fr_1fr_1.4fr_0.8fr] items-center border-t border-slate-200 px-4 py-4 text-sm text-slate-700"
+                  className="grid items-center gap-4 rounded-2xl border border-slate-200 bg-white px-4 py-4 md:grid-cols-[0.8fr_1fr_1.6fr_0.8fr_0.7fr]"
                 >
-                  <div className="font-medium text-slate-900">{a}</div>
-                  <div>{b}</div>
-                  <div>{c}</div>
+                  <div>
+                    <div className="text-xs uppercase tracking-wide text-slate-500">Case</div>
+                    <div className="mt-1 font-semibold text-slate-900">{a}</div>
+                  </div>
+
+                  <div>
+                    <div className="text-xs uppercase tracking-wide text-slate-500">Policy</div>
+                    <div className="mt-1 text-slate-700">{b}</div>
+                  </div>
+
+                  <div>
+                    <div className="text-xs uppercase tracking-wide text-slate-500">Pattern</div>
+                    <div className="mt-1 text-slate-700">{c}</div>
+                  </div>
+
                   <div>
                     <span
-                      className={`rounded-full px-3 py-1 text-xs font-medium ${
+                      className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
                         d === 'Critical'
                           ? 'bg-red-100 text-red-700'
                           : d === 'High'
@@ -274,6 +381,10 @@ export default function FraudRevenueLandingPage() {
                       {d}
                     </span>
                   </div>
+
+                  <button className="rounded-full border border-slate-300 px-3 py-2 text-xs font-medium text-slate-700 transition hover:bg-slate-50">
+                    Review
+                  </button>
                 </div>
               ))}
             </div>
@@ -281,24 +392,35 @@ export default function FraudRevenueLandingPage() {
         </div>
       </section>
 
-      <section id="process" className="bg-[#102845]">
+      <section
+        id="process"
+        className="relative overflow-hidden bg-[linear-gradient(180deg,#12304f_0%,#102845_100%)]"
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 flex justify-center overflow-hidden">
+          <div className="h-64 w-[38rem] rounded-full bg-blue-500/10 blur-3xl" />
+        </div>
+
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-300">Fraud Process Intelligence</div>
+            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-300">
+              Fraud Process Intelligence
+            </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-white md:text-5xl">
               Most fraud is not a single event — it is a process pattern.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-300">
-              Beyond detecting anomalies, understand the full process flow — where delays, rework loops, and suspicious paths occur.
+              Beyond detecting anomalies, understand the full process flow — where delays, rework
+              loops, and suspicious paths occur.
             </p>
           </div>
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div className="rounded-3xl border border-blue-300/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] p-6 backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_60px_rgba(0,0,0,0.35)]">
               <div className="text-sm font-semibold text-slate-300">Process Mining Demo</div>
               <h3 className="mt-2 text-xl font-semibold text-white">Interactive Flow Viewer</h3>
-              <p className="mt-3 text-sm text-slate-300">
-                Explore real transaction flows to identify unusual paths such as repeated rework, abnormal approval chains, or delayed processing.
+              <p className="mt-3 text-sm leading-7 text-slate-300">
+                Explore real transaction flows to identify unusual paths such as repeated rework,
+                abnormal approval chains, or delayed processing.
               </p>
 
               <a
@@ -312,11 +434,11 @@ export default function FraudRevenueLandingPage() {
             </div>
 
             <div className="flex flex-col justify-center">
-              <ul className="space-y-4 text-sm text-slate-300">
-                <li>• Identify excessive rework loops (potential manipulation)</li>
-                <li>• Detect abnormal approval paths</li>
-                <li>• Highlight delays that hide suspicious activity</li>
-                <li>• Understand full transaction lifecycle</li>
+              <ul className="space-y-4 text-sm leading-7 text-slate-300">
+                <li>• Identify excessive rework loops that may indicate manipulation</li>
+                <li>• Detect abnormal approval paths and broken control chains</li>
+                <li>• Highlight delays that hide suspicious operational behavior</li>
+                <li>• Understand the full transaction lifecycle before escalation</li>
               </ul>
 
               <a
@@ -332,25 +454,36 @@ export default function FraudRevenueLandingPage() {
         </div>
       </section>
 
-      <section id="modules" className="bg-[linear-gradient(180deg,#102845_0%,#0b223d_100%)]">
+      <section
+        id="modules"
+        className="relative overflow-hidden bg-[linear-gradient(180deg,#102845_0%,#0b223d_100%)]"
+      >
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-300">Modules</div>
+            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-300">
+              Modules
+            </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-white md:text-5xl">
               Structured modules designed for audit, risk, and finance teams.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-300">
-              These modules make the page feel structured and professional while keeping the story focused on fraud detection, investigation, and business impact.
+              These modules keep the story focused on detection, investigation, and financial
+              impact while making the page feel like a real product.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {modules.map((module) => (
-              <div key={module.title} className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-sm">
+              <div
+                key={module.title}
+                className="rounded-3xl border border-blue-300/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] p-8 backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_20px_60px_rgba(0,0,0,0.35)]"
+              >
                 <div className="inline-flex rounded-full bg-blue-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
                   Module
                 </div>
-                <h3 className="mt-5 text-2xl font-semibold tracking-tight text-white">{module.title}</h3>
+                <h3 className="mt-5 text-2xl font-semibold tracking-tight text-white">
+                  {module.title}
+                </h3>
                 <p className="mt-4 text-sm leading-7 text-slate-300">{module.body}</p>
               </div>
             ))}
@@ -361,24 +494,24 @@ export default function FraudRevenueLandingPage() {
       <section id="contact" className="border-t border-white/10 bg-[#071a2f] text-white">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-6 py-16 lg:flex-row lg:items-center lg:px-8">
           <div className="max-w-2xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200">Next step</div>
+            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200">
+              Next step
+            </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">
               Want to uncover hidden revenue in your own data?
             </h2>
-            <a
-              href="mailto:hello@auditflow.space?subject=Demo%20Request&body=Hi%2C%20I%20would%20like%20to%20book%20a%20demo."
-              className="mt-6 inline-block rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400"
-            >
-              Book Demo
-            </a>
+            <p className="mt-4 max-w-xl text-slate-300">
+              Review the demo workflow, evaluate the investigation experience, and discuss how the
+              same approach could apply to your own data environment.
+            </p>
           </div>
 
           <div className="flex flex-wrap gap-4">
             <a
-              href="mailto:hello@auditflow.space?subject=Demo%20Request&body=Hi%2C%20I%20would%20like%20to%20book%20a%20demo."
+              href="mailto:hello@auditflow.space?subject=Demo%20Request&body=Hi%2C%20I%20would%20like%20to%20schedule%20a%20demo%20review."
               className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400"
             >
-              Book Demo
+              Schedule a Demo Review
             </a>
 
             <a
