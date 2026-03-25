@@ -1,501 +1,340 @@
-"use client";
-
-import React, { useEffect, useMemo, useState } from "react";
-
-export default function AuditAIDemoPage() {
-  const demoCases = [
+export default function FraudRevenueLandingPage() {
+  const cards = [
     {
-      id: "RF-1042",
-      policy: "POL-883921",
-      amount: "$8,420",
-      score: 92,
-      pattern: "Bank change → refund within 2 days",
-      owner: "Agent A. Martin",
-      status: "Critical",
-      exposure: "$184K",
-      avgReview: "7 min",
-      explanation: [
-        "This refund was issued within 48 hours of a bank account update. The same user initiated the bank change and created the refund.",
-        "The refund destination does not match the original payment method, increasing the likelihood of redirection risk.",
-        "Similar event sequences occur in only 0.4% of historical cases but represent 17% of high-value refund exceptions.",
-      ],
-      stats: {
-        risk: "92/100",
-        rarity: "0.4%",
-        overlap: "Same User",
-        review: "Open",
-      },
-      timeline: [
-        { time: "10:02", action: "Bank account changed", actor: "Agent A. Martin" },
-        { time: "10:14", action: "Refund created", actor: "Agent A. Martin" },
-        { time: "10:18", action: "Approval missing", actor: "System flag" },
-        { time: "10:26", action: "Refund released", actor: "Billing job" },
-      ],
-      nodes: [
-        { className: "left-[8%] top-[42%]", title: "Policy", value: "POL-883921", tone: "sky", delay: 0.1 },
-        { className: "left-[34%] top-[18%]", title: "Bank Change", value: "2 days before refund", tone: "cyan", delay: 0.25 },
-        { className: "left-[37%] top-[62%]", title: "Refund", value: "$8,420", tone: "red", delay: 0.4 },
-        { className: "left-[67%] top-[20%]", title: "User", value: "A. Martin", tone: "amber", delay: 0.55 },
-        { className: "left-[70%] top-[64%]", title: "Account", value: "...4921", tone: "violet", delay: 0.7 },
-      ],
-      lines: [
-        { className: "left-[21%] top-[42%] w-[18%] rotate-[-28deg]", delay: 0.15 },
-        { className: "left-[22%] top-[53%] w-[18%] rotate-[22deg]", delay: 0.3 },
-        { className: "left-[47%] top-[28%] w-[19%] rotate-[0deg]", delay: 0.45 },
-        { className: "left-[47%] top-[63%] w-[19%] rotate-[0deg]", delay: 0.55 },
-        { className: "left-[58%] top-[35%] w-[16%] rotate-[52deg]", delay: 0.7 },
-      ],
+      id: '01',
+      title: 'Detect Suspicious Transactions',
+      desc: 'Surface abnormal refunds, payment anomalies, and control gaps from billing and refund data in minutes.',
     },
     {
-      id: "RF-1031",
-      policy: "POL-774210",
-      amount: "$5,380",
-      score: 84,
-      pattern: "Refund method differs from original payment",
-      owner: "User L. Chen",
-      status: "High",
-      exposure: "$121K",
-      avgReview: "6 min",
-      explanation: [
-        "The customer originally paid by card, but the refund was released to a bank account not previously used on the policy.",
-        "A payment-method mismatch was followed by an unusually large refund on the same billing cycle.",
-        "This pattern is uncommon in standard refund flows and often requires source-of-funds verification.",
-      ],
-      stats: {
-        risk: "84/100",
-        rarity: "1.1%",
-        overlap: "Method Mismatch",
-        review: "Pending",
-      },
-      timeline: [
-        { time: "09:11", action: "Credit card payment posted", actor: "Customer payment" },
-        { time: "11:42", action: "Bank refund method added", actor: "User L. Chen" },
-        { time: "12:03", action: "Refund created", actor: "User L. Chen" },
-        { time: "12:16", action: "Exception routed", actor: "Fraud monitor" },
-      ],
-      nodes: [
-        { className: "left-[10%] top-[24%]", title: "Card Payment", value: "Visa ••••1148", tone: "sky", delay: 0.1 },
-        { className: "left-[10%] top-[66%]", title: "Policy", value: "POL-774210", tone: "cyan", delay: 0.22 },
-        { className: "left-[40%] top-[45%]", title: "Refund", value: "$5,380", tone: "red", delay: 0.35 },
-        { className: "left-[70%] top-[20%]", title: "Bank Method", value: "Added same day", tone: "amber", delay: 0.5 },
-        { className: "left-[72%] top-[70%]", title: "Owner", value: "L. Chen", tone: "violet", delay: 0.65 },
-      ],
-      lines: [
-        { className: "left-[24%] top-[34%] w-[20%] rotate-[20deg]", delay: 0.15 },
-        { className: "left-[24%] top-[63%] w-[19%] rotate-[-18deg]", delay: 0.28 },
-        { className: "left-[49%] top-[37%] w-[20%] rotate-[-22deg]", delay: 0.43 },
-        { className: "left-[50%] top-[61%] w-[20%] rotate-[18deg]", delay: 0.56 },
-      ],
+      id: '02',
+      title: 'Uncover Hidden Patterns',
+      desc: 'Reveal connections across customers, bank accounts, users, and transactions to identify suspicious behavior.',
     },
     {
-      id: "RF-1017",
-      policy: "POL-661942",
-      amount: "$3,960",
-      score: 78,
-      pattern: "Multiple payment methods + refund spike",
-      owner: "Broker J. Singh",
-      status: "High",
-      exposure: "$94K",
-      avgReview: "5 min",
-      explanation: [
-        "Two payment methods were used on the same policy period, followed by a refund spike higher than peer cases in the same segment.",
-        "The policy also shows a cancellation-and-reinstatement loop that often masks true refund behavior.",
-        "The amount is moderate, but the sequence structure is more suspicious than the value alone.",
-      ],
-      stats: {
-        risk: "78/100",
-        rarity: "2.3%",
-        overlap: "Multi-Method",
-        review: "Escalated",
-      },
-      timeline: [
-        { time: "08:44", action: "ACH payment posted", actor: "Customer" },
-        { time: "09:06", action: "Card payment posted", actor: "Customer" },
-        { time: "14:30", action: "Policy reinstated", actor: "Broker J. Singh" },
-        { time: "15:02", action: "Refund spike flagged", actor: "Risk engine" },
-      ],
-      nodes: [
-        { className: "left-[8%] top-[24%]", title: "ACH", value: "Bank debit", tone: "sky", delay: 0.1 },
-        { className: "left-[8%] top-[66%]", title: "Card", value: "Mastercard", tone: "cyan", delay: 0.22 },
-        { className: "left-[38%] top-[45%]", title: "Refund", value: "$3,960", tone: "red", delay: 0.35 },
-        { className: "left-[68%] top-[18%]", title: "Policy Loop", value: "Cancel → Reinstate", tone: "amber", delay: 0.5 },
-        { className: "left-[70%] top-[68%]", title: "Broker", value: "J. Singh", tone: "violet", delay: 0.65 },
-      ],
-      lines: [
-        { className: "left-[22%] top-[34%] w-[19%] rotate-[18deg]", delay: 0.15 },
-        { className: "left-[22%] top-[62%] w-[19%] rotate-[-18deg]", delay: 0.28 },
-        { className: "left-[47%] top-[34%] w-[20%] rotate-[-20deg]", delay: 0.43 },
-        { className: "left-[47%] top-[61%] w-[20%] rotate-[18deg]", delay: 0.56 },
-      ],
+      id: '03',
+      title: 'Investigate with Clarity',
+      desc: 'Follow event timelines, review linked signals, and understand how risky cases emerged step by step.',
+    },
+    {
+      id: '04',
+      title: 'Quantify Financial Impact',
+      desc: 'Estimate potential exposure and prioritize the cases most likely to represent revenue leakage or fraud.',
     },
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % demoCases.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
-
-  const activeCase = demoCases[activeIndex];
-  const riskCases = demoCases;
-
-  const timeline = activeCase.timeline;
-
-  const signals = [
-    "Refund after bank account change",
-    "Payment method mismatch",
-    "Same-user multi-step action",
-    "Commission reversal anomaly",
-    "Cancellation and reinstatement loop",
-    "Unusual refund timing",
+  const findings = [
+    'Refund issued shortly after bank account change',
+    'Same bank account linked to multiple customers',
+    'Abnormal refund activity by specific users',
+    'Control failures hidden inside normal workflows',
   ];
 
-  // Add the type definition ": Record<string, string>" or cast it
-	const pills: Record<string, string> = {
-	  Critical: "bg-red-500/15 text-red-300 border-red-400/30",
-	  High: "bg-amber-500/15 text-amber-300 border-amber-400/30",
-	  Medium: "bg-sky-500/15 text-sky-300 border-sky-400/30",
-	};
+  const modules = [
+    {
+      title: 'Detection Module',
+      body: 'Upload Excel or CSV data to identify suspicious refunds, duplicate-like behavior, unusual timing, and payment anomalies.',
+    },
+    {
+      title: 'Investigation Module',
+      body: 'Review event timelines, linked entities, and case narratives so audit, risk, and compliance teams can investigate faster.',
+    },
+    {
+      title: 'Revenue Leakage Module',
+      body: 'Estimate potential dollars at risk and focus review effort on the patterns most likely to impact financial results.',
+    },
+  ];
+
+  const stats = [
+    { label: 'Suspicious Transactions', value: '128', note: 'Last 30 days' },
+    { label: 'Potential Revenue Loss', value: '$94K', note: 'Estimated risk' },
+    { label: 'Avg Review Time', value: '5 min', note: 'Per case' },
+    { label: 'Critical Alerts', value: '19', note: 'Need review' },
+  ];
 
   return (
-    <div className="min-h-screen bg-[#07111f] text-slate-100">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(30,64,175,0.18),transparent_28%),radial-gradient(circle_at_left,rgba(8,145,178,0.14),transparent_22%)]" />
-
-      <style>{`
-          @keyframes nodeFloat {
-            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.96; }
-            50% { transform: translateY(-4px) scale(1.03); opacity: 1; }
-          }
-          @keyframes nodeGlow {
-            0%, 100% { opacity: 0.08; }
-            50% { opacity: 0.22; }
-          }
-          @keyframes linePulse {
-            0%, 100% { opacity: 0.35; }
-            50% { opacity: 0.9; }
-          }
-        `}</style>
-      <div className="relative mx-auto max-w-7xl px-6 py-8 lg:px-10">
-        <header className="mb-8 flex flex-col gap-5 border-b border-white/10 pb-6 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <div className="mb-3 inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-medium tracking-wide text-cyan-200">
-              AuditFlow AI · Enterprise Demo
+    <div className="min-h-screen bg-slate-50 text-slate-900">
+      <header className="border-b border-slate-200 bg-[#0c2340] text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/20 text-xl font-bold text-blue-300">
+              A
             </div>
-            <h1 className="text-3xl font-semibold tracking-tight text-white lg:text-5xl">
-              Recover 15% of Lost Revenue from Payment Fraud & Fake Refunds
-            </h1>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 lg:text-base">
-              Detect suspicious refund patterns, bank account changes, payment-method mismatches,
-              and approval gaps in one investigation workspace.
-            </p>
-            <div className="mt-5">
-              <p className="mb-2 text-xs uppercase tracking-[0.16em] text-cyan-200/80">
-                Launch your in-house risk engine in as little as 24 hours
-              </p>
-              <div className="flex flex-wrap gap-3">
-              <a
-                href="mailto:caoxin83@gmail.com?subject=Demo%20Request%20-%20AuditFlow%20AI"
-                className="rounded-2xl border border-cyan-400/30 bg-cyan-400/15 px-5 py-3 text-sm font-medium text-cyan-100 transition hover:bg-cyan-400/25"
-              >
-                Ask for a Demo
-              </a>
-              <a
-                href="https://www.linkedin.com/in/xin-cao-64822a271/"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-slate-100 transition hover:bg-white/10"
-              >
-                Contact on LinkedIn
-              </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 lg:min-w-[360px]">
-            <MetricCard label="Flagged Cases" value="128" sub="Last 30 days" />
-            <MetricCard label="Critical Alerts" value="19" sub="Needs review" />
-            <MetricCard label="Potential Exposure" value={activeCase.exposure} sub="Estimated impact" />
-            <MetricCard label="Avg Review Time" value={activeCase.avgReview} sub="Per case" />
-          </div>
-        </header>
-
-        <section className="mb-8 grid gap-4 lg:grid-cols-12">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur lg:col-span-8">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Investigation workspace</p>
-                <h2 className="mt-1 text-xl font-semibold text-white">Case graph and event path</h2>
-              </div>
-              <button className="rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-200 transition hover:bg-cyan-400/20">
-                Open Demo Dataset
-              </button>
-            </div>
-
-            <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="rounded-2xl border border-white/10 bg-[#081423] p-4">
-                <div className="mb-4 flex items-center gap-2 text-sm text-slate-300">
-                  <span className="h-2 w-2 rounded-full bg-cyan-400" />
-                  Linked entities involved in suspicious refund flow
-                </div>
-                <div className="relative h-[340px] overflow-hidden rounded-2xl border border-white/5 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:26px_26px]">
-                  <div className="absolute right-3 top-3 z-20 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-200">
-                    Live Demo · Auto Play
-                  </div>
-                  {activeCase.nodes.map((node) => (
-                    <Node key={`${activeCase.id}-${node.title}`} {...node} />
-                  ))}
-                  {activeCase.lines.map((line, idx) => (
-                    <Line key={`${activeCase.id}-line-${idx}`} {...line} />
-                  ))}
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-[#081423] p-4">
-                <div className="mb-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-slate-400">AI explanation</p>
-                  <h3 className="mt-1 text-lg font-semibold text-white">Why {activeCase.id} was flagged</h3>
-                </div>
-                <div className="space-y-3 text-sm leading-6 text-slate-300">
-                  {activeCase.explanation.map((text, idx) => (
-                    <p key={`${activeCase.id}-exp-${idx}`}>{text}</p>
-                  ))}
-                </div>
-                <div className="mt-6 grid grid-cols-2 gap-3">
-                  <SmallStat title="Risk Score" value={activeCase.stats.risk} />
-                  <SmallStat title="Pattern Rarity" value={activeCase.stats.rarity} />
-                  <SmallStat title="User Overlap" value={activeCase.stats.overlap} />
-                  <SmallStat title="Review Status" value={activeCase.stats.review} />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur lg:col-span-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Core detection signals</p>
-            <h2 className="mt-1 text-xl font-semibold text-white">What the platform monitors</h2>
-            <div className="mt-5 space-y-3">
-              {signals.map((signal) => (
-                <div
-                  key={signal}
-                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-[#081423] px-4 py-3 text-sm text-slate-200"
-                >
-                  <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
-                  {signal}
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4 text-sm text-cyan-100">
-              Ideal for insurers, banks, fintechs, and audit teams that need a lighter-weight alternative to
-              large enterprise intelligence platforms.
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8 grid gap-4 lg:grid-cols-12">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur lg:col-span-7">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Suspicious cases</p>
-                <h2 className="mt-1 text-xl font-semibold text-white">Prioritized investigation queue</h2>
-              </div>
-              <button className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 hover:bg-white/10">
-                Export Cases
-              </button>
-            </div>
-
-            <div className="overflow-hidden rounded-2xl border border-white/10">
-              <table className="w-full text-left text-sm">
-                <thead className="bg-white/5 text-slate-400">
-                  <tr>
-                    <th className="px-4 py-3 font-medium">Case</th>
-                    <th className="px-4 py-3 font-medium">Policy</th>
-                    <th className="px-4 py-3 font-medium">Amount</th>
-                    <th className="px-4 py-3 font-medium">Pattern</th>
-                    <th className="px-4 py-3 font-medium">Owner</th>
-                    <th className="px-4 py-3 font-medium">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {riskCases.map((item, idx) => (
-                    <tr
-                      key={item.id}
-                      className={`${idx !== riskCases.length - 1 ? "border-t border-white/10" : ""} ${item.id === activeCase.id ? "bg-cyan-400/5" : ""}`}
-                    >
-                      <td className="px-4 py-4 font-medium text-white">{item.id}</td>
-                      <td className="px-4 py-4 text-slate-300">{item.policy}</td>
-                      <td className="px-4 py-4 text-slate-200">{item.amount}</td>
-                      <td className="px-4 py-4 text-slate-300">{item.pattern}</td>
-                      <td className="px-4 py-4 text-slate-300">{item.owner}</td>
-                      <td className="px-4 py-4">
-                        <span className={`rounded-full border px-2.5 py-1 text-xs ${(pills as Record<string, string>)[item.status] || ""}`}>    
-						{item.status}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur lg:col-span-5">
-            <div className="mb-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Event timeline</p>
-              <div className="flex items-center justify-between gap-3">
-                <h2 className="mt-1 text-xl font-semibold text-white">Case {activeCase.id}</h2>
-                <div className="flex gap-2">
-                  {demoCases.map((item, idx) => (
-                    <button
-                      key={item.id}
-                      onClick={() => setActiveIndex(idx)}
-                      className={`h-2.5 w-2.5 rounded-full ${item.id === activeCase.id ? "bg-cyan-300" : "bg-white/20"}`}
-                      aria-label={`Show ${item.id}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-4 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-3 py-2 text-xs text-cyan-100">
-              Auto-switching every 4.5 seconds. Click the dots to manually change the case.
-            </div>
-            <div className="space-y-4">
-              {timeline.map((item, idx) => (
-                <div key={`${item.time}-${idx}`} className="flex gap-4 rounded-2xl border border-white/10 bg-[#081423] p-4">
-                  <div className="flex min-w-[56px] items-start justify-center">
-                    <div className="rounded-xl bg-cyan-400/10 px-2 py-1 text-xs font-medium text-cyan-200">
-                      {item.time}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-medium text-white">{item.action}</div>
-                    <div className="mt-1 text-sm text-slate-400">{item.actor}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="grid gap-4 lg:grid-cols-3">
-          <FeatureCard
-            title="Data Explorer"
-            text="Upload or connect transaction data, filter by policy, account, user, region, and payment method, then group anomalies instantly."
-          />
-          <FeatureCard
-            title="AI Investigation Notes"
-            text="Generate concise explanations of why a case matters, including timing, sequence rarity, amount sensitivity, and user overlap."
-          />
-          <FeatureCard
-            title="Workflow-Ready Alerts"
-            text="Push suspicious refund cases into analyst queues, export review packs, and create structured evidence for audit follow-up."
-          />
-        </section>
-
-        <section className="mt-8 rounded-3xl border border-cyan-400/20 bg-cyan-400/10 p-6 shadow-2xl backdrop-blur">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-cyan-200">Demo request</p>
-              <h2 className="mt-2 text-2xl font-semibold text-white">Want a live walkthrough with your own fraud scenarios?</h2>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-200">
-                Send me a message and I can walk you through the platform, tailor the demo to your use case,
-                and discuss how it can detect refund fraud, payment abuse, and revenue leakage.
-              </p>
+              <div className="text-xl font-semibold tracking-tight">RevenueLeak AI</div>
+              <div className="text-xs text-slate-300">Recover Hidden Revenue from Payments & Refunds</div>
             </div>
-            <div className="flex flex-wrap gap-3">
+          </div>
+          <nav className="hidden items-center gap-8 text-sm text-slate-200 md:flex">
+            <a href="#how" className="transition hover:text-white">How It Works</a>
+            <a href="#modules" className="transition hover:text-white">Modules</a>
+            <a href="#results" className="transition hover:text-white">Results</a>
+            <a href="#contact" className="transition hover:text-white">Contact</a>
+          </nav>
+          <a
+			  href="mailto:hello@auditflow.space?subject=Demo%20Request&body=Hi%2C%20I%20would%20like%20to%20book%20a%20demo."
+			  className="inline-block rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400"
+			>
+			  Book a Demo
+		  </a>
+        </div>
+      </header>
+
+      <section className="bg-[#0c2340] text-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-20">
+          <div>
+            <div className="mb-4 inline-flex rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-1 text-sm text-blue-200">
+              Revenue leakage detection for audit, risk, and compliance teams
+            </div>
+            <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight md:text-6xl">
+              Find and recover hidden revenue from refunds, billing errors, and payment fraud.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+              Upload your data and instantly detect suspicious refunds, abnormal payment behavior, and control failures — before they turn into real losses.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <button className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400">
+                Scan Your Data in 5 Minutes
+              </button>
+              <button className="rounded-full border border-slate-500 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-slate-300 hover:bg-white/5">
+                See Real Fraud Example
+              </button>
+            </div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {stats.map((stat) => (
+                <div key={stat.label} className="rounded-2xl border border-slate-700 bg-white/5 p-4 backdrop-blur-sm">
+                  <div className="text-xs uppercase tracking-[0.18em] text-slate-400">{stat.label}</div>
+                  <div className="mt-2 text-3xl font-semibold text-white">{stat.value}</div>
+                  <div className="mt-1 text-sm text-slate-300">{stat.note}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-slate-700 bg-[#102b4f] p-5 shadow-2xl shadow-black/20">
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <div className="text-xs uppercase tracking-[0.2em] text-blue-200">How fraud actually happens</div>
+                <div className="mt-1 text-xl font-semibold">Fraud flow & event timeline</div>
+              </div>
+              <div className="rounded-full border border-blue-400/30 bg-blue-400/10 px-3 py-1 text-xs text-blue-200">
+                Open Demo Case
+              </div>
+            </div>
+
+            <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+              <div className="rounded-2xl border border-slate-700 bg-slate-950/30 p-4">
+                <div className="text-sm font-medium text-slate-200">Relationship signals</div>
+                <div className="mt-4 space-y-3 text-sm text-slate-300">
+                  <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-3">Bank account changed</div>
+                  <div className="ml-8 w-fit rounded-xl border border-amber-400/30 bg-amber-400/10 p-3 text-amber-100">Refund issued</div>
+                  <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-3">Customer reimbursement</div>
+                  <div className="ml-12 w-fit rounded-xl border border-purple-400/30 bg-purple-400/10 p-3 text-purple-100">Same account reused</div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-700 bg-slate-950/30 p-4">
+                <div className="text-sm font-medium text-slate-200">Why this is suspicious</div>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  The refund was issued one day after a bank account update. The same account also appears on multiple unrelated customer records, raising potential diversion risk.
+                </p>
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Risk score</div>
+                    <div className="mt-1 text-xl font-semibold text-white">78 / 100</div>
+                  </div>
+                  <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
+                    <div className="text-xs uppercase tracking-wide text-slate-400">Pattern rarity</div>
+                    <div className="mt-1 text-xl font-semibold text-white">3.2%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="max-w-3xl">
+          <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-600">How it works</div>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">
+            A simple workflow to detect, explain, and quantify hidden revenue loss.
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            Built for teams that want a clean, enterprise-style interface that feels credible to audit leaders, compliance teams, and prospective clients.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {cards.map((card) => (
+            <div key={card.id} className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-sm font-semibold text-blue-700">
+                {card.id}
+              </div>
+              <h3 className="mt-6 text-xl font-semibold tracking-tight">{card.title}</h3>
+              <p className="mt-4 text-sm leading-7 text-slate-600">{card.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="results" className="bg-slate-100">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+          <div>
+            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-600">What we found</div>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">
+              See exactly how money leaks happen — and how much is at risk.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              This section helps the page feel more professional by combining a realistic case summary with visual investigation elements.
+            </p>
+            <div className="mt-8 rounded-3xl border border-blue-100 bg-white p-7 shadow-sm">
+              <div className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">Real Example</div>
+              <div className="mt-3 text-4xl font-bold tracking-tight text-slate-900">$87,500</div>
+              <div className="mt-2 text-lg font-medium text-slate-700">Potential revenue leakage detected in 6 months</div>
+              <ul className="mt-6 space-y-3 text-sm text-slate-600">
+                {findings.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-blue-500" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <div className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Suspicious cases</div>
+                <div className="mt-1 text-2xl font-semibold tracking-tight">Prioritized investigation queue</div>
+              </div>
+              <div className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600">Export cases</div>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl border border-slate-200">
+              <div className="grid grid-cols-[0.8fr_1fr_1.4fr_0.8fr] bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <div>Case</div>
+                <div>Policy</div>
+                <div>Pattern</div>
+                <div>Status</div>
+              </div>
+              {[
+                ['RF-104', 'POL-2201', 'Refund after bank change', 'Critical'],
+                ['RF-116', 'POL-1874', 'Shared bank account', 'High'],
+                ['RF-127', 'POL-0912', 'Abnormal refund volume', 'High'],
+                ['RF-133', 'POL-4028', 'Out-of-sequence approval', 'Review'],
+              ].map(([a, b, c, d]) => (
+                <div key={a} className="grid grid-cols-[0.8fr_1fr_1.4fr_0.8fr] items-center border-t border-slate-200 px-4 py-4 text-sm text-slate-700">
+                  <div className="font-medium text-slate-900">{a}</div>
+                  <div>{b}</div>
+                  <div>{c}</div>
+                  <div>
+                    <span className={`rounded-full px-3 py-1 text-xs font-medium ${
+                      d === 'Critical'
+                        ? 'bg-red-100 text-red-700'
+                        : d === 'High'
+                        ? 'bg-amber-100 text-amber-700'
+                        : 'bg-slate-100 text-slate-600'
+                    }`}>
+                      {d}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+          <div className="max-w-3xl">
+            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-600">Fraud Process Intelligence</div>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">
+              Most fraud is not a single event — it is a process pattern.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              Beyond detecting anomalies, understand the full process flow — where delays, rework loops, and suspicious paths occur.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+              <div className="text-sm font-semibold text-slate-500">Process Mining Demo</div>
+              <h3 className="mt-2 text-xl font-semibold">Interactive Flow Viewer</h3>
+              <p className="mt-3 text-sm text-slate-600">
+                Explore real transaction flows to identify unusual paths such as repeated rework, abnormal approval chains, or delayed processing.
+              </p>
+              <div className="mt-6 rounded-xl border border-slate-300 bg-white p-4 text-sm text-slate-500">
+                Open interactive demo →
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center">
+              <ul className="space-y-4 text-sm text-slate-700">
+                <li>• Identify excessive rework loops (potential manipulation)</li>
+                <li>• Detect abnormal approval paths</li>
+                <li>• Highlight delays that hide suspicious activity</li>
+                <li>• Understand full transaction lifecycle</li>
+              </ul>
               <a
-                href="mailto:caoxin83@gmail.com?subject=Demo%20Request%20-%20AuditFlow%20AI&body=Hi%20Aurora%2C%20I%27d%20like%20to%20book%20a%20demo."
-                className="rounded-2xl border border-cyan-300/30 bg-cyan-300/15 px-5 py-3 text-sm font-medium text-cyan-50 transition hover:bg-cyan-300/25"
-              >
-                Email Me
-              </a>
-              <a
-                href="https://www.linkedin.com/in/xin-cao-64822a271/"
+                href="https://flowviewerpy-gg9chu65rycqmr9qkklvxo.streamlit.app/"
                 target="_blank"
-                rel="noreferrer"
-                className="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+                className="mt-6 inline-block rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400"
               >
-                Message on LinkedIn
+                Open Process Mining Demo
               </a>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      <section id="modules" className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="max-w-3xl">
+          <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-600">Modules</div>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">Structured modules designed for audit, risk, and finance teams.</h2>
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            These modules make the page feel structured and professional while keeping the story focused on fraud detection, investigation, and business impact.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {modules.map((module) => (
+            <div key={module.title} className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+              <div className="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
+                Module
+              </div>
+              <h3 className="mt-5 text-2xl font-semibold tracking-tight">{module.title}</h3>
+              <p className="mt-4 text-sm leading-7 text-slate-600">{module.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="contact" className="bg-[#0c2340] text-white">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-6 py-16 lg:flex-row lg:items-center lg:px-8">
+          <div className="max-w-2xl">
+            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200">Next step</div>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">
+              Want to uncover hidden revenue in your own data?
+            </h2>
+            <a
+			  href="mailto:hello@auditflow.space?subject=Demo%20Request&body=Hi%2C%20I%20would%20like%20to%20book%20a%20demo."
+			  className="inline-block rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400"
+			>
+			  Book Demo
+			</a>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <button className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:bg-blue-400">
+              Book Demo
+            </button>
+            <button className="rounded-full border border-slate-500 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-slate-300 hover:bg-white/5">
+              Contact
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
-  );
-}
-
-function MetricCard({ label, value, sub }: any) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-[#081423] p-4">
-      <div className="text-xs uppercase tracking-[0.16em] text-slate-400">{label}</div>
-      <div className="mt-2 text-2xl font-semibold text-white">{value}</div>
-      <div className="mt-1 text-sm text-slate-400">{sub}</div>
-    </div>
-  );
-}
-
-function SmallStat({ title, value }: any) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-      <div className="text-xs uppercase tracking-[0.14em] text-slate-400">{title}</div>
-      <div className="mt-1 text-base font-semibold text-white">{value}</div>
-    </div>
-  );
-}
-
-function FeatureCard({ title, text }: any) {
-  return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur">
-      <div className="mb-3 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2.5 py-1 text-xs text-cyan-200">
-        Module
-      </div>
-      <h3 className="text-lg font-semibold text-white">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-slate-300">{text}</p>
-    </div>
-  );
-}
-
-function Node({ className, title, value, tone, delay }: any) {
-  const toneMap = {
-    sky: "border-sky-400/30 bg-sky-400/10 text-sky-100",
-    cyan: "border-cyan-400/30 bg-cyan-400/10 text-cyan-100",
-    red: "border-red-400/30 bg-red-400/10 text-red-100",
-    amber: "border-amber-400/30 bg-amber-400/10 text-amber-100",
-    violet: "border-violet-400/30 bg-violet-400/10 text-violet-100",
-  };
-
-  return (
-    <div
-      className={`absolute w-36 rounded-2xl border p-3 shadow-xl ${toneMap[tone]} ${className}`}
-      style={{
-        animation: `nodeFloat 3.2s ease-in-out ${delay}s infinite`,
-      }}
-    >
-      <div
-        className="absolute inset-0 rounded-2xl"
-        style={{
-          background: "rgba(255,255,255,0.04)",
-          animation: `nodeGlow 2.4s ease-in-out ${delay}s infinite`,
-        }}
-      />
-      <div className="relative text-[11px] uppercase tracking-[0.14em] opacity-70">{title}</div>
-      <div className="relative mt-1 text-sm font-semibold">{value}</div>
-    </div>
-  );
-}
-
-function Line({ className, delay = 0 }) {
-  return (
-    <div
-      style={{
-        transformOrigin: "left center",
-        animation: `linePulse 2.2s ease-in-out ${delay}s infinite`,
-      }}
-      className={`absolute h-px bg-gradient-to-r from-cyan-400/60 via-cyan-300/70 to-transparent ${className}`}
-    />
   );
 }
