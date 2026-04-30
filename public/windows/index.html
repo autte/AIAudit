@@ -1,0 +1,2968 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Montreal Window Guide 2026 · 蒙特利尔门窗避坑指南</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #05070C;
+  --paper:  #F7F8FB;
+  --warm:   #EEF2F7;
+  --accent: #C1121F;
+  --gold:   #0B1F3A;
+  --sage:   #0B1F3A;
+  --muted:  #6B7280;
+  --border: #D7DCE5;
+  --red-bg: #FFF0F2;
+  --grn-bg: #EAF0FA;
+  --blue-bg:#EAF0FA;
+  --serif:  'Noto Serif SC', serif;
+  --sans:   'DM Sans', sans-serif;
+  --mono:   'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  color: #FAF8F4;
+  padding: 4rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(200,66,10,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 10% 80%, rgba(61,107,79,0.15) 0%, transparent 50%);
+}
+.hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem;
+  opacity: 0; animation: fadeUp .6s .1s forwards;
+}
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700; line-height: 1.2; margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp .6s .2s forwards;
+}
+.hero h1 em { color: var(--accent); font-style: normal; }
+.hero-sub {
+  font-size: 16px; color: #B8B2A8; max-width: 520px; line-height: 1.7;
+  opacity: 0; animation: fadeUp .6s .3s forwards;
+}
+.hero-nav {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2.5rem;
+  opacity: 0; animation: fadeUp .6s .45s forwards;
+}
+.hero-nav a {
+  font-size: 13px; font-weight: 500; padding: 8px 18px;
+  border: 1px solid rgba(255,255,255,.2); border-radius: 999px;
+  color: #FAF8F4; text-decoration: none; transition: all .2s;
+}
+.hero-nav a:hover { background: var(--accent); border-color: var(--accent); }
+.lang-switch {
+  display:inline-flex; gap:6px; align-items:center; margin-bottom:1.25rem;
+  padding:4px; border:1px solid rgba(255,255,255,.18); border-radius:999px;
+  background:rgba(255,255,255,.06); backdrop-filter: blur(8px);
+}
+.lang-switch button {
+  border:none; background:transparent; color:#C8D0DC; border-radius:999px;
+  padding:6px 11px; font-family:var(--mono); font-size:11px; cursor:pointer;
+}
+.lang-switch button.active { background:var(--accent); color:#fff; }
+
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── LAYOUT ── */
+.container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ── SECTION HEADERS ── */
+.section-wrap { padding: 4rem 0 2rem; }
+.section-label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: .75rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.section-title {
+  font-family: var(--serif); font-size: clamp(1.5rem,3.5vw,2rem);
+  font-weight: 700; line-height: 1.25; margin-bottom: .6rem;
+}
+.section-desc { font-size: 14px; color: var(--muted); margin-bottom: 2rem; line-height: 1.7; }
+
+/* ── COMPANY CARDS ── */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+.co-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  transition: box-shadow .2s, transform .2s;
+  cursor: pointer;
+}
+.co-card:hover { box-shadow: 0 8px 32px rgba(22,25,31,.1); transform: translateY(-2px); }
+
+.co-card-head {
+  padding: 1rem 1.1rem .75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+}
+.co-avatar {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: var(--warm); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 15px; font-weight: 700;
+  color: var(--ink); flex-shrink: 0;
+}
+.co-name-wrap { flex: 1; }
+.co-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; line-height: 1.3; }
+.co-tier { font-size: 11px; font-family: var(--mono); color: var(--muted); }
+
+.tier-badge {
+  font-size: 10px; font-family: var(--mono); padding: 2px 8px;
+  border-radius: 999px; white-space: nowrap; font-weight: 500;
+}
+.t-high  { background: #FDF0EC; color: var(--accent); border: 1px solid #F5C5B0; }
+.t-mid   { background: #EDF4F0; color: var(--sage);   border: 1px solid #B0D4BC; }
+.t-mixed { background: #FEF9EC; color: var(--gold);   border: 1px solid #EDD89A; }
+
+.co-card-body { padding: .85rem 1.1rem; }
+.co-pros { margin-bottom: .65rem; }
+.co-pros li, .co-cons li {
+  font-size: 12px; list-style: none; padding: 3px 0;
+  display: flex; align-items: flex-start; gap: 6px; line-height: 1.5;
+}
+.co-pros li::before { content: '✓'; color: var(--sage); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.co-cons li::before { content: '!'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.co-pros li { color: #2a4a35; }
+.co-cons li { color: #5a2010; }
+
+.co-detail { display: none; padding: 0 1.1rem 1rem; border-top: 1px solid var(--border); }
+.co-detail.open { display: block; }
+.co-detail-label { font-size: 10px; font-family: var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin: .75rem 0 .3rem; }
+.co-phone { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+.co-note  { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.co-reno  { font-size: 11px; font-family: var(--mono); }
+.reno-y { color: var(--sage); } .reno-m { color: var(--gold); } .reno-n { color: var(--muted); }
+
+.expand-btn {
+  width: 100%; padding: 6px; font-size: 11px; font-family: var(--mono);
+  color: var(--muted); background: var(--warm); border: none;
+  border-top: 1px solid var(--border); cursor: pointer; transition: color .15s;
+}
+.expand-btn:hover { color: var(--accent); }
+
+
+/* ── PROVIDER QUOTE CARDS ── */
+.location-box { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1rem 1.15rem; margin-bottom:1rem; box-shadow:0 2px 12px rgba(22,25,31,.04); }
+.location-box label { display:block; font-size:12px; font-family:var(--mono); color:var(--muted); margin-bottom:6px; }
+.location-box input { width:100%; border:1px solid var(--border); border-radius:8px; padding:10px 12px; font-family:var(--sans); font-size:14px; background:var(--paper); color:var(--ink); }
+.provider-search-row { display:grid; grid-template-columns:1fr auto auto; gap:8px; align-items:center; }
+.provider-search-btn, .provider-reset-btn { border:none; border-radius:999px; padding:10px 14px; font-family:var(--mono); font-size:11px; cursor:pointer; white-space:nowrap; }
+.provider-search-btn { background:var(--sage); color:#fff; }
+.provider-search-btn:hover { background:#2f563f; }
+.provider-reset-btn { background:var(--warm); color:var(--muted); border:1px solid var(--border); }
+.provider-match-note { margin-top:8px; font-size:12px; color:var(--muted); line-height:1.55; }
+.provider-match-note strong { color:var(--sage); }
+.provider-card.provider-secondary { opacity:.72; }
+.provider-area-tag { display:inline-block; margin-top:5px; padding:2px 8px; border-radius:999px; background:var(--grn-bg); color:var(--sage); font-family:var(--mono); font-size:10px; }
+@media(max-width:720px){ .provider-search-row { grid-template-columns:1fr; } .provider-search-btn, .provider-reset-btn { width:100%; } }
+.provider-list { display:flex; flex-direction:column; gap:12px; }
+
+/* Card shell */
+.provider-card {
+  background:#fff; border:1.5px solid var(--border); border-radius:14px;
+  overflow:hidden; box-shadow:0 2px 12px rgba(22,25,31,.06);
+  transition:box-shadow .2s, border-color .2s;
+}
+.provider-card:hover { box-shadow:0 6px 28px rgba(22,25,31,.10); }
+.provider-card.selected {
+  border-color:#0B1F3A;
+  box-shadow:0 0 0 3px rgba(59,130,246,.18), 0 6px 28px rgba(22,25,31,.10);
+}
+
+/* Four-column main row */
+.provider-main {
+  display:grid;
+  grid-template-columns:120px 1fr 220px 56px;
+  gap:0; align-items:stretch;
+}
+
+/* Col 1 – Logo */
+.provider-logo {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  font-family:var(--serif); font-weight:700; font-size:16px; color:var(--sage);
+  background:linear-gradient(160deg,#fff,var(--grn-bg));
+  border-right:1px solid var(--border);
+  text-align:center; line-height:1.2; padding:14px 10px; min-height:110px;
+}
+.provider-logo span { font-size:9px; font-family:var(--mono); color:var(--muted); display:block; margin-top:4px; letter-spacing:.04em; }
+.provider-rank-badge {
+  display:inline-flex; align-items:center; gap:3px; margin-top:6px;
+  font-family:var(--mono); font-size:9px; color:#fff;
+  background:#0B1F3A; border-radius:999px; padding:2px 8px; font-weight:700;
+}
+
+/* Col 2 – Highlights */
+.provider-highlights {
+  padding:14px 16px; display:flex; flex-direction:column; justify-content:center;
+  border-right:1px solid var(--border);
+}
+.provider-highlights h4 { font-size:13px; font-weight:700; margin-bottom:6px; color:var(--ink); }
+.provider-highlights ul { list-style:none; margin-bottom:8px; }
+.provider-highlights li { font-size:12px; line-height:1.6; color:#3a3530; padding-left:12px; position:relative; }
+.provider-highlights li::before { content:'·'; position:absolute; left:0; color:var(--sage); font-weight:900; }
+.provider-contact-line { font-size:11px; color:var(--muted); line-height:1.5; }
+
+/* Col 3 – Verify block */
+.provider-verify {
+  padding:14px 14px; display:flex; flex-direction:column; justify-content:center; gap:10px;
+  border-right:1px solid var(--border);
+  background:#FFF8F6;
+}
+.verify-header {
+  font-family:var(--mono); font-size:9px; text-transform:uppercase; letter-spacing:.1em;
+  color:#B84A1A; font-weight:700; display:flex; align-items:center; gap:5px;
+}
+.verify-header::before { content:'⚠'; font-size:11px; }
+.verify-row { display:flex; flex-direction:column; gap:2px; }
+.verify-label { font-size:9px; font-family:var(--mono); text-transform:uppercase; letter-spacing:.07em; color:var(--muted); }
+.verify-value {
+  font-size:12px; font-weight:600; color:var(--ink);
+  background:#FDE8DC; border-radius:4px; padding:2px 7px;
+  display:inline-block; font-family:var(--mono);
+}
+.verify-value.ok { background:#E0F4EB; color:#1B5E35; }
+
+/* Col 4 – Select */
+.provider-select-col {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:14px 0; gap:8px;
+}
+.provider-select-col input[type=checkbox] {
+  width:22px; height:22px; accent-color:#0B1F3A; cursor:pointer; flex-shrink:0;
+}
+.provider-select-col .sel-label {
+  font-size:9px; font-family:var(--mono); text-transform:uppercase;
+  letter-spacing:.06em; color:var(--muted); text-align:center; line-height:1.3;
+}
+.provider-select-col .sel-label.active { color:#0B1F3A; font-weight:700; }
+
+/* Expand toggle */
+.provider-toggle {
+  width:100%; border:none; border-top:1px solid var(--border);
+  background:var(--warm); padding:8px 1.25rem;
+  display:flex; justify-content:space-between; align-items:center;
+  cursor:pointer; font-size:11px; font-family:var(--mono);
+  color:var(--muted); letter-spacing:.04em;
+}
+.provider-toggle:hover { color:var(--ink); }
+.provider-toggle::after { content:'▾'; font-size:14px; transition:transform .2s; }
+.provider-card.open .provider-toggle::after { transform:rotate(180deg); }
+.provider-detail { display:none; padding:0 1.25rem 1rem; border-top:1px solid var(--border); }
+.provider-card.open .provider-detail { display:block; }
+.provider-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding-top:12px; }
+.provider-note { font-size:12px; color:var(--muted); line-height:1.7; background:var(--warm); border-radius:8px; padding:10px 12px; }
+.provider-note strong { color:var(--ink); }
+.provider-note a { color:var(--sage); }
+
+/* Mobile */
+@media(max-width:700px){
+  .provider-main { grid-template-columns:1fr 1fr; grid-template-rows:auto auto; }
+  .provider-logo { border-right:none; border-bottom:1px solid var(--border); grid-column:1/2; flex-direction:row; gap:10px; justify-content:flex-start; min-height:unset; padding:12px 14px; }
+  .provider-highlights { grid-column:1/3; border-right:none; border-bottom:1px solid var(--border); }
+  .provider-verify { grid-column:1/2; border-right:1px solid var(--border); border-bottom:none; }
+  .provider-select-col { grid-column:2/3; }
+  .provider-detail-grid { grid-template-columns:1fr; }
+}
+
+/* ── WARNING BANNER ── */
+.warning-strip {
+  background: var(--red-bg); border: 1px solid #F5C5B0;
+  border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.warning-strip .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.warning-strip p { font-size: 13px; color: #5a2010; line-height: 1.7; }
+.warning-strip strong { font-weight: 600; }
+
+/* ── STORY CARDS ── */
+.stories { display: flex; flex-direction: column; gap: 14px; }
+.story-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 10px;
+  padding: 1.2rem 1.4rem; border-left: 3px solid var(--accent);
+  transition: box-shadow .2s;
+}
+.story-card:hover { box-shadow: 0 4px 20px rgba(22,25,31,.07); }
+.story-tag {
+  font-size: 10px; font-family: var(--mono); text-transform: uppercase;
+  letter-spacing: .1em; color: var(--accent); margin-bottom: .5rem;
+}
+.story-title { font-family: var(--serif); font-size: 16px; font-weight: 600; margin-bottom: .6rem; }
+.story-quote {
+  font-size: 13px; color: var(--muted); font-style: italic;
+  border-left: 2px solid var(--border); padding-left: 10px;
+  margin-bottom: .75rem; line-height: 1.7;
+}
+.story-lesson {
+  font-size: 12.5px; background: var(--red-bg); border-radius: 6px;
+  padding: 7px 11px; color: #5a2010; line-height: 1.6;
+}
+.story-lesson strong { font-weight: 600; }
+
+/* ── QA ── */
+.qa-list { display: flex; flex-direction: column; gap: 10px; }
+.qa-item {
+  border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  background: #fff;
+}
+.qa-q {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 1rem 1.25rem; cursor: pointer;
+  font-size: 14px; font-weight: 500; color: var(--ink);
+  transition: background .15s;
+}
+.qa-q:hover { background: var(--warm); }
+.qa-q::after { content: '+'; font-size: 18px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+.qa-item.open .qa-q::after { transform: rotate(45deg); }
+.qa-a {
+  display: none; padding: 0 1.25rem 1.1rem;
+  font-size: 13.5px; color: #3a3530; line-height: 1.8;
+}
+.qa-item.open .qa-a { display: block; }
+.qa-a ol, .qa-a ul { padding-left: 20px; margin-top: 6px; }
+.qa-a li { margin-bottom: 6px; }
+.qa-a strong { color: var(--ink); font-weight: 600; }
+.qa-a .highlight {
+  background: var(--grn-bg); border-radius: 6px;
+  padding: 8px 12px; margin-top: 10px; font-size: 13px;
+  color: #1e4030; border-left: 2px solid var(--sage);
+}
+.qa-a .warn {
+  background: var(--red-bg); border-radius: 6px;
+  padding: 8px 12px; margin-top: 10px; font-size: 13px;
+  color: #5a2010; border-left: 2px solid var(--accent);
+}
+
+/* ── CHECKLIST ── */
+.checklist {
+  background: var(--ink); color: #FAF8F4; border-radius: 12px;
+  padding: 2rem 2rem 1.5rem; margin: 2rem 0;
+}
+.checklist h3 { font-family: var(--serif); font-size: 18px; margin-bottom: 1.25rem; }
+.checklist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.cl-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13px; color: #C8C4BC; line-height: 1.5;
+}
+.cl-item .cl-num {
+  font-family: var(--mono); font-size: 10px; color: var(--accent);
+  background: rgba(200,66,10,.15); border-radius: 4px;
+  padding: 2px 6px; flex-shrink: 0; margin-top: 1px;
+}
+@media(max-width:580px) {
+  .checklist-grid { grid-template-columns: 1fr; }
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); color: #6B6560; padding: 2rem;
+  font-size: 12px; text-align: center; line-height: 1.8;
+}
+footer strong { color: #9B9590; }
+
+/* ── FILTER BAR ── */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+.filter-btn {
+  font-size: 12px; padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--border); background: #fff; color: var(--muted);
+  font-family: var(--sans); transition: all .15s;
+}
+.filter-btn.on { background: var(--ink); color: #FAF8F4; border-color: var(--ink); }
+
+/* ── SCORE TABLE ── */
+.score-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+.score-table th { background: var(--warm); font-weight: 600; padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+.score-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.score-table tr:last-child td { border-bottom: none; }
+.bar { height: 6px; border-radius: 3px; background: var(--border); overflow: hidden; margin-top: 4px; }
+.bar-fill { height: 100%; border-radius: 3px; background: var(--sage); }
+.bar-fill.amber { background: var(--gold); }
+.bar-fill.red   { background: var(--accent); }
+
+
+/* ── CHECKLIST TABLE ── */
+.checklist-table td { font-size: 12px; line-height: 1.65; }
+.checklist-table .phase-cell { font-weight: 600; white-space: nowrap; background: #F7FBF9; }
+.checklist-table .must-cell { text-align: center; font-weight: 700; white-space: nowrap; }
+.checklist-table .must-cell.must { background: #FDE2DD; color: #9A2607; }
+.checklist-table .must-cell.optional { background: #C9F2D5; color: #0B6B2A; }
+.checklist-table .must-cell.blank { background: #E6F7E9; }
+
+
+
+/* ── TOOLBAR ── */
+.provider-toolbar {
+  background:#fff; border:1px solid var(--border); border-radius:12px;
+  padding:1rem 1.15rem; margin-bottom:1rem; box-shadow:0 2px 12px rgba(22,25,31,.04);
+}
+.provider-toolbar-grid { display:grid; grid-template-columns: 1fr 1fr auto; gap:10px; align-items:end; }
+.provider-toolbar label { display:block; font-size:12px; font-family:var(--mono); color:var(--muted); margin-bottom:6px; }
+.provider-toolbar select, .provider-toolbar input {
+  width:100%; border:1px solid var(--border); border-radius:8px; padding:10px 12px;
+  font-family:var(--sans); font-size:14px; background:var(--paper); color:var(--ink);
+}
+.provider-toolbar button { border:none; border-radius:999px; padding:10px 16px; background:var(--ink); color:#fff; font-family:var(--mono); font-size:12px; cursor:pointer; white-space:nowrap; }
+.provider-toolbar button:hover { background:#0B1F3A; }
+
+/* ── FLOATING BAR ── */
+.selected-quote-bar {
+  position:fixed; left:50%; bottom:20px; transform:translateX(-50%); z-index:900;
+  background:var(--ink); color:#fff; border-radius:999px; padding:10px 14px 10px 20px;
+  box-shadow:0 10px 40px rgba(22,25,31,.30); display:flex; align-items:center; gap:14px;
+  max-width:calc(100% - 28px); transition:opacity .2s;
+}
+.selected-quote-bar .bar-count {
+  font-size:13px; font-family:var(--mono); white-space:nowrap;
+}
+.selected-quote-bar .bar-dots {
+  display:flex; gap:5px; align-items:center;
+}
+.bar-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:rgba(255,255,255,.2); transition:background .2s;
+}
+.bar-dot.filled { background:#0B1F3A; }
+.selected-quote-bar button {
+  background:#0B1F3A; color:#fff; border:none; border-radius:999px;
+  padding:10px 18px; font-size:12px; font-weight:700; cursor:pointer; text-transform:uppercase;
+  letter-spacing:.03em;
+}
+.selected-quote-bar button:hover { background:#111827; }
+
+/* ── MODAL OVERLAY ── */
+.quote-modal-overlay { display:none; position:fixed; inset:0; z-index:1200; background:rgba(22,25,31,.6); padding:20px; overflow:auto; }
+.quote-modal-overlay.open { display:flex; align-items:flex-start; justify-content:center; }
+.quote-modal {
+  width:100%; max-width:620px; margin:40px auto;
+  background:#fff; border-radius:16px; border:1px solid var(--border);
+  box-shadow:0 24px 60px rgba(0,0,0,.25); overflow:hidden; position:relative;
+}
+.quote-modal-close {
+  position:absolute; right:16px; top:14px; border:none; background:rgba(0,0,0,.06);
+  font-size:18px; cursor:pointer; color:var(--muted); width:32px; height:32px;
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+}
+.quote-modal-close:hover { background:rgba(0,0,0,.12); color:var(--ink); }
+
+/* Modal header */
+.quote-modal-header {
+  padding:22px 24px 18px; border-bottom:1px solid var(--border);
+}
+.quote-modal-header h3 { font-family:var(--serif); font-size:20px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+.quote-modal-header p { font-size:13px; color:var(--muted); }
+.quote-selected-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+.quote-chip {
+  font-size:11px; font-family:var(--mono); padding:3px 10px;
+  background:#EAF0FA; color:#0B1F3A; border:1px solid #B8C7DD;
+  border-radius:999px;
+}
+
+/* Step 1 – contact */
+.modal-step { padding:22px 24px; }
+.modal-step-label {
+  font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.1em;
+  color:var(--muted); margin-bottom:14px;
+}
+.lead-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; }
+.lead-field { display:flex; flex-direction:column; gap:5px; }
+.lead-field label { font-size:13px; font-weight:600; color:var(--ink); }
+.lead-field label .req { color:var(--accent); }
+.lead-field input {
+  border:1.5px solid var(--border); border-radius:8px;
+  padding:10px 12px; font-size:14px; font-family:var(--sans); color:var(--ink);
+  background:#fff; transition:border-color .15s;
+}
+.lead-field input:focus { outline:none; border-color:#0B1F3A; }
+
+/* Optional estimator toggle */
+.est-toggle-row {
+  padding:0 24px 16px; display:flex; align-items:center; gap:10px;
+}
+.est-toggle-btn {
+  padding:9px 16px; border:1.5px solid var(--border); border-radius:8px;
+  background:#fff; color:var(--muted); font-size:13px; font-family:var(--sans);
+  cursor:pointer; display:flex; align-items:center; gap:7px; transition:all .15s;
+}
+.est-toggle-btn:hover { border-color:#0B1F3A; color:#0B1F3A; }
+.est-toggle-btn.active { border-color:#0B1F3A; background:#EAF0FA; color:#0B1F3A; font-weight:600; }
+
+/* Estimator panel */
+.estimator-panel {
+  display:none; border-top:1px solid var(--border);
+  padding:18px 24px; background:#FAFAFA;
+}
+.estimator-panel.open { display:block; }
+.est-panel-title { font-size:13px; font-weight:700; color:var(--ink); margin-bottom:12px; }
+.est-add-row { display:grid; grid-template-columns:1fr 90px auto; gap:8px; margin-bottom:14px; align-items:end; }
+.est-add-row label { font-size:11px; font-family:var(--mono); color:var(--muted); display:block; margin-bottom:4px; }
+.est-add-row select, .est-add-row input {
+  border:1.5px solid var(--border); border-radius:8px; padding:8px 10px;
+  font-size:13px; font-family:var(--sans); color:var(--ink); width:100%;
+}
+.est-add-row button {
+  border:none; border-radius:8px; background:#0B1F3A; color:#fff;
+  padding:9px 14px; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap;
+  align-self:flex-end;
+}
+.est-add-row button:hover { background:#111827; }
+.est-items-list { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+.est-item {
+  display:grid; grid-template-columns:1fr 80px 110px 24px;
+  gap:8px; align-items:center; background:#fff;
+  border:1px solid var(--border); border-radius:8px; padding:8px 10px;
+  font-size:12px;
+}
+.est-item-name { color:var(--ink); font-weight:500; }
+.est-item-qty-ctrl { display:flex; align-items:center; gap:4px; }
+.est-item-qty-ctrl button {
+  width:22px; height:22px; border:1px solid var(--border); border-radius:4px;
+  background:#fff; cursor:pointer; font-size:14px; line-height:1;
+  color:var(--ink); display:flex; align-items:center; justify-content:center;
+}
+.est-item-qty-ctrl span { font-size:13px; font-weight:700; min-width:20px; text-align:center; }
+.est-item-range { font-family:var(--mono); font-size:11px; color:var(--muted); text-align:right; }
+.est-item-del { border:none; background:transparent; color:#ccc; cursor:pointer; font-size:16px; padding:0; }
+.est-item-del:hover { color:var(--accent); }
+.est-summary {
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;
+  background:var(--ink); border-radius:10px; padding:12px 14px;
+}
+.est-summary-box { text-align:center; }
+.est-summary-box .num { font-family:var(--serif); font-size:16px; font-weight:700; color:#FAF8F4; display:block; }
+.est-summary-box .lbl { font-size:9px; font-family:var(--mono); color:#9B9590; display:block; margin-top:2px; }
+.est-summary-box.green .num { color:#61C99B; }
+
+/* Modal footer */
+.quote-modal-footer {
+  padding:16px 24px; border-top:1px solid var(--border);
+  display:flex; align-items:center; gap:12px; background:#fff;
+}
+.quote-form-error { display:none; background:var(--red-bg); color:#8a2609; border-left:3px solid var(--accent); padding:9px 12px; border-radius:6px; font-size:13px; flex:1; }
+.quote-submit {
+  border:none; border-radius:999px; background:#0B1F3A; color:#fff;
+  padding:13px 28px; font-size:14px; font-weight:800; cursor:pointer;
+  letter-spacing:.02em; text-transform:uppercase; white-space:nowrap;
+}
+.quote-submit:hover { background:#111827; }
+.quote-thanks {
+  display:none; background:var(--grn-bg); color:#1e4030; border-left:3px solid var(--sage);
+  padding:14px 16px; border-radius:8px; font-size:14px; line-height:1.7; margin:0 24px 18px;
+}
+.fake-captcha { width:100%; max-width:302px; height:64px; background:#fff; border:1px solid #ddd; border-radius:6px; display:flex; align-items:center; justify-content:space-between; padding:10px 14px; }
+.fake-captcha-left { display:flex; align-items:center; gap:12px; font-size:13px; color:#4b4b4b; }
+.fake-captcha input { width:24px; height:24px; accent-color:#0B1F3A; }
+.fake-captcha-brand { text-align:center; font-size:10px; color:#555; line-height:1.1; }
+.fake-captcha-brand strong { display:block; font-size:11px; color:#444; }
+
+@media(max-width:760px){
+  .provider-toolbar-grid { grid-template-columns:1fr; }
+  .selected-quote-bar { border-radius:16px; align-items:stretch; flex-direction:column; width:calc(100% - 28px); }
+  .selected-quote-bar button { width:100%; }
+  .lead-grid { grid-template-columns:1fr; }
+  .est-add-row { grid-template-columns:1fr 70px auto; }
+  .est-summary { grid-template-columns:1fr 1fr; }
+  .quote-modal-footer { flex-direction:column; }
+}
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+/* ── QUIZ ── */
+.quiz-wrap {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(22,25,31,.07);
+}
+.quiz-progress-bar {
+  height: 4px; background: var(--border);
+  position: relative; overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%; background: var(--accent);
+  border-radius: 2px;
+  transition: width .4s ease;
+}
+.quiz-body { padding: 2rem 2rem 1.5rem; }
+.quiz-step { display: none; }
+.quiz-step.active { display: block; }
+.quiz-q-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: .5rem;
+}
+.quiz-q-text {
+  font-family: var(--serif); font-size: 18px; font-weight: 600;
+  line-height: 1.4; margin-bottom: 1.25rem; color: var(--ink);
+}
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
+.quiz-opt {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px; border: 1.5px solid var(--border);
+  border-radius: 10px; cursor: pointer; transition: all .15s;
+  background: var(--paper);
+}
+.quiz-opt:hover { border-color: var(--accent); background: var(--red-bg); }
+.quiz-opt.selected { border-color: var(--accent); background: var(--red-bg); }
+.quiz-opt-dot {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--border); flex-shrink: 0; margin-top: 1px;
+  transition: all .15s; background: #fff;
+}
+.quiz-opt.selected .quiz-opt-dot {
+  border-color: var(--accent); background: var(--accent);
+}
+.quiz-opt-text { font-size: 13.5px; line-height: 1.5; color: var(--ink); }
+.quiz-opt-pts { font-size: 11px; font-family: var(--mono); color: var(--muted); margin-top: 2px; }
+.quiz-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2rem; border-top: 1px solid var(--border);
+  background: var(--warm);
+}
+.quiz-counter { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.quiz-next-btn {
+  padding: 9px 22px; background: var(--accent); color: #fff;
+  border: none; border-radius: 999px; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: var(--sans); transition: background .15s;
+  opacity: .4; pointer-events: none;
+}
+.quiz-next-btn.ready { opacity: 1; pointer-events: auto; }
+.quiz-next-btn:hover { background: #a8360a; }
+
+/* Result */
+.quiz-result { display: none; padding: 2.5rem 2rem; text-align: center; }
+.quiz-result.active { display: block; }
+.result-icon { font-size: 52px; margin-bottom: 1rem; line-height: 1; }
+.result-verdict {
+  font-family: var(--serif); font-size: 22px; font-weight: 700;
+  margin-bottom: .75rem; color: var(--ink);
+}
+.result-badge {
+  display: inline-block; padding: 4px 14px; border-radius: 999px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+.badge-urgent { background: var(--red-bg); color: var(--accent); border: 1px solid #F5C5B0; }
+.badge-soon   { background: #FEF9EC; color: var(--gold); border: 1px solid #EDD89A; }
+.badge-ok     { background: var(--grn-bg); color: var(--sage); border: 1px solid #B0D4BC; }
+.result-desc { font-size: 14px; color: #3a3530; line-height: 1.8; max-width: 500px; margin: 0 auto 1.5rem; }
+.result-items { text-align: left; max-width: 480px; margin: 0 auto 1.75rem; }
+.result-items h4 { font-size: 12px; font-family: var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .6rem; }
+.result-item {
+  display: flex; gap: 8px; align-items: flex-start;
+  font-size: 13px; line-height: 1.5; margin-bottom: .4rem; color: #3a3530;
+}
+.result-item::before { content: '→'; color: var(--accent); flex-shrink: 0; font-weight: 700; }
+.quiz-restart {
+  margin-top: .5rem; padding: 9px 22px; border: 1.5px solid var(--border);
+  background: #fff; border-radius: 999px; font-size: 12px; font-family: var(--mono);
+  color: var(--muted); cursor: pointer; transition: all .15s;
+}
+.quiz-restart:hover { border-color: var(--ink); color: var(--ink); }
+@media(max-width:600px){
+  .quiz-body { padding: 1.5rem 1.25rem 1rem; }
+  .quiz-footer { padding: .85rem 1.25rem; }
+  .hero { padding: 3rem 1.25rem 2.5rem; }
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+/* ══ REBATE + ROI CALCULATORS ══════════════════════════════ */
+.calc-twin {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin: 1.5rem 0 2rem;
+}
+@media(max-width:700px){ .calc-twin { grid-template-columns: 1fr; } }
+
+.calc-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 14px;
+  overflow: hidden; box-shadow: 0 2px 14px rgba(22,25,31,.07);
+  display: flex; flex-direction: column;
+}
+.calc-card-head {
+  padding: 14px 18px 12px; border-bottom: 1px solid var(--border);
+  background: var(--warm);
+}
+.calc-card-eyebrow {
+  font-family: var(--mono); font-size: 10px; text-transform: uppercase;
+  letter-spacing: .12em; color: var(--accent); margin-bottom: 3px;
+}
+.calc-card-head h4 {
+  font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--ink);
+  margin-bottom: 2px;
+}
+.calc-card-head p { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+.calc-body { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+.calc-field label {
+  display: block; font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 5px;
+}
+.calc-field label small { font-weight: 400; color: var(--muted); font-size: 10px; }
+.calc-field .hint { font-size: 10px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+
+.calc-input-wrap {
+  display: flex; align-items: center; border: 1.5px solid var(--border);
+  border-radius: 8px; overflow: hidden; background: var(--paper);
+}
+.calc-input-wrap:focus-within { border-color: #0B1F3A; }
+.calc-input-wrap input[type=number] {
+  flex: 1; border: none; background: transparent; padding: 9px 12px;
+  font-size: 20px; font-family: var(--serif); font-weight: 700; color: var(--ink);
+  min-width: 0;
+}
+.calc-input-wrap input[type=number]:focus { outline: none; }
+.calc-input-wrap input[type=text] {
+  flex: 1; border: none; background: transparent; padding: 9px 12px;
+  font-size: 16px; font-family: var(--serif); font-weight: 600; color: var(--ink);
+  min-width: 0;
+}
+.calc-input-wrap input[type=text]:focus { outline: none; }
+.calc-unit {
+  padding: 0 10px; font-family: var(--mono); font-size: 10px; color: var(--muted);
+  border-left: 1px solid var(--border); flex-shrink: 0; white-space: nowrap;
+}
+.calc-select {
+  width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 9px 12px; font-size: 13px; font-family: var(--sans); color: var(--ink);
+  background: var(--paper);
+}
+.calc-select:focus { outline: none; border-color: #0B1F3A; }
+
+.calc-toggle-row { display: flex; gap: 8px; }
+.calc-toggle {
+  flex: 1; padding: 8px 10px; border: 1.5px solid var(--border); border-radius: 8px;
+  background: #fff; font-size: 12px; font-weight: 500; cursor: pointer;
+  font-family: var(--sans); color: var(--muted); transition: all .15s; text-align: center;
+}
+.calc-toggle.on { border-color: var(--sage); background: var(--grn-bg); color: var(--sage); font-weight: 700; }
+
+/* Result display */
+.calc-result-box {
+  background: var(--ink); border-radius: 10px; padding: 14px 16px; text-align: center;
+}
+.calc-result-box .rlabel {
+  font-family: var(--mono); font-size: 9px; text-transform: uppercase;
+  letter-spacing: .12em; color: #9B9590; margin-bottom: 4px;
+}
+.calc-result-box .ramount {
+  font-family: var(--serif); font-size: 32px; font-weight: 700;
+  color: #61C99B; line-height: 1; margin-bottom: 3px;
+  transition: color .3s;
+}
+.calc-result-box .ramount.red { color: #e05a3a; }
+.calc-result-box .rsub { font-size: 11px; color: #9B9590; line-height: 1.4; }
+.calc-result-box .rconditions {
+  background: rgba(255,255,255,.06); border-radius: 7px;
+  padding: 8px 10px; margin-top: 8px; text-align: left;
+  font-size: 10px; color: #C8C4BC; line-height: 1.8;
+}
+.calc-result-box .rconditions li { list-style: none; display: flex; gap: 6px; }
+.calc-result-box .rconditions li::before { content: '✓'; color: #61C99B; flex-shrink: 0; }
+
+/* ROI boxes */
+.roi-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.roi-metric {
+  background: var(--ink); border-radius: 8px; padding: 12px 12px 10px; text-align: center;
+}
+.roi-metric .mn { font-family: var(--serif); font-size: 20px; font-weight: 700; color: #61C99B; display: block; line-height: 1; margin-bottom: 3px; }
+.roi-metric .ml { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: .06em; color: #9B9590; }
+
+/* Bar chart */
+.roi-bars { display: flex; flex-direction: column; gap: 5px; }
+.roi-bar-row { display: flex; align-items: center; gap: 8px; }
+.roi-bar-tag { font-family: var(--mono); font-size: 10px; color: var(--muted); width: 38px; flex-shrink: 0; }
+.roi-bar-track { flex: 1; background: var(--border); border-radius: 4px; height: 20px; overflow: hidden; }
+.roi-bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 7px; transition: width .5s ease; min-width: 40px; }
+.roi-bar-fill span { font-size: 10px; font-weight: 700; font-family: var(--mono); color: #fff; white-space: nowrap; }
+.roi-bar-fill.before { background: var(--muted); }
+.roi-bar-fill.after  { background: var(--sage); }
+
+.calc-disclaimer {
+  font-size: 10px; color: var(--muted); line-height: 1.6;
+  padding: 8px 10px; background: var(--warm); border-radius: 7px;
+}
+
+.calc-cta {
+  margin-top: auto; width: 100%; padding: 12px 14px; border: none; border-radius: 9px;
+  background: var(--accent); color: #fff; font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: var(--sans); transition: background .15s;
+}
+.calc-cta:hover { background: #a8360a; }
+.calc-cta.sage { background: var(--sage); }
+.calc-cta.sage:hover { background: #2f563f; }
+
+/* Linkage note */
+.calc-link-note {
+  background: #EAF0FA; border: 1px solid #B8C7DD; border-radius: 10px;
+  padding: 11px 16px; display: flex; align-items: center; gap: 10px;
+  font-size: 12px; color: #0B1F3A; line-height: 1.5; margin-bottom: 1.5rem;
+}
+.calc-link-note strong { color: #0B1F3A; }
+
+/* Range cost input hint */
+.range-hint {
+  font-size: 11px; color: var(--muted); font-family: var(--mono);
+  padding: 6px 10px; background: var(--warm); border-radius: 6px; margin-top: 4px;
+  line-height: 1.5;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="lang-switch" aria-label="Language selector">
+      <button type="button" class="active" data-lang-btn="zh" onclick="setLang('zh')">中文</button>
+      <button type="button" data-lang-btn="en" onclick="setLang('en')">EN</button>
+      <button type="button" data-lang-btn="fr" onclick="setLang('fr')">FR</button>
+    </div>
+    <div class="hero-eyebrow">Montreal Window Guide · 2026</div>
+    <h1>蒙特利尔<em>门窗避坑指南</em><br>报价、补贴与验收一次讲清</h1>
+    <p class="hero-sub">基于真实业主反馈与社区讨论整理，帮助您在签约前问对问题、看懂补贴、规避付款风险，并选择更合适的本地服务商。</p>
+    <nav class="hero-nav">
+      <a href="#quiz">要不要换窗？</a>
+      <a href="#companies">服务商推荐</a>
+      <a href="#rebate">补贴攻略</a>
+      <a href="#stories">Q&A</a>
+      <a href="#checklist">签约清单</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ══ QUIZ SECTION ════════════════════════════════════════ -->
+<section class="section-wrap" id="quiz">
+<div class="container">
+  <div class="section-label">免费自测 · Part 01</div>
+  <h2 class="section-title">门窗<em style="color:var(--accent);font-style:normal;">该不该换？</em><br>3分钟自测</h2>
+  <p class="section-desc">根据门窗的实际状况，用10个问题评估更换的紧迫程度——结果会告诉您现在该做什么。</p>
+
+  <div class="quiz-wrap">
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-fill" id="quiz-progress" style="width:0%"></div>
+    </div>
+
+    <div class="quiz-body" id="quiz-body">
+      <!-- steps injected by JS -->
+    </div>
+
+    <div class="quiz-result" id="quiz-result">
+      <div class="result-icon" id="result-icon"></div>
+      <div class="result-verdict" id="result-verdict"></div>
+      <div class="result-badge" id="result-badge"></div>
+      <p class="result-desc" id="result-desc"></p>
+      <div class="result-items" id="result-items"></div>
+      <button class="quiz-restart" onclick="restartQuiz()">↩ 重新测试</button>
+    </div>
+
+    <div class="quiz-footer" id="quiz-footer">
+      <span class="quiz-counter" id="quiz-counter">第 1 题，共 10 题</span>
+      <button class="quiz-next-btn" id="quiz-next" onclick="nextQuestion()">下一题 →</button>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- ══ COMPANY SECTION ════════════════════════════════════════ -->
+<section class="section-wrap" id="companies">
+<div class="container">
+  <div class="section-label">顶级服务商推荐 · Part 02</div>
+  <h2 class="section-title">本地门窗服务商<br>智能推荐与多选询价</h2>
+  <p class="section-desc">选择所在区域与项目类型，系统会优先展示更匹配的本地服务商。建议勾选 2–3 家公司统一提交需求，便于比较报价、安装范围与售后条款。</p>
+
+  <div class="provider-toolbar">
+    <div class="provider-toolbar-grid">
+      <div>
+        <label for="area-filter">所在区域</label>
+        <select id="area-filter" onchange="renderProviders()">
+          <option value="montreal">Montreal</option>
+          <option value="laval">Laval</option>
+          <option value="west">West Island</option>
+          <option value="north">Montreal North</option>
+          <option value="south">Montreal South</option>
+          <option value="east">Montreal East</option>
+          <option value="brossard">Brossard</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="project-filter">项目类型</label>
+        <select id="project-filter" onchange="renderProviders()">
+          <option value="replacement">更换门窗</option>
+          <option value="new">新装 / 新建房</option>
+          <option value="repair">维修 / 售后检查</option>
+          <option value="premium">高端定制 / 历史建筑</option>
+        </select>
+      </div>
+      <button type="button" onclick="autoSelectRecommended()">智能选择推荐 Top 3</button>
+    </div>
+    <div id="provider-match-note" class="provider-match-note" style="margin-top:10px;">系统已根据区域和项目类型排序。建议至少选择 2 家，最多 3 家进行比较。</div>
+  </div>
+
+  <div class="provider-list" id="provider-list"></div>
+</div>
+</section>
+
+<div class="selected-quote-bar" id="selected-quote-bar">
+  <div class="bar-dots" id="bar-dots">
+    <div class="bar-dot" id="dot-0"></div>
+    <div class="bar-dot" id="dot-1"></div>
+    <div class="bar-dot" id="dot-2"></div>
+  </div>
+  <span class="bar-count" id="selected-count-label">已选择 0 / 3 家</span>
+  <button type="button" onclick="openQuoteModal()">获取报价 →</button>
+</div>
+
+<div class="quote-modal-overlay" id="quote-modal-overlay" onclick="closeQuoteModal(event)">
+  <div class="quote-modal" onclick="event.stopPropagation()">
+    <button class="quote-modal-close" onclick="closeQuoteModal()" aria-label="Close">×</button>
+
+    <!-- Header: title + selected chips -->
+    <div class="quote-modal-header">
+      <h3>获取报价 · Demande de soumission</h3>
+      <p>填写联系信息后发送，所选服务商将在 24 小时内联系您。</p>
+      <div class="quote-selected-chips" id="quote-selected-chips"></div>
+    </div>
+
+    <!-- Step 1: Contact info (required) -->
+    <div class="modal-step">
+      <div class="modal-step-label">Step 1 — 联系信息（必填）</div>
+      <div class="lead-grid">
+        <div class="lead-field" style="grid-column:1/-1;">
+          <label>Nom complet</label>
+          <input id="lead-name" type="text" placeholder="张三 / Jane Smith" autocomplete="name">
+        </div>
+        <div class="lead-field">
+          <label>Courriel <span class="req">*</span></label>
+          <input id="lead-email" type="email" placeholder="you@email.com" autocomplete="email">
+        </div>
+        <div class="lead-field">
+          <label>Téléphone <span class="req">*</span></label>
+          <input id="lead-phone" type="tel" placeholder="514-000-0000" autocomplete="tel">
+        </div>
+        <div class="lead-field">
+          <label>Code postal <span class="req">*</span></label>
+          <input id="lead-postal" type="text" placeholder="H3G 1A1" autocomplete="postal-code">
+        </div>
+        <div class="lead-field">
+          <label>Type de projet <span class="req">*</span></label>
+          <input id="lead-project" type="text" placeholder="Remplacement / Nouvelle installation / Réparation">
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Optional estimator toggle -->
+    <div class="est-toggle-row">
+      <button type="button" class="est-toggle-btn" id="est-toggle-btn" onclick="toggleEstimator()">
+        📊 费用评估 <span style="font-size:11px;opacity:.7;">（可选）</span>
+      </button>
+      <span style="font-size:11px;color:var(--muted);">点击展开——让报价更精准</span>
+    </div>
+
+    <!-- Estimator panel (collapsed by default) -->
+    <div class="estimator-panel" id="estimator-panel">
+      <div class="est-panel-title">📐 门窗费用估算器</div>
+      <div class="est-add-row">
+        <div>
+          <label>门窗类型</label>
+          <select id="est-type-select">
+            <option value="casement">推拉窗 / Casement</option>
+            <option value="sliding">横拉窗 / Sliding</option>
+            <option value="fixed">固定窗 / Picture</option>
+            <option value="bay">湾式窗 / Bay Window</option>
+            <option value="door-entry">入口门 / Entry Door</option>
+            <option value="door-patio">玻璃推拉门 / Patio Door</option>
+            <option value="door-french">双开门 / French Door</option>
+            <option value="egress">逃生窗 / Egress</option>
+          </select>
+        </div>
+        <div>
+          <label>数量</label>
+          <input type="number" id="est-qty" value="1" min="1" max="30">
+        </div>
+        <button type="button" onclick="addEstItem()">＋ 加入</button>
+      </div>
+      <div class="est-items-list" id="est-items-list">
+        <div style="font-size:12px;color:var(--muted);padding:4px 0;">← 选择类型和数量后点击「加入」</div>
+      </div>
+      <div class="est-summary">
+        <div class="est-summary-box">
+          <span class="num" id="est-sum-items">0</span>
+          <span class="lbl">总件数</span>
+        </div>
+        <div class="est-summary-box green">
+          <span class="num" id="est-sum-cost">$0</span>
+          <span class="lbl">估算费用</span>
+        </div>
+        <div class="est-summary-box green">
+          <span class="num" id="est-sum-rebate">$0</span>
+          <span class="lbl">补贴估算</span>
+        </div>
+      </div>
+      <p style="font-size:10px;color:var(--muted);margin-top:8px;line-height:1.5;">价格基于蒙特利尔市场 2024-2026 含安装均价，仅供参考。Rénoclimat 补贴以实际评估为准。</p>
+    </div>
+
+    <!-- Captcha + error -->
+    <div style="padding:12px 24px 4px;">
+      <label class="fake-captcha">
+        <span class="fake-captcha-left"><input id="lead-human" type="checkbox"> <span>I am human</span></span>
+        <span class="fake-captcha-brand">▧<strong>hCaptcha</strong><br>Privacy · Terms</span>
+      </label>
+      <div class="quote-form-error" id="quote-form-error" style="margin-top:10px;"></div>
+    </div>
+
+    <!-- Footer: submit -->
+    <div class="quote-modal-footer" id="quote-modal-footer">
+      <button class="quote-submit" type="button" onclick="submitQuoteRequest()">ENVOYER LA DEMANDE</button>
+    </div>
+
+    <!-- Success screen (hidden until submitted) -->
+    <div id="quote-success-screen" style="display:none; padding:36px 28px 32px; text-align:center;">
+      <div style="font-size:56px; line-height:1; margin-bottom:16px;">✅</div>
+      <div style="font-family:var(--serif); font-size:22px; font-weight:700; color:var(--ink); margin-bottom:10px;">报价请求已发送！</div>
+      <div style="font-size:14px; color:var(--muted); line-height:1.8; max-width:380px; margin:0 auto 20px;">
+        Merci! 您的询价申请已成功提交。<br>
+        所选服务商将在 <strong style="color:var(--ink);">24 小时内</strong> 联系您。
+      </div>
+      <div id="success-provider-list" style="background:var(--grn-bg); border-radius:10px; padding:14px 18px; margin-bottom:24px; text-align:left; font-size:13px; color:#1e4030; line-height:1.9;"></div>
+      <div style="font-size:12px; color:var(--muted); margin-bottom:20px;">
+        💡 同时建议致电 <strong>1-866-266-0008</strong> 预约 Rénoclimat 补贴评估（换窗前必须先做）
+      </div>
+      <button type="button" onclick="closeQuoteModal()" style="border:1.5px solid var(--border); background:#fff; border-radius:999px; padding:10px 24px; font-size:13px; font-family:var(--mono); color:var(--muted); cursor:pointer;">关闭窗口</button>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══ REBATE SECTION ════════════════════════════════════════ -->
+<section class="section-wrap" id="rebate">
+<div class="container">
+  <div class="section-label">政府补贴 · Part 03</div>
+  <h2 class="section-title">政府补贴怎么申请<br>关键问题一次说明</h2>
+  <p class="section-desc">补贴申请最容易出错的地方，是先施工后评估。以下内容帮助您在动工前确认流程、资格与必要文件。</p>
+
+  <div class="warning-strip">
+    <span class="icon">⚠️</span>
+    <p><strong>最重要的一句话：先评估，再动工！</strong> 旧窗拆了再申请，补贴直接清零。无论装了多好的窗户都没用。</p>
+  </div>
+
+
+  <!-- ── CALCULATORS ── -->
+  <div class="calc-link-note">
+    <span style="font-size:18px;flex-shrink:0;">🔗</span>
+    <div>两个工具<strong>已联动</strong>：工具 1 的窗户数量自动传入 ROI 估算；补贴金额自动扣除后再算回本周期。</div>
+  </div>
+
+  <div class="calc-twin">
+
+    <!-- TOOL 1: Rebate -->
+    <div class="calc-card">
+      <div class="calc-card-head">
+        <div class="calc-card-eyebrow">工具 1 · Quebec Rebate Estimator</div>
+        <h4>🏛 政府补贴计算器</h4>
+        <p>Rénoclimat 计划 · 每个 Rough Opening（含门）按 $150 估算</p>
+      </div>
+      <div class="calc-body">
+
+        <div class="calc-field">
+          <label>窗户数量 <small>/ Windows (Rough Openings)</small></label>
+          <div class="calc-input-wrap">
+            <input type="number" id="rb-win" value="4" min="0" max="50" oninput="calcRebate()">
+            <span class="calc-unit">扇</span>
+          </div>
+          <div class="hint">每个独立窗洞 = 1 opening；Bay Window 三联算 1 个</div>
+        </div>
+
+        <div class="calc-field">
+          <label>门数量 <small>/ Doors (Entry / Patio)</small></label>
+          <div class="calc-input-wrap">
+            <input type="number" id="rb-door" value="1" min="0" max="20" oninput="calcRebate()">
+            <span class="calc-unit">扇</span>
+          </div>
+          <div class="hint" style="background:#FEF9EC;border:1px solid #EDD89A;border-radius:6px;padding:5px 8px;color:#7a5a0a;">
+            ⚠️ 门的补贴资格以实际 Rénoclimat 评估结果为准；此处按 $150/扇 估算，实际可能为 $0。建议致电 1-866-266-0008 核实。
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <label>是否愿意做 Rénoclimat 评估？</label>
+          <div class="calc-toggle-row">
+            <button class="calc-toggle on" id="rb-yes" onclick="setEval(true)">✅ 是，会配合评估</button>
+            <button class="calc-toggle" id="rb-no" onclick="setEval(false)">✗ 否 / 不确定</button>
+          </div>
+        </div>
+
+        <div class="calc-result-box">
+          <div class="rlabel">您预计可获得政府补贴</div>
+          <div class="ramount" id="rb-amount">$750</div>
+          <div class="rsub" id="rb-sub">5 个 Opening × $150（含门估算）</div>
+          <ul class="rconditions" id="rb-cond">
+            <li>动工前完成 Rénoclimat 初次评估（Pre-Retrofit）</li>
+            <li>使用 ENERGY STAR Zone 3 认证产品</li>
+            <li>安装后完成二次评估（Post-Retrofit）</li>
+          </ul>
+        </div>
+
+        <div class="calc-disclaimer">
+          * 为估算值，实际金额取决于评估结果与产品符合性。门的补贴以 Rénoclimat 官方审核为准，可能不适用。
+        </div>
+
+        <button class="calc-cta" onclick="rebateCTA()">立即预约核实补贴并获取报价 →</button>
+      </div>
+    </div>
+
+    <!-- TOOL 2: ROI -->
+    <div class="calc-card">
+      <div class="calc-card-head">
+        <div class="calc-card-eyebrow">工具 2 · Energy Saving & ROI</div>
+        <h4>📊 节能 &amp; 回本计算器</h4>
+        <p>把"换窗很贵"转化为"长期省钱的投资"——让数字说话</p>
+      </div>
+      <div class="calc-body">
+
+        <div class="calc-field">
+          <label>年度 Hydro 账单 <small>/ Annual Bill</small></label>
+          <div class="calc-input-wrap">
+            <input type="number" id="roi-hydro" value="2400" min="300" max="20000" step="100" oninput="calcROI()">
+            <span class="calc-unit">$ / yr</span>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <label>当前窗户状况</label>
+          <select class="calc-select" id="roi-cond" onchange="calcROI()">
+            <option value="bad">单层 / 很旧（漏风严重）</option>
+            <option value="mid" selected>老旧双层（10 年以上）</option>
+            <option value="ok">较新但想升级</option>
+          </select>
+        </div>
+
+        <div class="calc-field">
+          <label>房屋类型</label>
+          <select class="calc-select" id="roi-type" onchange="calcROI()">
+            <option value="condo">Condo / 公寓</option>
+            <option value="semi">Semi-detached / 连排</option>
+            <option value="detached" selected>Detached / 独立屋</option>
+          </select>
+        </div>
+
+        <div class="calc-field">
+          <label>项目预算 <small>（请填入您的估算中间值）</small></label>
+          <div class="calc-input-wrap">
+            <input type="number" id="roi-cost" value="" min="1000" max="100000" step="500"
+              placeholder="请输入" oninput="calcROI()">
+            <span class="calc-unit">$</span>
+          </div>
+          <div class="range-hint" id="roi-range-hint">参考区间：根据工具 1 自动估算 · 请填入您认可的中间值</div>
+        </div>
+
+        <div class="roi-metrics">
+          <div class="roi-metric">
+            <span class="mn" id="roi-saving">$—</span>
+            <span class="ml">年节省 / Year</span>
+          </div>
+          <div class="roi-metric">
+            <span class="mn" id="roi-payback">— 年</span>
+            <span class="ml">预计回本周期</span>
+          </div>
+        </div>
+
+        <div class="roi-bars">
+          <div class="roi-bar-row">
+            <div class="roi-bar-tag">现在</div>
+            <div class="roi-bar-track">
+              <div class="roi-bar-fill before" id="bar-before" style="width:100%">
+                <span id="bar-before-val">$2,400</span>
+              </div>
+            </div>
+          </div>
+          <div class="roi-bar-row">
+            <div class="roi-bar-tag">换后</div>
+            <div class="roi-bar-track">
+              <div class="roi-bar-fill after" id="bar-after" style="width:88%">
+                <span id="bar-after-val">~$2,100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-disclaimer">
+          * 节能比例参考 NRCan 数据及魁省气候条件，实际效果取决于安装质量、房屋结构及使用习惯。
+        </div>
+
+        <button class="calc-cta sage" onclick="roiCTA()">查看适合我的服务商 →</button>
+      </div>
+    </div>
+
+  </div><!-- /.calc-twin -->
+
+  <div class="qa-list" id="qa-list"></div>
+
+  <div class="checklist" style="margin-top:2rem">
+    <h3>📋 补贴申请 · 步骤清单</h3>
+    <div class="checklist-grid">
+      <div class="cl-item"><span class="cl-num">01</span><span>打 1-866-266-0008 预约 Rénoclimat 初次评估（Pre-Retrofit）</span></div>
+      <div class="cl-item"><span class="cl-num">02</span><span>等待评估员上门做气密性测试，拿到能源报告</span></div>
+      <div class="cl-item"><span class="cl-num">03</span><span>按报告选购 ENERGY STAR® 认证窗（确认 Zone 3 Northern）</span></div>
+      <div class="cl-item"><span class="cl-num">04</span><span>找有 RBQ 执照的承包商施工</span></div>
+      <div class="cl-item"><span class="cl-num">05</span><span>保留带型号的发票 + 窗户 ENERGY STAR 标签（不要撕！）</span></div>
+      <div class="cl-item"><span class="cl-num">06</span><span>预约二次评估（Post-Retrofit），确认节能效果</span></div>
+      <div class="cl-item"><span class="cl-num">07</span><span>审核通过，等支票寄到家 💰</span></div>
+      <div class="cl-item"><span class="cl-num">⚡</span><span>等待约 4–8 周，每个 Rough Opening 补贴 $150</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ STORIES SECTION ════════════════════════════════════════ -->
+<section class="section-wrap" id="stories">
+<div class="container">
+  <div class="section-label">真实故事 · Part 04</div>
+  <h2 class="section-title">8个案例<br>及经验总结</h2>
+  <p class="section-desc">信息来自真实业主经验与社区讨论，帮助您在签约前做好判断与风险防范。</p>
+  <div class="stories" id="stories-list"></div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- ══ FINAL CHECKLIST ═══════════════════════════════════════ -->
+<section class="section-wrap" id="checklist">
+<div class="container">
+  <div class="section-label">CHECKLIST · Part 05</div>
+  <h2 class="section-title">签约、安装、验收<br>完整 Checklist</h2>
+  <p class="section-desc">把签约前、合同内容、安装当天、验收后续整理成一张可执行清单。可以打印或下载后，按阶段逐项核对。</p>
+  <button
+    type="button"
+    onclick="downloadChecklistCSV()"
+    style="
+      margin: -0.5rem 0 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-family: var(--mono);
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(200,66,10,.16);
+    "
+  >⬇ 下载 Checklist CSV</button>
+
+  <div style="
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 16px rgba(22,25,31,.06);
+  ">
+    <div style="overflow-x:auto;">
+      <table class="score-table checklist-table" style="min-width:760px;margin-top:0;">
+        <thead>
+          <tr>
+            <th style="width:170px; background:#17304f; color:#fff;">阶段 Phase</th>
+            <th style="background:#17304f; color:#fff;">检查项目</th>
+            <th style="width:86px; background:#17304f; color:#fff; text-align:center;">必须 Must</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="phase-cell">🔍 签合同之前</td>
+          <td>查地址是否在遗产区（montreal.ca），确认允许的材料和颜色</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔍 签合同之前</td>
+          <td>如需要，申请市政施工许可证，等批准后才动工。同尺寸更换（Replace doors and windows with models that have the same dimensions）也不等于自动免 permit，尤其是遗产区、特殊建筑、材料/颜色/样式变化时。</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔍 签合同之前</td>
+          <td>核实 总公司的RBQ 和安装商的RBQ（rbq.gouv.qc.ca），确认有效且覆盖门窗安装。去 RBQ 官网查询该公司是否有未处理的索赔</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔍 签合同之前</td>
+          <td>确认责任险 ≥ $200万，要求提供保险证明</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔍 签合同之前</td>
+          <td>如申请 Rénoclimat 补贴，预约初次评估，动工前完成</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔍 签合同之前</td>
+          <td>同时向至少 3–5 家公司发询价单，不要只问一家</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔍 签合同之前</td>
+          <td>确认窗户类型和开启方式——主动问所有可选类型，不完全依赖销售建议</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔍 签合同之前</td>
+          <td>确认产品通过 ENERGY STAR Zone 3 和 CSA A440 认证</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">📋 合同内容检查</td>
+          <td>明确写明完工日期，以及延误超过 X 天后的违约赔偿或退款权利</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">📋 合同内容检查</td>
+          <td>确认付款结构：定金(10-30%) + 交付前/当天(60%) + 验收尾款(10%). 在验收合格后支付. 可以考虑总款项的10%作为尾款，直到安装100%完成、杂物清运完毕、且业主签署最终验收单确认无缺陷或损坏后支付。</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">📋 合同内容检查</td>
+          <td>写明谁来安装：自有团队还是外包？外包商的 RBQ 执照号是什么？</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">📋 合同内容检查</td>
+          <td>产品保修含零件+人工，安装保修，密封玻璃保修——分别写明年限和责任方</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">📋 合同内容检查</td>
+          <td>含变更单条款：施工中任何额外费用必须提前书面确认，不得当场强收</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">📋 合同内容检查</td>
+          <td>品牌公司对外包安装质量负连带责任（防止安装商倒闭后无人负责）</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">📋 合同内容检查</td>
+          <td>逐行核对材料品牌、型号、尺寸、颜色，与确认的完全一致</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">📋 合同内容检查</td>
+          <td>施工范围含：旧窗拆除清运、外部打胶、室内收边、现场清洁</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>安装前拍照记录全屋墙体、地板、窗台状况（保留时间戳证据）</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>如当天突然要求额外收费，要求对方出具书面变更单，不要口头同意</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>确认来的是合同里说的安装团队，或核实临时换人的团队 RBQ 执照</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>保留窗户上的 ENERGY STAR 标签（申请 Rénoclimat 补贴时需要）</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>安装完成后，当场逐一测试每扇窗门的开关、锁定功能，不合格考虑拒绝签收</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>① 水平和垂直度<br>用水平仪检查每扇窗框是否水平、窗侧框是否垂直。窗框歪了会导致日后越用越难开，密封条也会受力不均匀提前老化。特别注意转角位置和大尺寸窗户——这两类最容易歪。若有缺陷，自动触发“扣留尾款”机制</td>
+          <td class="must-cell optional">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>② 开关功能逐一测试<br>每扇窗、每扇门都要亲手开关三次以上。检查：<br><br>开关是否顺畅，有没有卡涩或需要用力<br>关闭后有没有明显缝隙（拿一张纸插边缘测试，能轻松抽出说明密封不严）<br>锁定后锁扣是否咬合紧实，不松动<br><br>门要特别测试从里外两侧都能正常开关。若有缺陷，自动触发“扣留尾款”机制</td>
+          <td class="must-cell optional">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>③ 金属件完整性<br>逐一检查对照合同上的规格：<br><br>把手、锁芯、铰链、纱窗扣件是否齐全<br>把手转动是否顺滑，锁芯插拔是否正常<br>铰链有没有松动或安装歪斜<br>纱窗是否能正常拆装，尺寸是否合适（纱窗太小一有风就会被吹开）<br>金属件质量在现场很难深度检测，但可以看：表面有没有毛刺、涂层有没有刮花、转动部件有没有异响。若有缺陷，自动触发“扣留尾款”机制</td>
+          <td class="must-cell optional">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>④ 玻璃检查<br>在自然光下从不同角度看每块玻璃：<br><br>表面有没有划痕或裂纹<br>有没有气泡或明显的变形（透过玻璃看直线是否仍是直线）<br>双层/三层玻璃内侧有没有起雾或水汽（说明密封层已失效）<br>玻璃边缘与窗框之间的密封胶是否连续、饱满，有没有断点。若有缺陷，自动触发“扣留尾款”机制</td>
+          <td class="must-cell optional">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>⑤ 密封和隔热<br>用手沿窗框四周慢慢移动，感受有没有冷气渗入。如果是冬天施工，可以用打火机或蜡烛靠近边缘，火焰飘动说明漏风。外部的硅胶打胶要连续无断点，室内的泡沫填充要饱满。若有缺陷，自动触发“扣留尾款”机制</td>
+          <td class="must-cell optional">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>⑥ 排水坡度<br>检查窗台或门槛是否向外有轻微倾斜（约5°），确保雨水往室外排走，不会积水或倒灌进屋。若发现水平或向内倾斜，自动触发“扣留尾款”机制。</td>
+          <td class="must-cell optional">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>⑦ 防水膜 / flashing<br>确认底部 sill 以及两侧 jamb 下部是否安装防水膜或自粘防水层，尤其是外墙开口位置。只靠打胶不能替代防水膜，长期漏水往往从这里开始。若有缺陷，自动触发“扣留尾款”机制。</td>
+          <td class="must-cell optional">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>⑧ 保温材料使用方式<br>泡沫填充应连续、均匀，但不能过度膨胀到挤压窗框；如使用矿棉，不能被压得太实，否则会失去保温效果，也可能让窗框受力变形。若有缺陷，自动触发“扣留尾款”机制。</td>
+          <td class="must-cell optional">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>⑨ 预留缝隙 / expansion gap<br>窗框与墙体开口之间应保留合理安装间隙（约3mm / 1⁄8 inch，视产品要求而定），不能硬塞或过紧。过紧会影响热胀冷缩，日后可能导致卡顿、开裂或密封条提前老化。若有缺陷，自动触发“扣留尾款”机制。</td>
+          <td class="must-cell optional">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>⑩ 与安装人员共同验收<br>验收必须在安装人员离开前完成。发现问题当场拍照、编号、写进验收备注，并要求对方确认整改方式和时间；不要等团队离开后才第一次检查。</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>⑪ 外观和施工现场<br><br>窗框和墙面之间的收边是否整齐，没有过大的缝隙<br>室内外的收边条颜色是否和合同约定的一致<br>玻璃和框上有没有残留的胶纸痕迹、打胶残余（有些安装工会留下，后期很难清除）<br>现场是否清洁——旧窗碎片、包装材料、工具是否已清走。</td>
+          <td class="must-cell blank"></td>
+        </tr>
+        <tr>
+          <td class="phase-cell">🔧 安装当天</td>
+          <td>发现问题怎么处理<br>当天拍照，当天发邮件给承包商，列清楚问题编号和照片。不要当天签收验收单，等问题解决后再签。<br>如果承包商要求您当天付尾款，可以说：「我需要确认所有问题已记录并得到书面回复后再付尾款，这是合同里约定的验收条款。」</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">✅ 验收与后续</td>
+          <td>拍照记录所有窗户安装完成状态（带日期戳）</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">✅ 验收与后续</td>
+          <td>维修后结算：直到所有维修完成，再释放最后的 10%</td>
+          <td class="must-cell blank"></td>
+        </tr>
+        <tr>
+          <td class="phase-cell">✅ 验收与后续</td>
+          <td>发现任何问题，当天发书面邮件通知（不要只打电话），建立证据链</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">✅ 验收与后续</td>
+          <td>收到发票后核对：金额、型号、数量是否与合同一致</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">✅ 验收与后续</td>
+          <td>预约 Rénoclimat 二次评估（Post-Retrofit）</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">✅ 验收与后续</td>
+          <td>索取产品质保书和安装质保书原件，妥善保存</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">✅ 验收与后续</td>
+          <td>一年后做一次检查：缝隙均匀度、密封条完好度、有无起雾或结冰</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">⚖️ 出了问题怎么办</td>
+          <td>所有沟通发送书面邮件，保留时间戳——如果邮件无效，下一步是发送挂号信形式的“正式催告函”</td>
+          <td class="must-cell must">必须</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">⚖️ 出了问题怎么办</td>
+          <td>向 RBQ 投诉承包商（rbq.gouv.qc.ca）——RBQ可暂停/吊销执照，施压最强</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        <tr>
+          <td class="phase-cell">⚖️ 出了问题怎么办</td>
+          <td>向 OPC 投诉（Office de la protection du consommateur）</td>
+          <td class="must-cell optional">可选</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="divider">
+
+<footer>
+  <p><strong>蒙特利尔换窗攻略</strong> · 2026年更新</p>
+  <p>信息仅供参考，建议签约前自行核实 RBQ 执照及最新政策。<br>
+  Rénoclimat 补贴详情请致电 1-866-266-0008 或访问官网。</p>
+</footer>
+
+<script>
+
+function downloadChecklistCSV() {
+  const table = document.querySelector('#checklist table');
+  if (!table) return;
+  const rows = Array.from(table.querySelectorAll('tr')).map(row => {
+    return Array.from(row.querySelectorAll('th, td')).map(cell => {
+      const text = cell.innerText.replace(/\s+/g, ' ').trim();
+      return '"' + text.replace(/"/g, '""') + '"';
+    }).join(',');
+  }).join('\n');
+
+  const blob = new Blob(['\ufeff' + rows], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'montreal-window-checklist.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+const REFERRAL_CODE = 'MTL2026XC';
+// ── Paste your Google Apps Script Web App URL here after deploying ──────────
+// In your Sheet: Extensions → Apps Script → Deploy → Web App → Anyone → exec URL
+const APPS_SCRIPT_URL = ''; // 'https://script.google.com/macros/s/AKfyc.../exec'
+
+const PROVIDERS = [
+  {name:'Magistral Portes et Fenêtres', logo:'Magistral', website:'https://www.fenetresmagistral.com/en/talk-to-an-advisor/', email:'info@portatecqc.com', phone:'', year:'1997', rbq:'需核实', warranty:'书面确认', areas:['montreal','laval','west','north','south','east','brossard'], fit:['replacement','new'], highlights:['大蒙特利尔服务覆盖','门窗产品线完整','建议通过官网顾问页面确认联系方式'], details:'您提供的邮箱为 info@portatecqc.com，建议正式上线前再次核实是否属于 Magistral。'},
+  {name:'Solaris Québec', logo:'Solaris', website:'https://solarisquebec.com/', email:'', phone:'418-627-5666', year:'1972', rbq:'需核实', warranty:'书面确认', areas:['montreal','laval','north','south','east','other'], fit:['replacement','new'], highlights:['魁省门窗制造商','住宅门窗和定制方案','适合重视本地制造的客户'], details:'未提供公开邮箱；卡片保留官网与电话，询价邮件会发给管理员汇总。'},
+  {name:'Fabelta', logo:'Fabelta', website:'https://fabelta.com/', email:'info@fabelta.com', phone:'(450) 477-7611', year:'1957', rbq:'2167-5780-99', warranty:'书面确认', areas:['montreal','laval','west','north','south','east','brossard'], fit:['premium','new','replacement'], highlights:['本地老牌门窗制造商','铝合金与混合材质选择较多','适合新建房或较大项目'], details:'高端产品要重点确认交付周期、缺陷更换时限、五金件保修和安装细节。'},
+  {name:'Vaillancourt Portes et Fenêtres', logo:'Vaillancourt', website:'https://www.vaillancourt.ca/', email:'central@vaillancourt.ca', phone:'819 395-4484', year:'1947', rbq:'需核实', warranty:'书面确认', areas:['montreal','south','brossard','other'], fit:['replacement','new'], highlights:['魁省老牌门窗公司','产品线覆盖住宅门窗','适合预算与质保一起比较'], details:'如通过分包商或经销商安装，合同中必须写明品牌公司对安装质量的连带责任。'},
+  {name:'Isothermic Portes et Fenêtres', logo:'Isothermic', website:'https://www.isothermic.ca/en/', email:'', phone:'', year:'1982', rbq:'需核实', warranty:'书面确认', areas:['montreal','laval','north','south','east','brossard','other'], fit:['replacement','new'], highlights:['40年+行业经验','多地经销商网络','适合同时比较门窗与安装'], details:'未提供邮箱；经销商网络下，必须把销售方、安装方、售后方和费用责任写进合同。'},
+  {name:'Portes et Fenêtres Verdun', logo:'Verdun', website:'https://portesetfenetresverdun.com/fr/', email:'', phone:'1-855-385-3385', year:'1967', rbq:'需核实', warranty:'书面确认', areas:['montreal','laval','west','north','south','east','brossard'], fit:['replacement','new'], highlights:['本地知名度高，门店覆盖广','可做门、窗、车库门及安装','适合想要一站式服务的业主'], details:'未提供邮箱；签约前重点确认安装团队、完工日期、付款节点和售后响应时限。'},
+  {name:'Costco Portes et fenêtres', logo:'Costco', website:'', email:'', phone:'', year:'需核实', rbq:'供应商核实', warranty:'书面确认', areas:['montreal','laval','west','north','south','east','brossard','other'], fit:['replacement'], highlights:['渠道型报价入口','可能有会员返利或促销','适合用作价格参照'], details:'务必确认付款是否通过 Costco 正规渠道；若销售要求绕开 Costco 付款，需要先向 Costco 核实。'},
+  {name:'Portes et Fenêtres Président', logo:'Président', website:'https://www.portesetfenetrespresident.com/en/', email:'info@pfpresident.com', phone:'1 855 670-4777', year:'需核实', rbq:'需核实', warranty:'书面确认', areas:['montreal','laval','north','south','east','brossard'], fit:['replacement','new'], highlights:['本地门窗服务商','提供门窗产品与安装服务','适合作为报价对比对象'], details:'签约前核实 RBQ、安装团队、保修是否包含人工。'},
+  {name:'Mystro.ca', logo:'Mystro', website:'https://mystro.ca/', email:'quote@mystro.ca', phone:'438) 258–1407', year:'需核实', rbq:'需核实', warranty:'书面确认', areas:['montreal','laval','west','north','south','east','brossard'], fit:['replacement','repair'], highlights:['报价入口清晰','适合快速获取项目估价','可作为多家比较中的一项'], details:'确认报价对应的是哪家实际施工团队，以及施工方 RBQ。'},
+  {name:'Delta Aluminum', logo:'Delta', website:'', email:'', phone:'(514) 745-1388', year:'本地服务商', rbq:'需核实', warranty:'书面确认', areas:['montreal','west','laval','north','south','east','brossard','other'], fit:['replacement','new','premium','repair'], preferred:true, highlights:['本地铝门窗项目优先推荐','适合铝材、定制与复杂开口需求','电话沟通直接，适合作为快速报价对象'], details:'Delta Aluminum 已提升为优先推荐服务商。建议电话确认服务区域、RBQ、保险、安装团队与书面保修条款。'},
+  {name:'Lepage Millwork', logo:'Lepage', website:'', email:'info@lepagemillwork.com', phone:'800-463-1367', year:'1947', rbq:'经销商核实', warranty:'书面确认', areas:['montreal','west','other'], fit:['premium','new'], highlights:['高端木窗与门制造商','适合历史建筑或定制需求','设计自由度较高'], details:'适合对外观和材料要求高的项目；需提前确认遗产区规则、经销商资质和交付周期。'},
+  {name:'Novo Portes et Fenêtres', logo:'Novo', website:'https://novoprestige.com/fr/', email:'info@novoprestige.com', phone:'514-731-4040', year:'需核实', rbq:'需核实', warranty:'书面确认', areas:['montreal','west','laval'], fit:['replacement','new','premium'], highlights:['本地门窗服务','适合住宅换窗报价','可询问高端/定制选项'], details:'逐项核对材料品牌、型号、颜色、尺寸与安装范围。'},
+  {name:'Altex Portes et Fenêtres', logo:'Altex', website:'https://www.fenetresaltek.ca/', email:'info@fenetresaltek.ca', phone:'800 403-1522', year:'需核实', rbq:'需核实', warranty:'书面确认', areas:['montreal','laval','north','south','east','brossard','other'], fit:['replacement','new'], highlights:['门窗产品与安装服务','可作为多家比价对象','电话和邮箱信息完整'], details:'签约前确认是否支持 Rénoclimat 文件、安装保修和售后响应时间。'},
+  {name:'Portatec', logo:'Portatec', website:'https://portatecqc.com/en/', email:'info@portatecqc.com', phone:'450 649-4477', year:'1984', rbq:'需核实', warranty:'书面确认', areas:['montreal','south','brossard','east'], fit:['replacement','new','premium'], highlights:['门类产品和安装知识内容强','适合外门/入口门项目','品牌形象专业'], details:'如果项目重点是前门、外门或入口系统，可以优先询问。'}
+];
+
+let selectedProviders = new Set();
+let lastRenderedOrder = [];
+
+function scoreProvider(p, area, project) {
+  let score = 0;
+  if ((p.areas || []).includes(area)) score += 40;
+  if ((p.fit || []).includes(project)) score += 30;
+  if (p.email) score += 10;
+  if (p.phone) score += 5;
+  if (p.rbq && !p.rbq.includes('需核实') && !p.rbq.includes('供应商')) score += 10;
+  if (project === 'premium' && /Fabelta|Lepage|Portatec|Novo|Delta/i.test(p.name)) score += 15;
+  if (p.preferred) score += 28; // preferred local partner boost
+  if (area === 'brossard' && (p.areas || []).includes('south')) score += 12;
+  return score;
+}
+
+function providerCard(p, i, rank, score) {
+  const isSel = selectedProviders.has(i);
+  const selClass = isSel ? 'selected' : '';
+  const rbqOk = p.rbq && !p.rbq.includes('需核实') && !p.rbq.includes('供应商') && !p.rbq.includes('经销商');
+  const rbqClass = rbqOk ? 'ok' : '';
+  const yearOk = p.year && !p.year.includes('需核实');
+  const contactLine = [p.email ? `✉ ${p.email}` : '', p.phone ? `📞 ${p.phone}` : ''].filter(Boolean).join('  ·  ');
+  return `<div class="provider-card ${selClass}" id="provider${i}">
+    <div class="provider-main">
+
+      <!-- Col 1: Logo + rank -->
+      <div class="provider-logo">
+        ${p.logo}
+        <span>Portes &amp; Fenêtres</span>
+        ${rank <= 3 ? `<span class="provider-rank-badge">TOP ${rank}</span>` : ''}
+      </div>
+
+      <!-- Col 2: Highlights -->
+      <div class="provider-highlights">
+        <h4>${p.name}</h4>
+        <ul>${p.highlights.map(h => `<li>${h}</li>`).join('')}</ul>
+        <div class="provider-contact-line">${contactLine || '联系方式需进一步核实'}</div>
+      </div>
+
+      <!-- Col 3: Verify block -->
+      <div class="provider-verify">
+        <div class="verify-header">需核实 · To Verify</div>
+        <div class="verify-row">
+          <div class="verify-label">成立年份</div>
+          <div class="verify-value ${yearOk ? 'ok' : ''}">${p.year}</div>
+        </div>
+        <div class="verify-row">
+          <div class="verify-label">RBQ 执照号</div>
+          <div class="verify-value ${rbqClass}">${p.rbq}</div>
+        </div>
+      </div>
+
+      <!-- Col 4: Select checkbox -->
+      <div class="provider-select-col">
+        <input type="checkbox" ${isSel ? 'checked' : ''} onchange="toggleProviderSelection(${i}, this.checked)" title="${isSel ? '取消选择' : '选择此公司'}">
+        <div class="sel-label ${isSel ? 'active' : ''}">${isSel ? '已选择' : '选择'}</div>
+      </div>
+    </div>
+
+    <button class="provider-toggle" onclick="toggleProvider('provider${i}')">查看更多 · ${p.name}</button>
+    <div class="provider-detail">
+      <div class="provider-detail-grid">
+        <div class="provider-note"><strong>官网：</strong>${p.website ? `<a href="${p.website}" target="_blank" rel="noopener">${p.website}</a>` : '需补充'}</div>
+        <div class="provider-note"><strong>联系方式：</strong>${p.email || p.phone || '需补充'}</div>
+        <div class="provider-note"><strong>签约提醒：</strong>${p.details}</div>
+        <div class="provider-note"><strong>⚠ 核实提醒：</strong>签约前请在 rbq.gouv.qc.ca 核实执照号有效性，并通过官网/电话确认邮箱归属。</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleProvider(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function renderProviders() {
+  const area = document.getElementById('area-filter')?.value || 'montreal';
+  const project = document.getElementById('project-filter')?.value || 'replacement';
+  const ordered = PROVIDERS.map((p, i) => ({ p, i, score: scoreProvider(p, area, project) }))
+    .sort((a, b) => b.score - a.score || a.i - b.i);
+  lastRenderedOrder = ordered.map(x => x.i);
+  const list = document.getElementById('provider-list');
+  if (list) list.innerHTML = ordered.map((item, idx) => providerCard(item.p, item.i, idx + 1, item.score)).join('');
+  const note = document.getElementById('provider-match-note');
+  if (note) note.innerHTML = `已根据 <strong>${area}</strong> + <strong>${project}</strong> 排序。推荐先勾选前 2–3 家，再统一提交询价。`;
+  updateSelectedBar();
+}
+
+function toggleProviderSelection(i, checked) {
+  if (checked) {
+    if (selectedProviders.size >= 3 && !selectedProviders.has(i)) {
+      alert('建议一次最多选择 3 家，方便比较且不会收到太多回复。');
+      
+// ══ REBATE + ROI CALCULATORS ══════════════════════════════════
+let rbEval = true;
+
+function setEval(val) {
+  rbEval = val;
+  document.getElementById('rb-yes').classList.toggle('on', val);
+  document.getElementById('rb-no').classList.toggle('on', !val);
+  calcRebate();
+}
+
+function calcRebate() {
+  const wins  = Math.max(0, parseInt(document.getElementById('rb-win').value)  || 0);
+  const doors = Math.max(0, parseInt(document.getElementById('rb-door').value) || 0);
+  const total = wins + doors;
+  const rebate = total * 150;
+
+  const amEl  = document.getElementById('rb-amount');
+  const subEl = document.getElementById('rb-sub');
+  const cond  = document.getElementById('rb-cond');
+
+  if (!rbEval) {
+    amEl.textContent = '$0';
+    amEl.className   = 'ramount red';
+    subEl.textContent = '不做 Rénoclimat 评估将无法申请任何补贴';
+    cond.style.opacity = '.35';
+  } else {
+    amEl.textContent = '$' + rebate.toLocaleString();
+    amEl.className   = 'ramount';
+    subEl.textContent = total + ' 个 Opening × $150（窗 ' + wins + ' + 门估算 ' + doors + '）';
+    cond.style.opacity = '1';
+  }
+
+  // Push to ROI: update range hint and default cost
+  const estLow  = Math.max(2000, wins * 650 + doors * 1500);
+  const estHigh = Math.max(4000, wins * 1100 + doors * 3500);
+  const hintEl  = document.getElementById('roi-range-hint');
+  if (hintEl) {
+    hintEl.textContent = '参考区间（工具 1 联动估算）：$' + estLow.toLocaleString() + ' – $' + estHigh.toLocaleString() + '   请填入您认可的中间值';
+  }
+  // If cost field is empty, auto-suggest midpoint
+  const costEl = document.getElementById('roi-cost');
+  if (costEl && !costEl.value) {
+    costEl.value = Math.round((estLow + estHigh) / 2 / 500) * 500;
+  }
+  calcROI();
+}
+
+const COND_RATE = { bad: [.12, .18], mid: [.06, .12], ok: [.02, .06] };
+const TYPE_SHARE = { condo: .50, semi: .60, detached: .70 };
+
+function calcROI() {
+  const hydro   = parseFloat(document.getElementById('roi-hydro').value) || 2400;
+  const condKey = document.getElementById('roi-cond').value;
+  const typeKey = document.getElementById('roi-type').value;
+  const costRaw = parseFloat(document.getElementById('roi-cost').value);
+  const cost    = isNaN(costRaw) ? null : Math.max(500, costRaw);
+
+  const [rLo, rHi] = COND_RATE[condKey];
+  const share       = TYPE_SHARE[typeKey];
+
+  const saveLow  = Math.round(hydro * share * rLo);
+  const saveHigh = Math.round(hydro * share * rHi);
+  const afterLow  = Math.round(hydro - hydro * share * rHi);
+  const afterHigh = Math.round(hydro - hydro * share * rLo);
+
+  // Get rebate from tool 1
+  const wins  = Math.max(0, parseInt(document.getElementById('rb-win').value)  || 0);
+  const doors = Math.max(0, parseInt(document.getElementById('rb-door').value) || 0);
+  const rebate = rbEval ? (wins + doors) * 150 : 0;
+  const netCost = cost !== null ? Math.max(500, cost - rebate) : null;
+
+  // Saving display
+  document.getElementById('roi-saving').textContent =
+    saveLow > 0 ? '$' + saveLow.toLocaleString() + ' – $' + saveHigh.toLocaleString() : '$—';
+
+  // ROI display
+  if (netCost !== null && saveHigh > 0) {
+    const roiLo = (netCost / saveHigh).toFixed(1);
+    const roiHi = (netCost / saveLow).toFixed(1);
+    document.getElementById('roi-payback').textContent = roiLo + ' – ' + roiHi + ' 年';
+  } else {
+    document.getElementById('roi-payback').textContent = cost === null ? '填入预算后显示' : '—';
+  }
+
+  // Bars
+  const afterMid = (afterLow + afterHigh) / 2;
+  const pct = Math.max(10, Math.round(afterMid / hydro * 100));
+  document.getElementById('bar-before').style.width = '100%';
+  document.getElementById('bar-after').style.width  = pct + '%';
+  document.getElementById('bar-before-val').textContent = '$' + Math.round(hydro).toLocaleString() + '/yr';
+  document.getElementById('bar-after-val').textContent  =
+    '~$' + afterLow.toLocaleString() + ' – $' + afterHigh.toLocaleString() + '/yr';
+}
+
+function rebateCTA() {
+  const projIn = document.getElementById('lead-project');
+  if (projIn) projIn.value = 'Eligible for Renoclimat - Window Replacement';
+  document.getElementById('companies').scrollIntoView({ behavior: 'smooth' });
+}
+function roiCTA() {
+  document.getElementById('companies').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Boot calculators
+calcRebate();
+
+renderProviders();
+      return;
+    }
+    selectedProviders.add(i);
+  } else {
+    selectedProviders.delete(i);
+  }
+  
+// ══ REBATE + ROI CALCULATORS ══════════════════════════════════
+let rbEval = true;
+
+function setEval(val) {
+  rbEval = val;
+  document.getElementById('rb-yes').classList.toggle('on', val);
+  document.getElementById('rb-no').classList.toggle('on', !val);
+  calcRebate();
+}
+
+function calcRebate() {
+  const wins  = Math.max(0, parseInt(document.getElementById('rb-win').value)  || 0);
+  const doors = Math.max(0, parseInt(document.getElementById('rb-door').value) || 0);
+  const total = wins + doors;
+  const rebate = total * 150;
+
+  const amEl  = document.getElementById('rb-amount');
+  const subEl = document.getElementById('rb-sub');
+  const cond  = document.getElementById('rb-cond');
+
+  if (!rbEval) {
+    amEl.textContent = '$0';
+    amEl.className   = 'ramount red';
+    subEl.textContent = '不做 Rénoclimat 评估将无法申请任何补贴';
+    cond.style.opacity = '.35';
+  } else {
+    amEl.textContent = '$' + rebate.toLocaleString();
+    amEl.className   = 'ramount';
+    subEl.textContent = total + ' 个 Opening × $150（窗 ' + wins + ' + 门估算 ' + doors + '）';
+    cond.style.opacity = '1';
+  }
+
+  // Push to ROI: update range hint and default cost
+  const estLow  = Math.max(2000, wins * 650 + doors * 1500);
+  const estHigh = Math.max(4000, wins * 1100 + doors * 3500);
+  const hintEl  = document.getElementById('roi-range-hint');
+  if (hintEl) {
+    hintEl.textContent = '参考区间（工具 1 联动估算）：$' + estLow.toLocaleString() + ' – $' + estHigh.toLocaleString() + '   请填入您认可的中间值';
+  }
+  // If cost field is empty, auto-suggest midpoint
+  const costEl = document.getElementById('roi-cost');
+  if (costEl && !costEl.value) {
+    costEl.value = Math.round((estLow + estHigh) / 2 / 500) * 500;
+  }
+  calcROI();
+}
+
+const COND_RATE = { bad: [.12, .18], mid: [.06, .12], ok: [.02, .06] };
+const TYPE_SHARE = { condo: .50, semi: .60, detached: .70 };
+
+function calcROI() {
+  const hydro   = parseFloat(document.getElementById('roi-hydro').value) || 2400;
+  const condKey = document.getElementById('roi-cond').value;
+  const typeKey = document.getElementById('roi-type').value;
+  const costRaw = parseFloat(document.getElementById('roi-cost').value);
+  const cost    = isNaN(costRaw) ? null : Math.max(500, costRaw);
+
+  const [rLo, rHi] = COND_RATE[condKey];
+  const share       = TYPE_SHARE[typeKey];
+
+  const saveLow  = Math.round(hydro * share * rLo);
+  const saveHigh = Math.round(hydro * share * rHi);
+  const afterLow  = Math.round(hydro - hydro * share * rHi);
+  const afterHigh = Math.round(hydro - hydro * share * rLo);
+
+  // Get rebate from tool 1
+  const wins  = Math.max(0, parseInt(document.getElementById('rb-win').value)  || 0);
+  const doors = Math.max(0, parseInt(document.getElementById('rb-door').value) || 0);
+  const rebate = rbEval ? (wins + doors) * 150 : 0;
+  const netCost = cost !== null ? Math.max(500, cost - rebate) : null;
+
+  // Saving display
+  document.getElementById('roi-saving').textContent =
+    saveLow > 0 ? '$' + saveLow.toLocaleString() + ' – $' + saveHigh.toLocaleString() : '$—';
+
+  // ROI display
+  if (netCost !== null && saveHigh > 0) {
+    const roiLo = (netCost / saveHigh).toFixed(1);
+    const roiHi = (netCost / saveLow).toFixed(1);
+    document.getElementById('roi-payback').textContent = roiLo + ' – ' + roiHi + ' 年';
+  } else {
+    document.getElementById('roi-payback').textContent = cost === null ? '填入预算后显示' : '—';
+  }
+
+  // Bars
+  const afterMid = (afterLow + afterHigh) / 2;
+  const pct = Math.max(10, Math.round(afterMid / hydro * 100));
+  document.getElementById('bar-before').style.width = '100%';
+  document.getElementById('bar-after').style.width  = pct + '%';
+  document.getElementById('bar-before-val').textContent = '$' + Math.round(hydro).toLocaleString() + '/yr';
+  document.getElementById('bar-after-val').textContent  =
+    '~$' + afterLow.toLocaleString() + ' – $' + afterHigh.toLocaleString() + '/yr';
+}
+
+function rebateCTA() {
+  const projIn = document.getElementById('lead-project');
+  if (projIn) projIn.value = 'Eligible for Renoclimat - Window Replacement';
+  document.getElementById('companies').scrollIntoView({ behavior: 'smooth' });
+}
+function roiCTA() {
+  document.getElementById('companies').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Boot calculators
+calcRebate();
+
+renderProviders();
+}
+
+function autoSelectRecommended() {
+  selectedProviders.clear();
+  lastRenderedOrder.slice(0, 3).forEach(i => selectedProviders.add(i));
+  
+// ══ REBATE + ROI CALCULATORS ══════════════════════════════════
+let rbEval = true;
+
+function setEval(val) {
+  rbEval = val;
+  document.getElementById('rb-yes').classList.toggle('on', val);
+  document.getElementById('rb-no').classList.toggle('on', !val);
+  calcRebate();
+}
+
+function calcRebate() {
+  const wins  = Math.max(0, parseInt(document.getElementById('rb-win').value)  || 0);
+  const doors = Math.max(0, parseInt(document.getElementById('rb-door').value) || 0);
+  const total = wins + doors;
+  const rebate = total * 150;
+
+  const amEl  = document.getElementById('rb-amount');
+  const subEl = document.getElementById('rb-sub');
+  const cond  = document.getElementById('rb-cond');
+
+  if (!rbEval) {
+    amEl.textContent = '$0';
+    amEl.className   = 'ramount red';
+    subEl.textContent = '不做 Rénoclimat 评估将无法申请任何补贴';
+    cond.style.opacity = '.35';
+  } else {
+    amEl.textContent = '$' + rebate.toLocaleString();
+    amEl.className   = 'ramount';
+    subEl.textContent = total + ' 个 Opening × $150（窗 ' + wins + ' + 门估算 ' + doors + '）';
+    cond.style.opacity = '1';
+  }
+
+  // Push to ROI: update range hint and default cost
+  const estLow  = Math.max(2000, wins * 650 + doors * 1500);
+  const estHigh = Math.max(4000, wins * 1100 + doors * 3500);
+  const hintEl  = document.getElementById('roi-range-hint');
+  if (hintEl) {
+    hintEl.textContent = '参考区间（工具 1 联动估算）：$' + estLow.toLocaleString() + ' – $' + estHigh.toLocaleString() + '   请填入您认可的中间值';
+  }
+  // If cost field is empty, auto-suggest midpoint
+  const costEl = document.getElementById('roi-cost');
+  if (costEl && !costEl.value) {
+    costEl.value = Math.round((estLow + estHigh) / 2 / 500) * 500;
+  }
+  calcROI();
+}
+
+const COND_RATE = { bad: [.12, .18], mid: [.06, .12], ok: [.02, .06] };
+const TYPE_SHARE = { condo: .50, semi: .60, detached: .70 };
+
+function calcROI() {
+  const hydro   = parseFloat(document.getElementById('roi-hydro').value) || 2400;
+  const condKey = document.getElementById('roi-cond').value;
+  const typeKey = document.getElementById('roi-type').value;
+  const costRaw = parseFloat(document.getElementById('roi-cost').value);
+  const cost    = isNaN(costRaw) ? null : Math.max(500, costRaw);
+
+  const [rLo, rHi] = COND_RATE[condKey];
+  const share       = TYPE_SHARE[typeKey];
+
+  const saveLow  = Math.round(hydro * share * rLo);
+  const saveHigh = Math.round(hydro * share * rHi);
+  const afterLow  = Math.round(hydro - hydro * share * rHi);
+  const afterHigh = Math.round(hydro - hydro * share * rLo);
+
+  // Get rebate from tool 1
+  const wins  = Math.max(0, parseInt(document.getElementById('rb-win').value)  || 0);
+  const doors = Math.max(0, parseInt(document.getElementById('rb-door').value) || 0);
+  const rebate = rbEval ? (wins + doors) * 150 : 0;
+  const netCost = cost !== null ? Math.max(500, cost - rebate) : null;
+
+  // Saving display
+  document.getElementById('roi-saving').textContent =
+    saveLow > 0 ? '$' + saveLow.toLocaleString() + ' – $' + saveHigh.toLocaleString() : '$—';
+
+  // ROI display
+  if (netCost !== null && saveHigh > 0) {
+    const roiLo = (netCost / saveHigh).toFixed(1);
+    const roiHi = (netCost / saveLow).toFixed(1);
+    document.getElementById('roi-payback').textContent = roiLo + ' – ' + roiHi + ' 年';
+  } else {
+    document.getElementById('roi-payback').textContent = cost === null ? '填入预算后显示' : '—';
+  }
+
+  // Bars
+  const afterMid = (afterLow + afterHigh) / 2;
+  const pct = Math.max(10, Math.round(afterMid / hydro * 100));
+  document.getElementById('bar-before').style.width = '100%';
+  document.getElementById('bar-after').style.width  = pct + '%';
+  document.getElementById('bar-before-val').textContent = '$' + Math.round(hydro).toLocaleString() + '/yr';
+  document.getElementById('bar-after-val').textContent  =
+    '~$' + afterLow.toLocaleString() + ' – $' + afterHigh.toLocaleString() + '/yr';
+}
+
+function rebateCTA() {
+  const projIn = document.getElementById('lead-project');
+  if (projIn) projIn.value = 'Eligible for Renoclimat - Window Replacement';
+  document.getElementById('companies').scrollIntoView({ behavior: 'smooth' });
+}
+function roiCTA() {
+  document.getElementById('companies').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Boot calculators
+calcRebate();
+
+renderProviders();
+}
+
+function updateSelectedBar() {
+  const label = document.getElementById('selected-count-label');
+  if (label) label.textContent = `已选择 ${selectedProviders.size} / 3 家`;
+  // Update dots
+  for (let d = 0; d < 3; d++) {
+    const dot = document.getElementById(`dot-${d}`);
+    if (dot) dot.className = 'bar-dot' + (d < selectedProviders.size ? ' filled' : '');
+  }
+}
+
+function openQuoteModal() {
+  if (selectedProviders.size < 1) {
+    alert('请至少选择 1 家公司后再提交询价。');
+    return;
+  }
+  const selectedNames = Array.from(selectedProviders).map(i => PROVIDERS[i].name);
+  document.getElementById('quote-selected-chips').innerHTML =
+    selectedNames.map(n => `<span class="quote-chip">${n}</span>`).join('');
+
+  // Reset to form view (in case it was previously submitted)
+  document.getElementById('quote-success-screen').style.display = 'none';
+  const footer = document.getElementById('quote-modal-footer');
+  if (footer) footer.style.display = '';
+  document.querySelectorAll('.quote-modal > div:not(#quote-success-screen)').forEach(el => {
+    el.style.display = '';
+  });
+  document.getElementById('quote-form-error').style.display = 'none';
+
+  document.getElementById('quote-modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQuoteModal(event) {
+  if (event && event.target !== document.getElementById('quote-modal-overlay')) return;
+  document.getElementById('quote-modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function showQuoteError(msg) {
+  const el = document.getElementById('quote-form-error');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+// ── ESTIMATOR ───────────────────────────────────────────────────────────────
+const ITEM_CATALOG = {
+  casement:     { label: 'Casement / 推拉窗',   low: 650,  high: 1100, rebate: 150 },
+  sliding:      { label: 'Sliding / 横拉窗',    low: 600,  high: 1000, rebate: 150 },
+  fixed:        { label: 'Picture / 固定窗',     low: 400,  high: 750,  rebate: 150 },
+  bay:          { label: 'Bay Window / 湾式窗',  low: 2000, high: 4500, rebate: 150 },
+  'door-entry': { label: 'Entry Door / 入口门',  low: 1500, high: 3200, rebate: 0   },
+  'door-patio': { label: 'Patio Door / 推拉门',  low: 1800, high: 3500, rebate: 0   },
+  'door-french':{ label: 'French Door / 双开门', low: 2200, high: 4500, rebate: 0   },
+  egress:       { label: 'Egress / 逃生窗',     low: 800,  high: 1600, rebate: 150 },
+};
+let estItems = [];
+
+function toggleEstimator() {
+  const panel = document.getElementById('estimator-panel');
+  const btn   = document.getElementById('est-toggle-btn');
+  const open  = panel.classList.toggle('open');
+  btn.classList.toggle('active', open);
+}
+
+function addEstItem() {
+  const key = document.getElementById('est-type-select').value;
+  const qty = Math.max(1, parseInt(document.getElementById('est-qty').value) || 1);
+  const existing = estItems.find(x => x.key === key);
+  if (existing) existing.qty = Math.min(30, existing.qty + qty);
+  else estItems.push({ key, qty });
+  document.getElementById('est-qty').value = 1;
+  renderEstItems();
+}
+
+function removeEstItem(key) {
+  estItems = estItems.filter(x => x.key !== key);
+  renderEstItems();
+}
+
+function changeEstQty(key, delta) {
+  const item = estItems.find(x => x.key === key);
+  if (!item) return;
+  item.qty = Math.max(1, Math.min(30, item.qty + delta));
+  renderEstItems();
+}
+
+function renderEstItems() {
+  const list = document.getElementById('est-items-list');
+  if (!list) return;
+  if (!estItems.length) {
+    list.innerHTML = '<div style="font-size:12px;color:var(--muted);padding:4px 0;">← 选择类型和数量后点击「加入」</div>';
+    document.getElementById('est-sum-items').textContent = '0';
+    document.getElementById('est-sum-cost').textContent = '$0';
+    document.getElementById('est-sum-rebate').textContent = '$0';
+    return;
+  }
+  let totalQty = 0, totalLow = 0, totalHigh = 0, totalRebate = 0;
+  list.innerHTML = estItems.map(({key, qty}) => {
+    const c = ITEM_CATALOG[key];
+    totalQty += qty; totalLow += c.low * qty; totalHigh += c.high * qty; totalRebate += c.rebate * qty;
+    return `<div class="est-item">
+      <div class="est-item-name">${c.label}</div>
+      <div class="est-item-qty-ctrl">
+        <button type="button" onclick="changeEstQty('${key}',-1)">-</button>
+        <span>${qty}</span>
+        <button type="button" onclick="changeEstQty('${key}',1)">+</button>
+      </div>
+      <div class="est-item-range">$${(c.low*qty).toLocaleString()}-$${(c.high*qty).toLocaleString()}</div>
+      <button class="est-item-del" type="button" onclick="removeEstItem('${key}')">x</button>
+    </div>`;
+  }).join('');
+  document.getElementById('est-sum-items').textContent = totalQty;
+  document.getElementById('est-sum-cost').textContent = '$' + totalLow.toLocaleString() + '-$' + totalHigh.toLocaleString();
+  document.getElementById('est-sum-rebate').textContent = '+$' + totalRebate.toLocaleString();
+}
+
+function submitQuoteRequest() {
+  const name    = (document.getElementById('lead-name')?.value || '').trim();
+  const email   = (document.getElementById('lead-email')?.value || '').trim();
+  const phone   = (document.getElementById('lead-phone')?.value || '').trim();
+  const postal  = (document.getElementById('lead-postal')?.value || '').trim();
+  const project = (document.getElementById('lead-project')?.value || '').trim();
+  const human   = document.getElementById('lead-human')?.checked;
+  const err     = document.getElementById('quote-form-error');
+  err.style.display = 'none';
+
+  if (!email || !/^\S+@\S+\.\S+$/.test(email)) { err.textContent = '请输入有效邮箱。'; err.style.display='block'; return; }
+  if (!phone)  { err.textContent = '请填写电话号码。'; err.style.display='block'; return; }
+  if (!postal) { err.textContent = '请填写邮政编码。'; err.style.display='block'; return; }
+  if (!human)  { err.textContent = '请勾选 I am human。'; err.style.display='block'; return; }
+
+  const selected = Array.from(selectedProviders).map(i => PROVIDERS[i]);
+  const today = new Date().toISOString().slice(0, 10);
+
+  // Build estimate data
+  let estSummary = '';
+  let estTotalLow = 0, estTotalHigh = 0, estTotalRebate = 0;
+  if (estItems.length > 0) {
+    estItems.forEach(({key, qty}) => {
+      const c = ITEM_CATALOG[key];
+      estTotalLow += c.low * qty;
+      estTotalHigh += c.high * qty;
+      estTotalRebate += c.rebate * qty;
+    });
+    estSummary = estItems.map(({key, qty}) => {
+      const c = ITEM_CATALOG[key];
+      return c.label + ' x' + qty;
+    }).join(', ');
+  }
+
+  // Payload for Google Sheet
+  const payload = {
+    timestamp:       new Date().toISOString(),
+    date:            today,
+    referralCode:    REFERRAL_CODE,
+    name:            name || '',
+    email:           email,
+    phone:           phone,
+    postalCode:      postal,
+    projectType:     project || '',
+    providers:       selected.map(p => p.name).join(' | '),
+    estItems:        estSummary || '',
+    estCostLow:      estTotalLow || '',
+    estCostHigh:     estTotalHigh || '',
+    estRebate:       estTotalRebate || '',
+    source:          'Montreal Window Guide - Quote Form',
+  };
+
+  // Show success screen immediately (optimistic UI)
+  showSuccessScreen(selected);
+
+  // POST to Google Apps Script in the background
+  if (typeof APPS_SCRIPT_URL !== 'undefined' && APPS_SCRIPT_URL) {
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors', // Apps Script requires no-cors from external pages
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).catch(e => console.warn('Sheet write failed:', e));
+  }
+}
+
+function showSuccessScreen(selected) {
+  const footer = document.getElementById('quote-modal-footer');
+  if (footer) footer.style.display = 'none';
+
+  document.querySelectorAll('.quote-modal > div:not(#quote-success-screen)').forEach(el => {
+    el.style.display = 'none';
+  });
+
+  const providerLines = selected.map(p => '&#10003; ' + p.name).join('<br>');
+  document.getElementById('success-provider-list').innerHTML =
+    '<strong style="display:block;margin-bottom:4px;font-size:12px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;color:#2a6040;">已提交至：</strong>' + providerLines;
+  document.getElementById('quote-success-screen').style.display = 'block';
+}
+
+
+// ══ REBATE + ROI CALCULATORS ══════════════════════════════════
+let rbEval = true;
+
+function setEval(val) {
+  rbEval = val;
+  document.getElementById('rb-yes').classList.toggle('on', val);
+  document.getElementById('rb-no').classList.toggle('on', !val);
+  calcRebate();
+}
+
+function calcRebate() {
+  const wins  = Math.max(0, parseInt(document.getElementById('rb-win').value)  || 0);
+  const doors = Math.max(0, parseInt(document.getElementById('rb-door').value) || 0);
+  const total = wins + doors;
+  const rebate = total * 150;
+
+  const amEl  = document.getElementById('rb-amount');
+  const subEl = document.getElementById('rb-sub');
+  const cond  = document.getElementById('rb-cond');
+
+  if (!rbEval) {
+    amEl.textContent = '$0';
+    amEl.className   = 'ramount red';
+    subEl.textContent = '不做 Rénoclimat 评估将无法申请任何补贴';
+    cond.style.opacity = '.35';
+  } else {
+    amEl.textContent = '$' + rebate.toLocaleString();
+    amEl.className   = 'ramount';
+    subEl.textContent = total + ' 个 Opening × $150（窗 ' + wins + ' + 门估算 ' + doors + '）';
+    cond.style.opacity = '1';
+  }
+
+  // Push to ROI: update range hint and default cost
+  const estLow  = Math.max(2000, wins * 650 + doors * 1500);
+  const estHigh = Math.max(4000, wins * 1100 + doors * 3500);
+  const hintEl  = document.getElementById('roi-range-hint');
+  if (hintEl) {
+    hintEl.textContent = '参考区间（工具 1 联动估算）：$' + estLow.toLocaleString() + ' – $' + estHigh.toLocaleString() + '   请填入您认可的中间值';
+  }
+  // If cost field is empty, auto-suggest midpoint
+  const costEl = document.getElementById('roi-cost');
+  if (costEl && !costEl.value) {
+    costEl.value = Math.round((estLow + estHigh) / 2 / 500) * 500;
+  }
+  calcROI();
+}
+
+const COND_RATE = { bad: [.12, .18], mid: [.06, .12], ok: [.02, .06] };
+const TYPE_SHARE = { condo: .50, semi: .60, detached: .70 };
+
+function calcROI() {
+  const hydro   = parseFloat(document.getElementById('roi-hydro').value) || 2400;
+  const condKey = document.getElementById('roi-cond').value;
+  const typeKey = document.getElementById('roi-type').value;
+  const costRaw = parseFloat(document.getElementById('roi-cost').value);
+  const cost    = isNaN(costRaw) ? null : Math.max(500, costRaw);
+
+  const [rLo, rHi] = COND_RATE[condKey];
+  const share       = TYPE_SHARE[typeKey];
+
+  const saveLow  = Math.round(hydro * share * rLo);
+  const saveHigh = Math.round(hydro * share * rHi);
+  const afterLow  = Math.round(hydro - hydro * share * rHi);
+  const afterHigh = Math.round(hydro - hydro * share * rLo);
+
+  // Get rebate from tool 1
+  const wins  = Math.max(0, parseInt(document.getElementById('rb-win').value)  || 0);
+  const doors = Math.max(0, parseInt(document.getElementById('rb-door').value) || 0);
+  const rebate = rbEval ? (wins + doors) * 150 : 0;
+  const netCost = cost !== null ? Math.max(500, cost - rebate) : null;
+
+  // Saving display
+  document.getElementById('roi-saving').textContent =
+    saveLow > 0 ? '$' + saveLow.toLocaleString() + ' – $' + saveHigh.toLocaleString() : '$—';
+
+  // ROI display
+  if (netCost !== null && saveHigh > 0) {
+    const roiLo = (netCost / saveHigh).toFixed(1);
+    const roiHi = (netCost / saveLow).toFixed(1);
+    document.getElementById('roi-payback').textContent = roiLo + ' – ' + roiHi + ' 年';
+  } else {
+    document.getElementById('roi-payback').textContent = cost === null ? '填入预算后显示' : '—';
+  }
+
+  // Bars
+  const afterMid = (afterLow + afterHigh) / 2;
+  const pct = Math.max(10, Math.round(afterMid / hydro * 100));
+  document.getElementById('bar-before').style.width = '100%';
+  document.getElementById('bar-after').style.width  = pct + '%';
+  document.getElementById('bar-before-val').textContent = '$' + Math.round(hydro).toLocaleString() + '/yr';
+  document.getElementById('bar-after-val').textContent  =
+    '~$' + afterLow.toLocaleString() + ' – $' + afterHigh.toLocaleString() + '/yr';
+}
+
+function rebateCTA() {
+  const projIn = document.getElementById('lead-project');
+  if (projIn) projIn.value = 'Eligible for Renoclimat - Window Replacement';
+  document.getElementById('companies').scrollIntoView({ behavior: 'smooth' });
+}
+function roiCTA() {
+  document.getElementById('companies').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Boot calculators
+calcRebate();
+
+renderProviders();
+
+// ── QUIZ ──────────────────────────────────────────────
+const QUIZ_QUESTIONS = [
+  {
+    q: "玻璃内部（两层之间）有没有起雾或水汽？",
+    hint: "密封层失效的最直接信号",
+    opts: [
+      { t: "有，明显可见", s: 10 },
+      { t: "偶尔有，天气变化时", s: 6 },
+      { t: "没有", s: 0 },
+    ]
+  },
+  {
+    q: "窗边或门缝有没有明显冷风漏进来？",
+    hint: "冬天把手放在窗缝附近感受",
+    opts: [
+      { t: "有，明显感觉到冷气", s: 8 },
+      { t: "有一点点，但不影响", s: 4 },
+      { t: "没有", s: 0 },
+    ]
+  },
+  {
+    q: "窗台、门框周围有没有水渍、发霉或变黑？",
+    hint: "长期漏水会破坏墙体结构",
+    opts: [
+      { t: "有，已经很明显", s: 10 },
+      { t: "有一点点痕迹", s: 5 },
+      { t: "没有", s: 0 },
+    ]
+  },
+  {
+    q: "门或窗开关起来顺畅吗？",
+    hint: "卡涩可能是框体变形或安装歪斜",
+    opts: [
+      { t: "很难关/开，需要用力", s: 8 },
+      { t: "有一点卡，但能用", s: 4 },
+      { t: "完全顺畅", s: 0 },
+    ]
+  },
+  {
+    q: "关窗后，屋外的车流或人声还能清楚听到吗？",
+    hint: "城市临街房对隔音要求更高",
+    opts: [
+      { t: "很清楚，和开窗差不多", s: 7 },
+      { t: "能听到，但有明显隔音", s: 3 },
+      { t: "基本听不见", s: 0 },
+    ]
+  },
+  {
+    q: "框体材质状况如何？",
+    hint: "看木框、PVC或铝框是否有变形损坏",
+    opts: [
+      { t: "木框腐烂 / PVC变形 / 铝框锈蚀", s: 10 },
+      { t: "有轻微老化，但结构完整", s: 4 },
+      { t: "框体完好", s: 0 },
+    ]
+  },
+  {
+    q: "外门的锁具和门框牢固吗？",
+    hint: "外门安全直接关系防盗",
+    opts: [
+      { t: "锁不牢 / 门框松动 / 玻璃有裂缝", s: 10 },
+      { t: "稍有松动但还能锁", s: 5 },
+      { t: "完全正常", s: 0 },
+    ]
+  },
+  {
+    q: "和几年前比，冬天取暖或夏天制冷的账单有没有明显上升？",
+    hint: "排除其他原因后，老窗保温性下降是常见因素",
+    opts: [
+      { t: "明显上升，差异很大", s: 6 },
+      { t: "稍有上升，不确定原因", s: 3 },
+      { t: "基本没变化", s: 0 },
+    ]
+  },
+  {
+    q: "您家门窗大约安装了多少年？",
+    hint: "15年以上是重点检查期",
+    opts: [
+      { t: "20年以上", s: 8 },
+      { t: "15–20年", s: 5 },
+      { t: "8–15年", s: 2 },
+      { t: "不到8年", s: 0 },
+    ]
+  },
+  {
+    q: "目前同时出现几个以上问题（漏风、漏水、开关困难、隔音差）？",
+    hint: "多个问题并存时逐项维修通常不划算",
+    opts: [
+      { t: "3个或以上问题同时存在", s: 10 },
+      { t: "2个问题", s: 6 },
+      { t: "只有1个问题", s: 3 },
+      { t: "基本没有问题", s: 0 },
+    ]
+  },
+];
+
+let quizScores = [];
+let currentQ = 0;
+let selectedIdx = null;
+
+function renderQuestion(idx) {
+  const q = QUIZ_QUESTIONS[idx];
+  const body = document.getElementById('quiz-body');
+  body.innerHTML = `
+    <div class="quiz-step active">
+      <div class="quiz-q-label">问题 ${idx+1} / ${QUIZ_QUESTIONS.length} · ${q.hint}</div>
+      <div class="quiz-q-text">${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((o, i) => `
+          <div class="quiz-opt" onclick="selectOpt(${i})" id="opt-${i}">
+            <div class="quiz-opt-dot"></div>
+            <div>
+              <div class="quiz-opt-text">${o.t}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  document.getElementById('quiz-counter').textContent = `第 ${idx+1} 题，共 ${QUIZ_QUESTIONS.length} 题`;
+  document.getElementById('quiz-progress').style.width = `${(idx / QUIZ_QUESTIONS.length) * 100}%`;
+  const btn = document.getElementById('quiz-next');
+  btn.classList.remove('ready');
+  selectedIdx = null;
+}
+
+function selectOpt(i) {
+  selectedIdx = i;
+  document.querySelectorAll('.quiz-opt').forEach((el, j) => {
+    el.classList.toggle('selected', j === i);
+  });
+  document.getElementById('quiz-next').classList.add('ready');
+}
+
+function nextQuestion() {
+  if (selectedIdx === null) return;
+  quizScores.push(QUIZ_QUESTIONS[currentQ].opts[selectedIdx].s);
+  currentQ++;
+  if (currentQ < QUIZ_QUESTIONS.length) {
+    renderQuestion(currentQ);
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  const total = quizScores.reduce((a, b) => a + b, 0);
+  const maxScore = 89; // sum of all max scores
+  const pct = Math.round((total / maxScore) * 100);
+
+  document.getElementById('quiz-body').style.display = 'none';
+  document.getElementById('quiz-footer').style.display = 'none';
+  document.getElementById('quiz-progress').style.width = '100%';
+
+  const result = document.getElementById('quiz-result');
+  result.classList.add('active');
+
+  let icon, verdict, badgeClass, badgeTxt, desc, items;
+
+  if (pct >= 55) {
+    icon = '🚨';
+    verdict = '建议尽快更换';
+    badgeClass = 'badge-urgent';
+    badgeTxt = '紧急 · 建议尽快处理';
+    desc = '您家门窗已出现多个严重问题，继续拖延可能导致能耗上升、结构损坏或安全隐患。现在是启动换窗流程的好时机。';
+    items = ['先打 1-866-266-0008 预约 Rénoclimat 评估（换窗前必须先做，否则失去补贴资格）', '同时向 3–5 家公司发询价单，比较报价', '核实承包商 RBQ 执照，确认有 ENERGY STAR Zone 3 产品'];
+  } else if (pct >= 28) {
+    icon = '⚠️';
+    verdict = '建议近期认真检查';
+    badgeClass = 'badge-soon';
+    badgeTxt = '留意 · 建议 1–2 年内评估';
+    desc = '您家门窗有一些值得关注的问题，虽然还没到紧急程度，但不宜忽视。建议先做详细检查，了解是否可以维修或需要更换。';
+    items = ['记录目前存在的问题（拍照留存）', '联系专业人员评估是维修还是更换更划算', '了解 Rénoclimat 补贴条件，提前规划'];
+  } else {
+    icon = '✅';
+    verdict = '暂时不需要更换';
+    badgeClass = 'badge-ok';
+    badgeTxt = '状态良好 · 定期保养即可';
+    desc = '您家门窗目前状态不错，暂时不需要更换。建议每年做一次检查，注意密封条老化和五金件状态，保持良好使用寿命。';
+    items = ['每年检查一次密封条、打胶和五金件', '注意玻璃内部是否开始起雾（密封失效早期信号）', '如果窗龄超过15年，建议请专业人员做一次综合评估'];
+  }
+
+  document.getElementById('result-icon').textContent = icon;
+  document.getElementById('result-verdict').textContent = verdict;
+  const badge = document.getElementById('result-badge');
+  badge.textContent = badgeTxt;
+  badge.className = 'result-badge ' + badgeClass;
+  document.getElementById('result-desc').textContent = desc;
+  document.getElementById('result-items').innerHTML = `
+    <h4>接下来可以做什么</h4>
+    ${items.map(it => `<div class="result-item">${it}</div>`).join('')}
+  `;
+}
+
+function restartQuiz() {
+  quizScores = [];
+  currentQ = 0;
+  selectedIdx = null;
+  document.getElementById('quiz-body').style.display = '';
+  document.getElementById('quiz-footer').style.display = '';
+  document.getElementById('quiz-result').classList.remove('active');
+  renderQuestion(0);
+}
+
+// Init quiz
+renderQuestion(0);
+
+
+const QA = [
+  {
+    q: "政府补贴找谁？",
+    a: `<strong>以下是截止目前2026年4月的信息。</strong><br><br>
+现在换窗节能补贴找的是 <strong>Rénoclimat 计划</strong>，由魁省政府负责。<br>
+电话：📞 <strong>1-866-266-0008</strong><br><br>
+另外注意：<br>
+• Hydro-Québec 的 LogisVert 计划<strong>目前不覆盖</strong>普通住宅单独换窗<br>
+• 联邦 Canada Greener Homes Loan 已于2025年10月<strong>关闭，不再接受申请</strong><br>
+<div class="highlight">✅ 结论：换窗补贴 = Rénoclimat。顺序是先评估，再施工。</div>`
+  },
+  {
+    q: "补贴能拿多少钱？",
+    a: `Rénoclimat 按 <strong>Rough Opening（窗洞）数量</strong>计算，不是按扇数：<br><br>
+• 每个窗洞：<strong>$150</strong><br>
+• 初次评估费约 $150，完成后通常返还<br><br>
+⚠️ 注意事项：<br>
+• Bay window / Bow window 三联窗，只算<strong>1个</strong> opening（不是3个）<br>
+• 只换玻璃不给补贴，必须<strong>连框一起换</strong><br>
+• 必须选 ENERGY STAR Zone 3（Northern）认证产品<br>
+<div class="highlight">例：6个 opening = 最多 $900 补贴</div>`
+  },
+  {
+    q: "流程是什么？最重要的注意事项？",
+    a: `<ol>
+<li>预约 Rénoclimat 初次评估（Pre-Retrofit）</li>
+<li>评估员上门做气密性测试，拿到能源报告</li>
+<li>按报告选购符合 ENERGY STAR Zone 3 的门窗</li>
+<li>找有 RBQ 执照的承包商施工</li>
+<li><strong>保留发票（含型号）+ ENERGY STAR 标签</strong>（不要撕！）</li>
+<li>预约二次评估（Post-Retrofit）</li>
+<li>审核通过，支票邮寄到家</li>
+</ol>
+<div class="warn">🚨 最重要：旧窗拆了才申请 = 直接失去补贴资格。顺序不能错。</div>`
+  },
+  {
+    q: "换同尺寸门窗需要 permit 吗？",
+    a: `不一定免 permit。蒙特利尔官方把 <strong>Replace doors and windows with models that have the same dimensions</strong> 单独列为一类，是因为即使尺寸不变，也仍然要遵守现行法规。<br><br>
+尤其要注意：<br>
+• 您的地址是否在遗产区、受保护区域或有特殊建筑/景观要求<br>
+• 材料、颜色、分格、窗型、开启方式是否改变<br>
+• 是否需要额外文件，例如 SPAIP（Site Planning and Architectural Integration Plan）<br>
+• 是否需要满足采光、通风和能源效率要求<br><br>
+<div class="warn">🚩 关键误区：Same size ≠ No permit。同尺寸只可能降低审批复杂度，不代表可以直接开工。</div>
+<div class="highlight">✅ 做法：签合同前先在 montreal.ca 按 borough 查询地址要求；不确定就联系 borough，确认是否需要 permit 后再动工。</div>`
+  },
+  {
+    q: "RBQ执照怎么核实？",
+    a: `打电话给承包商，要求对方提供 RBQ 执照号，然后去这里核实：<br><br>
+🔗 <strong>rbq.gouv.qc.ca</strong> → 搜索公司名或执照号<br><br>
+核实内容：<br>
+• 执照是否有效（还是已到期/被暂停）<br>
+• 执照覆盖的工种是否包含门窗安装<br><br>
+<div class="warn">⚠️ 没有 RBQ 执照的承包商，出了问题几乎无处维权。这一步不能省。</div>`
+  },
+  {
+    q: "预付款应该付多少？",
+    a: `行业惯例是 <strong>≤ 30%</strong>。<br><br>
+• 如果对方要求超过 50% 的预付款，这是明显红旗 🚩<br>
+• 尾款应在安装验收合格后支付<br>
+• 不要全款支付，否则出问题您没有筹码<br><br>
+<div class="warn">前面的案例里有人押金付完后几个月没进展。预付款是您最重要的保护工具。</div>`
+  },
+  {
+    q: "Costco / 第三方渠道报价，付款方式要注意什么？",
+    a: `如果您通过 Costco 等渠道拿到门窗报价，却被销售强烈引导去<strong>三个月免息、之后分期或银行转账</strong>，而不是正常使用 Costco Mastercard / 信用卡付款，要提高警惕。<br><br>
+可能原因：<br>
+• 商家想避开信用卡手续费<br>
+• 商家想赚融资利息<br>
+• 更严重：供应商可能想绕开 Costco 的付款和售后监督<br><br>
+<div class="warn">🚩 重点：信用卡付款通常更容易留下记录，也可能保留争议处理空间。私人融资或转账，维权难度会明显上升。</div>
+<div class="highlight">✅ 做法：直接联系 Costco 确认该供应商是否允许绕开 Costco 收款；不清楚前不要签。</div>`
+  },
+  {
+    q: "独立屋、公寓、多户住宅，政策有什么不同？",
+    a: `<strong>独立屋（1个单位）：</strong><br>
+主要走 Rénoclimat 计划，$150/opening<br><br>
+<strong>2–5个单位住宅（Semi-detached, Triplex等）：</strong><br>
+除了 Rénoclimat，还可以看蒙特利尔市的 <strong>RénoPlex 计划</strong><br>
+• 需要物业估值 ≤ $3,860/m²<br>
+• 换窗归属 Block 2（Opening 类别）<br>
+• 最低申请 $3,000<br>
+• <strong>同样必须先申请再动工，等待 3–4 个月</strong><br><br>
+<div class="highlight">公寓（单位内部空间）：需确认是否为全栋业主，租客不能直接申请</div>`
+  },
+  {
+    q: "什么时候问报价最合适？",
+    a: `<strong>冬天（11月–2月）询价，秋天（9–10月）施工</strong> = 最优策略<br><br>
+原因：<br>
+• 冬天是淡季，承包商手上活少，主动让价空间更大<br>
+• 秋天施工天气好，冬前装好立刻省电费<br><br>
+建议时间线：<br>
+• 11–12月：预约 Rénoclimat 评估（冬天等待时间短）<br>
+• 1–2月：拿到报告后同时向 5–8 家发询价单 RFQ<br>
+• 2–3月：对比筛选，签合同（锁定淡季价）<br>
+• 9–10月：施工<br>
+<div class="highlight">💡 跟对方说冬天签合同、秋天才施工，可以拿到淡季价但又在好天气完工</div>`
+  },
+];
+
+const STORIES = [
+  {
+    tag: "故事 01 · 到货即坏",
+    title: "露台门装上当天就关不上，一拖就是几个月",
+    quote: "安装时发现露台门机构有缺陷，承诺优先维修；之后发现整扇门要换。几次替换门也有问题，时间从12月拖到春天。",
+    lesson: "缺陷产品不是小问题。安装当天就拍照录像，并用邮件要求确认：缺陷更换时限、临时解决方案、超时退款或赔偿机制。不要只打电话。",
+  },
+  {
+    tag: "故事 02 · 销售建议错误",
+    title: "销售推荐内开逃生窗，装完才发现会撞到床",
+    quote: "销售说内开式逃生窗是唯一选择。装完后窗户打开正好撞到床，后来才知道其实有推拉窗方案。",
+    lesson: "销售没有说的选项，可能才是更适合您的选项。签约前要求对方列出所有可选窗型，并书面说明为什么推荐这一款。卧室一定要模拟床和家具位置。",
+  },
+  {
+    tag: "故事 03 · 隔音失败",
+    title: "窗户看起来漂亮，但连微风都听得见",
+    quote: "窗户外观不错，但隔音效果极差。住在城市里尤其不能接受。把手难用，玻璃上还有粘性残留。",
+    lesson: "双层玻璃不等于隔音好。问清楚玻璃结构：是否夹胶、是否中空、不对称厚度、窗框密封方式。城市临街房不要只听销售说“很安静”。",
+  },
+  {
+    tag: "故事 04 · 质检标准过低",
+    title: "密封胶只打四个角，公司却说符合标准",
+    quote: "拆内框时发现密封胶只在四个角，约四分之三周长没有密封；玻璃缝隙最大到1/2英寸，泡沫隔条缺失或弯曲。",
+    lesson: "“符合公司标准”不等于符合您的合理期待。合同里要写清楚全周密封、泡沫隔条完整、安装后可验收。验收时逐窗检查边缘和缝隙。",
+  },
+  {
+    tag: "故事 05 · 售后消失",
+    title: "锁坏、把手坏、门关不上，客服只让您等",
+    quote: "门装好不久锁就松了、把手难用、露台门关不上。多次电话邮件后，仍然没有明确维修日期。",
+    lesson: "售前热情，售后消失，是门窗行业常见雷区。签合同前问清楚：维修请求几天回复？几天上门？人工费是否保修？写不进合同的承诺不要信。",
+  },
+  {
+    tag: "故事 06 · 付款红旗",
+    title: "通过 Costco 报价，却被引导别用 Costco Mastercard",
+    quote: "外门报价超过3000美元/扇。销售不太希望客户用 Costco Mastercard，而是推荐三个月免息，之后银行转账或9%利息分期。",
+    lesson: "这不是单纯卖门，可能是在卖融资。坚持走官方渠道和可追踪付款方式；如果供应商想绕开 Costco 或信用卡，先联系 Costco 确认。不要为了“免息三个月”放弃维权工具。",
+  },
+  {
+    tag: "故事 07 · 无限拖延",
+    title: "预约好安装，当天没人来，电话打进语音信箱",
+    quote: "预约好了安装日期，当天没人来。也没人打电话解释。我打过去永远是语音信箱。",
+    lesson: "公司存在，不代表有人负责您。合同里写明开工日期、完工日期、延误处理和退款条件，是保护自己的关键。",
+  },
+  {
+    tag: "故事 08 · 钱收了活没干",
+    title: "押金收走后几个月没进展",
+    quote: "他们很快就收了deposit，但之后几个月完全没进展。我一直在追，他们一直说会回电，但从来没有。",
+    lesson: "预付款是筹码，不是礼物。付了之后您的谈判能力会下降。控制预付款比例，尾款必须等验收合格再付。",
+  },
+];
+
+// QA 渲染
+document.getElementById("qa-list").innerHTML = QA.map((q, i) =>
+  `<div class="qa-item" id="qa${i}">
+    <div class="qa-q" onclick="toggleQA('qa${i}')">${q.q}</div>
+    <div class="qa-a">${q.a}</div>
+  </div>`
+).join("");
+
+function toggleQA(id) {
+  document.getElementById(id).classList.toggle("open");
+}
+
+// 故事渲染
+document.getElementById("stories-list").innerHTML = STORIES.map(s =>
+  `<div class="story-card">
+    <div class="story-tag">${s.tag}</div>
+    <div class="story-title">${s.title}</div>
+    <div class="story-quote">${s.quote}</div>
+    <div class="story-lesson"><strong>教训：</strong> ${s.lesson}</div>
+  </div>`
+).join("");
+
+// ── Trilingual UI layer (ZH / EN / FR) ─────────────────────
+const I18N = {
+  zh: {
+    eyebrow: 'Montreal Window Guide · 2026',
+    heroTitle: '蒙特利尔<em>门窗避坑指南</em><br>报价、补贴与验收一次讲清',
+    heroSub: '基于真实业主反馈与社区讨论整理，帮助您在签约前问对问题、看懂补贴、规避付款风险，并选择更合适的本地服务商。',
+    nav: ['要不要换窗？','服务商推荐','补贴攻略','Q&A','签约清单'],
+    quizLabel: '免费自测 · Part 01',
+    quizTitle: '门窗<em style="color:var(--accent);font-style:normal;">该不该换？</em><br>3分钟自测',
+    quizDesc: '根据门窗的实际状况，用10个问题评估更换的紧迫程度——结果会告诉您现在该做什么。',
+    providerLabel: '顶级服务商推荐 · Part 02',
+    providerTitle: '本地门窗服务商<br>智能推荐与多选询价',
+    providerDesc: '选择所在区域与项目类型，系统会优先展示更匹配的本地服务商。建议勾选 2–3 家公司统一提交需求，便于比较报价、安装范围与售后条款。',
+    rebateLabel: '政府补贴 · Part 03',
+    rebateTitle: '政府补贴怎么申请<br>关键问题一次说明',
+    rebateDesc: '补贴申请最容易出错的地方，是先施工后评估。以下内容帮助您在动工前确认流程、资格与必要文件。',
+    storiesLabel: '真实反馈 · Part 04',
+    storiesTitle: '避坑故事',
+    storiesDesc: '基于真实业主反馈与社区讨论整理，帮助您在签合同前问对问题，并选择更安全的付款方式。',
+    checklistLabel: 'CHECKLIST · Part 05',
+    checklistTitle: '签约、安装、验收<br>完整 Checklist',
+    checklistDesc: '从签约前核查、合同条款、安装当天验收到后续维权，整理成一张可执行清单。建议下载后按阶段逐项核对。',
+    quoteBtn: '获取报价 →',
+    autoTop: '智能选择推荐 Top 3',
+    area: '所在区域',
+    project: '项目类型'
+  },
+  en: {
+    eyebrow: 'Montreal Window Guide · 2026 Edition',
+    heroTitle: '<em>Before You Replace</em><br>Your Doors & Windows',
+    heroSub: 'A practical guide based on homeowner feedback and community discussions—so you can ask better questions, understand rebates, avoid payment risks, and compare local providers with confidence.',
+    nav: ['Should I replace?','Providers','Rebates','Q&A','Checklist'],
+    quizLabel: 'Free Assessment · Part 01',
+    quizTitle: 'Should you <em style="color:var(--accent);font-style:normal;">replace your windows?</em><br>3-minute check',
+    quizDesc: 'Answer 10 simple questions to understand how urgent your replacement project may be and what to do next.',
+    providerLabel: 'Recommended Providers · Part 02',
+    providerTitle: 'Local Door & Window Providers<br>Smart Matching + Multi-Quote Request',
+    providerDesc: 'Select your area and project type. The system highlights better-matched local providers. Choose 2–3 companies to compare pricing, installation scope, and warranty terms.',
+    rebateLabel: 'Government Rebates · Part 03',
+    rebateTitle: 'How to apply for rebates<br>Key questions answered',
+    rebateDesc: 'The most common mistake is starting work before the initial energy evaluation. Use this section to understand timing, eligibility, and required documents.',
+    storiesLabel: 'Homeowner Feedback · Part 04',
+    storiesTitle: 'Lessons From Real Projects',
+    storiesDesc: 'Based on homeowner experiences and community discussions, this section helps you ask the right questions before signing and choose safer payment terms.',
+    checklistLabel: 'CHECKLIST · Part 05',
+    checklistTitle: 'Contract, Installation & Final Inspection<br>Complete Checklist',
+    checklistDesc: 'A practical checklist covering pre-contract verification, contract terms, installation-day inspection, follow-up, and dispute prevention.',
+    quoteBtn: 'Get Quotes →',
+    autoTop: 'Auto-select recommended Top 3',
+    area: 'Service area',
+    project: 'Project type'
+  },
+  fr: {
+    eyebrow: 'Guide Portes & Fenêtres Montréal · 2026',
+    heroTitle: '<em>Avant de remplacer</em><br>vos portes et fenêtres',
+    heroSub: 'Un guide pratique fondé sur des retours de propriétaires et des discussions communautaires—pour poser les bonnes questions, comprendre les subventions, réduire les risques de paiement et comparer les fournisseurs locaux.',
+    nav: ['Faut-il remplacer ?','Fournisseurs','Subventions','Q&R','Liste de contrôle'],
+    quizLabel: 'Auto-évaluation · Partie 01',
+    quizTitle: 'Faut-il <em style="color:var(--accent);font-style:normal;">remplacer vos fenêtres ?</em><br>Test de 3 minutes',
+    quizDesc: 'Répondez à 10 questions simples pour évaluer l’urgence du projet et connaître les prochaines étapes.',
+    providerLabel: 'Fournisseurs recommandés · Partie 02',
+    providerTitle: 'Fournisseurs locaux de portes et fenêtres<br>Recommandation intelligente + demandes multiples',
+    providerDesc: 'Choisissez votre secteur et le type de projet. Le système met en avant les fournisseurs locaux les plus pertinents. Sélectionnez 2 à 3 entreprises pour comparer les prix, l’installation et les garanties.',
+    rebateLabel: 'Subventions · Partie 03',
+    rebateTitle: 'Comment demander les subventions<br>Les points essentiels',
+    rebateDesc: 'L’erreur la plus fréquente est de commencer les travaux avant l’évaluation énergétique initiale. Cette section résume le bon ordre, l’admissibilité et les documents à conserver.',
+    storiesLabel: 'Retours de propriétaires · Partie 04',
+    storiesTitle: 'Histoires à éviter',
+    storiesDesc: 'À partir d’expériences réelles et de discussions locales, cette section vous aide à poser les bonnes questions avant de signer et à choisir un mode de paiement plus sûr.',
+    checklistLabel: 'CHECKLIST · Partie 05',
+    checklistTitle: 'Contrat, installation et inspection finale<br>Liste de contrôle complète',
+    checklistDesc: 'Une liste pratique couvrant les vérifications avant contrat, les clauses importantes, l’inspection le jour de l’installation et les suivis après travaux.',
+    quoteBtn: 'Obtenir des soumissions →',
+    autoTop: 'Sélectionner le Top 3 recommandé',
+    area: 'Secteur',
+    project: 'Type de projet'
+  }
+};
+
+function setLang(lang) {
+  const t = I18N[lang] || I18N.zh;
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => btn.classList.toggle('active', btn.dataset.langBtn === lang));
+  const set = (sel, val, html = false) => { const el = document.querySelector(sel); if (el) html ? el.innerHTML = val : el.textContent = val; };
+  set('.hero-eyebrow', t.eyebrow);
+  set('.hero h1', t.heroTitle, true);
+  set('.hero-sub', t.heroSub);
+  document.querySelectorAll('.hero-nav a').forEach((a, i) => { if (t.nav[i]) a.textContent = t.nav[i]; });
+  set('#quiz .section-label', t.quizLabel);
+  set('#quiz .section-title', t.quizTitle, true);
+  set('#quiz .section-desc', t.quizDesc);
+  set('#companies .section-label', t.providerLabel);
+  set('#companies .section-title', t.providerTitle, true);
+  set('#companies .section-desc', t.providerDesc);
+  set('#rebate .section-label', t.rebateLabel);
+  set('#rebate .section-title', t.rebateTitle, true);
+  set('#rebate .section-desc', t.rebateDesc);
+  set('#stories .section-label', t.storiesLabel);
+  set('#stories .section-title', t.storiesTitle);
+  set('#stories .section-desc', t.storiesDesc);
+  set('#checklist .section-label', t.checklistLabel);
+  set('#checklist .section-title', t.checklistTitle, true);
+  set('#checklist .section-desc', t.checklistDesc);
+  const quoteBarBtn = document.querySelector('#selected-quote-bar button'); if (quoteBarBtn) quoteBarBtn.textContent = t.quoteBtn;
+  const autoBtn = document.querySelector('.provider-toolbar button'); if (autoBtn) autoBtn.textContent = t.autoTop;
+  const labels = document.querySelectorAll('.provider-toolbar label');
+  if (labels[0]) labels[0].textContent = t.area;
+  if (labels[1]) labels[1].textContent = t.project;
+  localStorage.setItem('mwg_lang', lang);
+}
+
+setLang(localStorage.getItem('mwg_lang') || 'zh');
+
+
+// ── Full-content translation layer (ZH / EN / FR) ─────────────────────────
+(function(){
+  const FULL = {
+    en: {
+      '中文':'中文','English':'English','Français':'Français',
+      '要不要换窗？':'Should I replace?','服务商推荐':'Providers','补贴攻略':'Rebates','签约清单':'Checklist','Q&A':'Q&A',
+      '免费自测 · Part 01':'Free assessment · Part 01','门窗':'Doors & windows','该不该换？':'need replacement?','3分钟自测':'3-minute check','根据门窗的实际状况，用10个问题评估更换的紧迫程度——结果会告诉您现在该做什么。':'Answer 10 questions based on your current doors and windows. The result helps you understand urgency and next steps.',
+      '↩ 重新测试':'↩ Restart','下一题 →':'Next →',
+      '顶级服务商推荐 · Part 02':'Recommended providers · Part 02','本地门窗服务商':'Local door & window providers','智能推荐与多选询价':'Smart matching + multi-quote request','选择所在区域与项目类型，系统会优先展示更匹配的本地服务商。建议勾选 2–3 家公司统一提交需求，便于比较报价、安装范围与售后条款。':'Choose your area and project type. The system highlights better-matched local providers. Select 2–3 companies to compare quotes, installation scope, and warranty terms.',
+      '所在区域':'Service area','项目类型':'Project type','更换门窗':'Replacement','新装 / 新建房':'New installation / new build','维修 / 售后检查':'Repair / service check','高端定制 / 历史建筑':'Premium custom / heritage building','智能选择推荐 Top 3':'Auto-select recommended Top 3','系统已根据区域和项目类型排序。建议至少选择 2 家，最多 3 家进行比较。':'Providers are ranked by area and project type. We recommend selecting at least 2 and up to 3 for comparison.','已选择 0 / 3 家':'Selected 0 / 3','获取报价 →':'Get quotes →',
+      '获取报价 · Demande de soumission':'Get quotes · Demande de soumission','填写联系信息后发送，所选服务商将在 24 小时内联系您。':'Submit your contact details. The selected providers will contact you within 24 hours.','Step 1 — 联系信息（必填）':'Step 1 — Contact information (required)','费用评估':'Cost estimator','（可选）':'(optional)','点击展开——让报价更精准':'Open this section to make the quote more accurate','门窗费用估算器':'Door & window cost estimator','门窗类型':'Product type','推拉窗 / Casement':'Casement window','横拉窗 / Sliding':'Sliding window','固定窗 / Picture':'Picture window','湾式窗 / Bay Window':'Bay window','入口门 / Entry Door':'Entry door','玻璃推拉门 / Patio Door':'Patio door','双开门 / French Door':'French door','逃生窗 / Egress':'Egress window','数量':'Quantity','＋ 加入':'+ Add','← 选择类型和数量后点击「加入」':'← Choose a type and quantity, then click Add','总件数':'Total items','估算费用':'Estimated cost','补贴估算':'Estimated rebate','价格基于蒙特利尔市场 2024-2026 含安装均价，仅供参考。Rénoclimat 补贴以实际评估为准。':'Pricing is based on typical 2024–2026 installed costs in Montreal and is for reference only. Rénoclimat rebates depend on the official evaluation.','报价请求已发送！':'Quote request sent!','您的询价申请已成功提交。':'Your quote request has been submitted successfully.','所选服务商将在':'The selected providers will contact you within','24 小时内':'24 hours','联系您。':'','同时建议致电':'We also recommend calling','预约 Rénoclimat 补贴评估（换窗前必须先做）':'to schedule the Rénoclimat evaluation before any work begins.','关闭窗口':'Close window',
+      '政府补贴 · Part 03':'Government rebates · Part 03','政府补贴怎么申请':'How to apply for rebates','关键问题一次说明':'Key questions answered','补贴申请最容易出错的地方，是先施工后评估。以下内容帮助您在动工前确认流程、资格与必要文件。':'The most common mistake is starting work before the initial evaluation. This section helps you confirm the process, eligibility, and required documents before work begins.','最重要的一句话：先评估，再动工！':'The key rule: evaluation first, work second!','旧窗拆了再申请，补贴直接清零。无论装了多好的窗户都没用。':'If old windows are removed before applying, the rebate may be lost—even if the new products are excellent.','两个工具':'The two tools','已联动':'are linked','工具 1 的窗户数量自动传入 ROI 估算；补贴金额自动扣除后再算回本周期。':'Window quantities from Tool 1 flow into the ROI estimate, and rebates are deducted before calculating payback.',
+      '工具 1 · Quebec Rebate Estimator':'Tool 1 · Quebec Rebate Estimator','政府补贴计算器':'Government rebate estimator','Rénoclimat 计划 · 每个 Rough Opening（含门）按 $150 估算':'Rénoclimat · estimated at $150 per rough opening','窗户数量':'Number of windows','门数量':'Number of doors','扇':'unit(s)','每个独立窗洞 = 1 opening；Bay Window 三联算 1 个':'Each rough opening counts as 1; a bay/bow window usually counts as 1 opening.','门的补贴资格以实际 Rénoclimat 评估结果为准；此处按 $150/扇 估算，实际可能为 $0。建议致电 1-866-266-0008 核实。':'Door rebate eligibility depends on the Rénoclimat evaluation. This tool estimates $150 per door, but the actual amount may be $0. Call 1-866-266-0008 to verify.','是否愿意做 Rénoclimat 评估？':'Are you willing to complete a Rénoclimat evaluation?','✅ 是，会配合评估':'✅ Yes, I will complete it','✗ 否 / 不确定':'✗ No / not sure','您预计可获得政府补贴':'Estimated government rebate','动工前完成 Rénoclimat 初次评估（Pre-Retrofit）':'Complete the Rénoclimat pre-retrofit evaluation before work starts','使用 ENERGY STAR Zone 3 认证产品':'Use ENERGY STAR Zone 3 certified products','安装后完成二次评估（Post-Retrofit）':'Complete the post-retrofit evaluation after installation','为估算值，实际金额取决于评估结果与产品符合性。门的补贴以 Rénoclimat 官方审核为准，可能不适用。':'This is an estimate. Actual rebate depends on the evaluation and product eligibility. Door rebates are subject to official Rénoclimat review and may not apply.','立即预约核实补贴并获取报价 →':'Verify rebate eligibility and request quotes →',
+      '工具 2 · Energy Saving & ROI':'Tool 2 · Energy Saving & ROI','节能 & 回本计算器':'Energy savings & ROI calculator','把"换窗很贵"转化为"长期省钱的投资"——让数字说话':'Turn a high upfront cost into a long-term investment—let the numbers guide you.','年度 Hydro 账单':'Annual Hydro bill','当前窗户状况':'Current window condition','单层 / 很旧（漏风严重）':'Single-pane / very old / severe drafts','老旧双层（10 年以上）':'Old double-pane (10+ years)','较新但想升级':'Relatively recent, upgrading for performance','房屋类型':'Property type','Condo / 公寓':'Condo','Semi-detached / 连排':'Semi-detached','Detached / 独立屋':'Detached','项目预算':'Project budget','（请填入您的估算中间值）':'(enter your estimated midpoint)','请输入':'Enter amount','参考区间：根据工具 1 自动估算 · 请填入您认可的中间值':'Suggested range: auto-estimated from Tool 1 · enter the midpoint you prefer','年节省 / Year':'Annual saving','预计回本周期':'Estimated payback','现在':'Before','换后':'After','节能比例参考 NRCan 数据及魁省气候条件，实际效果取决于安装质量、房屋结构及使用习惯。':'Energy-saving assumptions are based on general guidance and Quebec climate conditions. Actual results depend on installation quality, building structure, and usage habits.','查看适合我的服务商 →':'View matching providers →',
+      '补贴申请 · 步骤清单':'Rebate application · Step-by-step checklist','打 1-866-266-0008 预约 Rénoclimat 初次评估（Pre-Retrofit）':'Call 1-866-266-0008 to schedule the Rénoclimat pre-retrofit evaluation.','等待评估员上门做气密性测试，拿到能源报告':'Wait for the evaluator to perform the airtightness test and issue the energy report.','按报告选购 ENERGY STAR® 认证窗（确认 Zone 3 Northern）':'Choose ENERGY STAR certified products according to the report; confirm Zone 3 / Northern eligibility.','找有 RBQ 执照的承包商施工':'Use a contractor with a valid RBQ licence.','保留带型号的发票 + 窗户 ENERGY STAR 标签（不要撕！）':'Keep invoices with model numbers and ENERGY STAR labels; do not remove labels too early.','预约二次评估（Post-Retrofit），确认节能效果':'Schedule the post-retrofit evaluation to confirm energy improvements.','审核通过，等支票寄到家 💰':'After approval, wait for the cheque/payment to arrive.','等待约 4–8 周，每个 Rough Opening 补贴 $150':'Processing may take around 4–8 weeks; estimated rebate is $150 per rough opening.',
+      '真实故事 · Part 04':'Real cases · Part 04','8个案例':'8 cases','及经验总结':'and lessons learned','信息来自真实业主经验与社区讨论，帮助您在签约前做好判断与风险防范。':'Information is based on homeowner experience and community discussions, helping you make better decisions before signing.','教训：':'Lesson:',
+      '签约、安装、验收':'Contract, installation & inspection','完整 Checklist':'Complete checklist','把签约前、合同内容、安装当天、验收后续整理成一张可执行清单。可以打印或下载后，按阶段逐项核对。':'A practical checklist covering pre-contract checks, contract details, installation-day inspection, and follow-up. Print or download it and review each stage.','⬇ 下载 Checklist CSV':'⬇ Download Checklist CSV','阶段 Phase':'Phase','检查项目':'Checklist item','必须 Must':'Required','必须':'Required','可选':'Optional',
+      '签合同之前':'Before signing','合同内容检查':'Contract review','安装当天':'Installation day','验收与后续':'Final inspection & follow-up','出了问题怎么办':'If problems arise',
+      '查地址是否在遗产区（montreal.ca），确认允许的材料和颜色':'Check whether the address is in a heritage/protected area on montreal.ca, and confirm allowed materials and colours.','如需要，申请市政施工许可证，等批准后才动工。同尺寸更换（Replace doors and windows with models that have the same dimensions）也不等于自动免 permit，尤其是遗产区、特殊建筑、材料/颜色/样式变化时。':'If required, apply for the municipal permit and wait for approval before work starts. Replacing with the same dimensions does not automatically mean no permit, especially in heritage areas or when materials, colour, or style change.','核实 总公司的RBQ 和安装商的RBQ（rbq.gouv.qc.ca），确认有效且覆盖门窗安装。去 RBQ 官网查询该公司是否有未处理的索赔':'Verify both the main company RBQ and installer RBQ on rbq.gouv.qc.ca. Confirm they are valid and cover door/window installation. Check whether unresolved claims exist.','确认责任险 ≥ $200万，要求提供保险证明':'Confirm liability insurance of at least $2M and request proof of insurance.','如申请 Rénoclimat 补贴，预约初次评估，动工前完成':'If applying for Rénoclimat, schedule and complete the initial evaluation before work begins.','同时向至少 3–5 家公司发询价单，不要只问一家':'Request quotes from at least 3–5 companies; do not rely on one quote only.','确认窗户类型和开启方式——主动问所有可选类型，不完全依赖销售建议':'Confirm window type and opening style. Ask about all available options instead of relying only on the salesperson’s suggestion.','确认产品通过 ENERGY STAR Zone 3 和 CSA A440 认证':'Confirm ENERGY STAR Zone 3 and CSA A440 certification.','明确写明完工日期，以及延误超过 X 天后的违约赔偿或退款权利':'Write the completion date clearly, including compensation or refund rights if delays exceed X days.','确认付款结构：定金(10-30%) + 交付前/当天(60%) + 验收尾款(10%). 在验收合格后支付. 可以考虑总款项的10%作为尾款，直到安装100%完成、杂物清运完毕、且业主签署最终验收单确认无缺陷或损坏后支付。':'Confirm payment structure: deposit (10–30%) + delivery/installation payment (around 60%) + final holdback (around 10%). Consider paying the last 10% only after installation is fully complete, debris removed, and final inspection signed with no defects or damage.','写明谁来安装：自有团队还是外包？外包商的 RBQ 执照号是什么？':'State who will install: in-house team or subcontractor. If subcontracted, list the subcontractor’s RBQ number.','产品保修含零件+人工，安装保修，密封玻璃保修——分别写明年限和责任方':'Clarify product warranty, parts and labour, installation warranty, and sealed-glass warranty, including duration and responsible party.','含变更单条款：施工中任何额外费用必须提前书面确认，不得当场强收':'Include change-order terms: any extra cost must be confirmed in writing before work proceeds; no on-site pressure charges.','品牌公司对外包安装质量负连带责任（防止安装商倒闭后无人负责）':'Require the brand/company to remain responsible for subcontracted installation quality, so you are not left unprotected if the installer disappears.','逐行核对材料品牌、型号、尺寸、颜色，与确认的完全一致':'Review brand, model, dimensions, and colour line by line; they must match what was confirmed.','施工范围含：旧窗拆除清运、外部打胶、室内收边、现场清洁':'Scope should include old-window removal, disposal, exterior caulking, interior finishing, and site cleanup.',
+      '安装前拍照记录全屋墙体、地板、窗台状况（保留时间戳证据）':'Before installation, photograph walls, floors, and sills with timestamps.','如当天突然要求额外收费，要求对方出具书面变更单，不要口头同意':'If extra fees are requested on installation day, demand a written change order and do not agree verbally.','确认来的是合同里说的安装团队，或核实临时换人的团队 RBQ 执照':'Confirm the installation team matches the contract, or verify the RBQ if a different team arrives.','保留窗户上的 ENERGY STAR 标签（申请 Rénoclimat 补贴时需要）':'Keep ENERGY STAR labels; they may be needed for Rénoclimat documentation.','安装完成后，当场逐一测试每扇窗门的开关、锁定功能，不合格考虑拒绝签收':'After installation, test every door/window operation and lock before accepting the work.',
+      '水平和垂直度':'Level and plumb','开关功能逐一测试':'Test operation one by one','金属件完整性':'Hardware completeness','玻璃检查':'Glass inspection','密封和隔热':'Sealing and insulation','排水坡度':'Drainage slope','防水膜 / flashing':'Waterproof membrane / flashing','保温材料使用方式':'Insulation material use','预留缝隙 / expansion gap':'Expansion gap','与安装人员共同验收':'Inspect together with the installer','外观和施工现场':'Finish and jobsite condition','发现问题怎么处理':'What to do if you find issues',
+      '拍照记录所有窗户安装完成状态（带日期戳）':'Photograph every completed opening with timestamps.','维修后结算：直到所有维修完成，再释放最后的 10%':'Settle after repairs: release the final 10% only after all corrections are complete.','发现任何问题，当天发书面邮件通知（不要只打电话），建立证据链':'If any issue appears, email the contractor the same day; do not rely on phone calls only.','收到发票后核对：金额、型号、数量是否与合同一致':'When the invoice arrives, verify amount, model, and quantity against the contract.','预约 Rénoclimat 二次评估（Post-Retrofit）':'Schedule the Rénoclimat post-retrofit evaluation.','索取产品质保书和安装质保书原件，妥善保存':'Request and keep the original product and installation warranties.','一年后做一次检查：缝隙均匀度、密封条完好度、有无起雾或结冰':'Inspect one year later: gaps, weatherstripping, fogging, icing, and operation.',
+      '所有沟通发送书面邮件，保留时间戳——如果邮件无效，下一步是发送挂号信形式的“正式催告函”':'Keep all communication in writing with timestamps. If emails fail, send a formal demand letter by registered mail.','向 RBQ 投诉承包商（rbq.gouv.qc.ca）——RBQ可暂停/吊销执照，施压最强':'File a complaint with RBQ; RBQ can suspend or revoke licences and has strong leverage.','向 OPC 投诉（Office de la protection du consommateur）':'File a complaint with the Office de la protection du consommateur (OPC).','走小额法庭（Cour des petites créances），$15,000以下可自己代理':'Use small claims court for claims up to $15,000; self-representation is allowed.','多单位建筑：联合其他住户联名投诉，效果远大于单独投诉':'For multi-unit buildings, organize a joint complaint with other residents for stronger impact.',
+      '本地服务商':'Local provider','需核实':'To verify','书面确认':'Written confirmation','经销商核实':'Verify dealer','供应商核实':'Verify supplier','联系方式需进一步核实':'Contact details to verify','核心优势：':'Key strength:','签约提醒：':'Contract reminder:','联系方式：':'Contact:','官网：':'Website:','核实：':'Verify:','RBQ、邮箱、保修与补贴资格请在签约前再次核实。':'Verify RBQ, email, warranty, and rebate eligibility before signing.','查看官网':'Visit website','SELECT':'SELECT','SELECTED':'SELECTED','成立年份':'Year','保修':'Warranty','需验证':'Needs verification','推荐优先':'Preferred','建议':'Recommended',
+      '请输入有效邮箱。':'Please enter a valid email address.','请填写电话号码。':'Please enter a phone number.','请填写邮政编码。':'Please enter a postal code.','请勾选 I am human。':'Please check “I am human”.','请至少选择 1 家公司后再提交询价。':'Please select at least one company before submitting a quote request.',
+      '第':'Question','题，共':'of','题':'','填入预算后显示':'Enter a budget to display','年':'years','不做 Rénoclimat 评估将无法申请任何补贴':'No Rénoclimat evaluation means no rebate can be claimed.'
+    },
+    fr: {
+      '中文':'中文','English':'English','Français':'Français',
+      '要不要换窗？':'Faut-il remplacer ?','服务商推荐':'Fournisseurs','补贴攻略':'Subventions','签约清单':'Liste de contrôle','Q&A':'Q&R',
+      '免费自测 · Part 01':'Auto-évaluation · Partie 01','门窗':'Portes et fenêtres','该不该换？':'faut-il remplacer ?','3分钟自测':'Test de 3 minutes','根据门窗的实际状况，用10个问题评估更换的紧迫程度——结果会告诉您现在该做什么。':'Répondez à 10 questions selon l’état actuel de vos portes et fenêtres. Le résultat indique l’urgence et les prochaines étapes.','↩ 重新测试':'↩ Recommencer','下一题 →':'Suivant →',
+      '顶级服务商推荐 · Part 02':'Fournisseurs recommandés · Partie 02','本地门窗服务商':'Fournisseurs locaux de portes et fenêtres','智能推荐与多选询价':'Recommandation intelligente + demandes multiples','选择所在区域与项目类型，系统会优先展示更匹配的本地服务商。建议勾选 2–3 家公司统一提交需求，便于比较报价、安装范围与售后条款。':'Choisissez votre secteur et le type de projet. Le système met en avant les fournisseurs les plus pertinents. Sélectionnez 2 ou 3 entreprises afin de comparer les prix, l’installation et les garanties.',
+      '所在区域':'Secteur','项目类型':'Type de projet','更换门窗':'Remplacement','新装 / 新建房':'Nouvelle installation / construction neuve','维修 / 售后检查':'Réparation / inspection après-vente','高端定制 / 历史建筑':'Sur mesure haut de gamme / bâtiment patrimonial','智能选择推荐 Top 3':'Sélectionner le Top 3 recommandé','系统已根据区域和项目类型排序。建议至少选择 2 家，最多 3 家进行比较。':'Les fournisseurs sont classés selon le secteur et le type de projet. Nous recommandons d’en choisir au moins 2, au plus 3.','已选择 0 / 3 家':'Sélectionné 0 / 3','获取报价 →':'Obtenir des soumissions →',
+      '获取报价 · Demande de soumission':'Obtenir des soumissions','填写联系信息后发送，所选服务商将在 24 小时内联系您。':'Remplissez vos coordonnées. Les fournisseurs sélectionnés vous contacteront dans les 24 heures.','Step 1 — 联系信息（必填）':'Étape 1 — Coordonnées obligatoires','费用评估':'Estimation des coûts','（可选）':'(facultatif)','点击展开——让报价更精准':'Ouvrir pour rendre la soumission plus précise','门窗费用估算器':'Estimateur de coûts portes et fenêtres','门窗类型':'Type de produit','推拉窗 / Casement':'Fenêtre à battant','横拉窗 / Sliding':'Fenêtre coulissante','固定窗 / Picture':'Fenêtre fixe','湾式窗 / Bay Window':'Fenêtre en baie','入口门 / Entry Door':'Porte d’entrée','玻璃推拉门 / Patio Door':'Porte-patio','双开门 / French Door':'Porte française','逃生窗 / Egress':'Fenêtre d’issue','数量':'Quantité','＋ 加入':'+ Ajouter','← 选择类型和数量后点击「加入」':'← Choisissez un type et une quantité, puis cliquez sur Ajouter','总件数':'Total','估算费用':'Coût estimé','补贴估算':'Subvention estimée','价格基于蒙特利尔市场 2024-2026 含安装均价，仅供参考。Rénoclimat 补贴以实际评估为准。':'Les prix sont fondés sur des coûts installés typiques à Montréal pour 2024–2026 et servent de référence seulement. Les subventions Rénoclimat dépendent de l’évaluation officielle.','报价请求已发送！':'Demande envoyée !','您的询价申请已成功提交。':'Votre demande de soumission a bien été transmise.','所选服务商将在':'Les fournisseurs sélectionnés vous contacteront dans','24 小时内':'24 heures','联系您。':'','同时建议致电':'Nous recommandons aussi d’appeler le','预约 Rénoclimat 补贴评估（换窗前必须先做）':'pour planifier l’évaluation Rénoclimat avant les travaux.','关闭窗口':'Fermer',
+      '政府补贴 · Part 03':'Subventions · Partie 03','政府补贴怎么申请':'Comment demander les subventions','关键问题一次说明':'Les points essentiels','补贴申请最容易出错的地方，是先施工后评估。以下内容帮助您在动工前确认流程、资格与必要文件。':'L’erreur la plus fréquente est de commencer les travaux avant l’évaluation initiale. Cette section vous aide à confirmer le processus, l’admissibilité et les documents requis.','最重要的一句话：先评估，再动工！':'Règle essentielle : évaluation d’abord, travaux ensuite !','旧窗拆了再申请，补贴直接清零。无论装了多好的窗户都没用。':'Si les anciennes fenêtres sont retirées avant la demande, la subvention peut être perdue, même avec d’excellents produits.','两个工具':'Les deux outils','已联动':'sont liés','工具 1 的窗户数量自动传入 ROI 估算；补贴金额自动扣除后再算回本周期。':'Les quantités de l’outil 1 sont transférées au calcul ROI, et les subventions sont déduites avant le calcul du retour sur investissement.',
+      '工具 1 · Quebec Rebate Estimator':'Outil 1 · Estimateur de subventions du Québec','政府补贴计算器':'Estimateur de subventions','Rénoclimat 计划 · 每个 Rough Opening（含门）按 $150 估算':'Rénoclimat · estimation à 150 $ par ouverture brute','窗户数量':'Nombre de fenêtres','门数量':'Nombre de portes','扇':'unité(s)','每个独立窗洞 = 1 opening；Bay Window 三联算 1 个':'Chaque ouverture brute compte pour 1; une fenêtre en baie compte généralement pour 1.','门的补贴资格以实际 Rénoclimat 评估结果为准；此处按 $150/扇 估算，实际可能为 $0。建议致电 1-866-266-0008 核实。':'L’admissibilité des portes dépend de l’évaluation Rénoclimat. Cet outil estime 150 $ par porte, mais le montant réel peut être 0 $. Appelez le 1-866-266-0008 pour vérifier.','是否愿意做 Rénoclimat 评估？':'Acceptez-vous de faire l’évaluation Rénoclimat ?','✅ 是，会配合评估':'✅ Oui, je la ferai','✗ 否 / 不确定':'✗ Non / pas certain','您预计可获得政府补贴':'Subvention gouvernementale estimée','动工前完成 Rénoclimat 初次评估（Pre-Retrofit）':'Faire l’évaluation Rénoclimat avant le début des travaux','使用 ENERGY STAR Zone 3 认证产品':'Utiliser des produits certifiés ENERGY STAR Zone 3','安装后完成二次评估（Post-Retrofit）':'Faire l’évaluation après travaux','为估算值，实际金额取决于评估结果与产品符合性。门的补贴以 Rénoclimat 官方审核为准，可能不适用。':'Estimation seulement. Le montant réel dépend de l’évaluation et de l’admissibilité des produits. Les portes sont sujettes à l’approbation officielle.','立即预约核实补贴并获取报价 →':'Vérifier la subvention et demander des soumissions →',
+      '工具 2 · Energy Saving & ROI':'Outil 2 · Économie d’énergie et ROI','节能 & 回本计算器':'Calculateur d’économies et de retour','把"换窗很贵"转化为"长期省钱的投资"——让数字说话':'Transformez une dépense importante en investissement à long terme—laissez parler les chiffres.','年度 Hydro 账单':'Facture annuelle Hydro','当前窗户状况':'État actuel des fenêtres','单层 / 很旧（漏风严重）':'Simple vitrage / très ancien / infiltrations importantes','老旧双层（10 年以上）':'Double vitrage ancien (10 ans et plus)','较新但想升级':'Récent, mais amélioration souhaitée','房屋类型':'Type d’habitation','Condo / 公寓':'Condo','Semi-detached / 连排':'Semi-détaché','Detached / 独立屋':'Détaché','项目预算':'Budget du projet','（请填入您的估算中间值）':'(entrez votre estimation médiane)','请输入':'Entrer un montant','参考区间：根据工具 1 自动估算 · 请填入您认可的中间值':'Fourchette suggérée selon l’outil 1 · entrez le montant médian souhaité','年节省 / Year':'Économie annuelle','预计回本周期':'Retour estimé','现在':'Avant','换后':'Après','节能比例参考 NRCan 数据及魁省气候条件，实际效果取决于安装质量、房屋结构及使用习惯。':'Les hypothèses d’économie tiennent compte du climat québécois. Les résultats réels dépendent de l’installation, du bâtiment et des habitudes d’utilisation.','查看适合我的服务商 →':'Voir les fournisseurs adaptés →',
+      '补贴申请 · 步骤清单':'Demande de subvention · étapes','打 1-866-266-0008 预约 Rénoclimat 初次评估（Pre-Retrofit）':'Appelez le 1-866-266-0008 pour planifier l’évaluation Rénoclimat avant travaux.','等待评估员上门做气密性测试，拿到能源报告':'Attendez l’évaluateur pour le test d’étanchéité et le rapport énergétique.','按报告选购 ENERGY STAR® 认证窗（确认 Zone 3 Northern）':'Choisissez des produits ENERGY STAR selon le rapport; confirmez Zone 3 / Nord.','找有 RBQ 执照的承包商施工':'Utilisez un entrepreneur avec une licence RBQ valide.','保留带型号的发票 + 窗户 ENERGY STAR 标签（不要撕！）':'Conservez les factures avec modèles et les étiquettes ENERGY STAR.','预约二次评估（Post-Retrofit），确认节能效果':'Planifiez l’évaluation après travaux.','审核通过，等支票寄到家 💰':'Après approbation, attendez le paiement.','等待约 4–8 周，每个 Rough Opening 补贴 $150':'Délai approximatif de 4 à 8 semaines; estimation de 150 $ par ouverture brute.',
+      '真实故事 · Part 04':'Cas réels · Partie 04','8个案例':'8 cas','及经验总结':'et leçons à retenir','信息来自真实业主经验与社区讨论，帮助您在签约前做好判断与风险防范。':'Informations fondées sur des expériences de propriétaires et des discussions locales pour mieux décider avant de signer.','教训：':'Leçon :',
+      '签约、安装、验收':'Contrat, installation et inspection','完整 Checklist':'Liste complète','把签约前、合同内容、安装当天、验收后续整理成一张可执行清单。可以打印或下载后，按阶段逐项核对。':'Une liste pratique couvrant les vérifications avant contrat, les clauses, l’inspection le jour de l’installation et le suivi.','⬇ 下载 Checklist CSV':'⬇ Télécharger le CSV','阶段 Phase':'Phase','检查项目':'Point à vérifier','必须 Must':'Obligatoire','必须':'Obligatoire','可选':'Optionnel',
+      '签合同之前':'Avant signature','合同内容检查':'Vérification du contrat','安装当天':'Jour d’installation','验收与后续':'Inspection finale et suivi','出了问题怎么办':'En cas de problème',
+      '查地址是否在遗产区（montreal.ca），确认允许的材料和颜色':'Vérifier sur montreal.ca si l’adresse est en zone patrimoniale/protégée et confirmer les matériaux et couleurs permis.','如需要，申请市政施工许可证，等批准后才动工。同尺寸更换（Replace doors and windows with models that have the same dimensions）也不等于自动免 permit，尤其是遗产区、特殊建筑、材料/颜色/样式变化时。':'Si requis, demander le permis municipal et attendre l’approbation. Remplacer par les mêmes dimensions ne signifie pas automatiquement qu’aucun permis n’est requis, surtout en zone patrimoniale ou si matériau/couleur/style change.','核实 总公司的RBQ 和安装商的RBQ（rbq.gouv.qc.ca），确认有效且覆盖门窗安装。去 RBQ 官网查询该公司是否有未处理的索赔':'Vérifier le RBQ de l’entreprise et celui de l’installateur sur rbq.gouv.qc.ca. Confirmer la validité et la catégorie. Vérifier les réclamations non résolues.','确认责任险 ≥ $200万，要求提供保险证明':'Confirmer une assurance responsabilité d’au moins 2 M$ et demander une preuve.','如申请 Rénoclimat 补贴，预约初次评估，动工前完成':'Si vous demandez Rénoclimat, faire l’évaluation initiale avant les travaux.','同时向至少 3–5 家公司发询价单，不要只问一家':'Demander 3 à 5 soumissions; ne pas se limiter à une seule entreprise.','确认窗户类型和开启方式——主动问所有可选类型，不完全依赖销售建议':'Confirmer le type de fenêtre et le mode d’ouverture; demander toutes les options disponibles.','确认产品通过 ENERGY STAR Zone 3 和 CSA A440 认证':'Confirmer les certifications ENERGY STAR Zone 3 et CSA A440.','明确写明完工日期，以及延误超过 X 天后的违约赔偿或退款权利':'Inscrire la date de fin des travaux et les droits en cas de retard.','确认付款结构：定金(10-30%) + 交付前/当天(60%) + 验收尾款(10%). 在验收合格后支付. 可以考虑总款项的10%作为尾款，直到安装100%完成、杂物清运完毕、且业主签署最终验收单确认无缺陷或损坏后支付。':'Confirmer la structure de paiement : dépôt (10–30 %), paiement à la livraison/installation, et retenue finale d’environ 10 % après inspection complète, nettoyage et absence de défauts.','写明谁来安装：自有团队还是外包？外包商的 RBQ 执照号是什么？':'Indiquer qui installe : équipe interne ou sous-traitant. Si sous-traité, inscrire le RBQ.','产品保修含零件+人工，安装保修，密封玻璃保修——分别写明年限和责任方':'Clarifier les garanties : produit, pièces et main-d’œuvre, installation, vitrage scellé, durée et responsable.','含变更单条款：施工中任何额外费用必须提前书面确认，不得当场强收':'Inclure une clause de changement : tout frais additionnel doit être approuvé par écrit à l’avance.','品牌公司对外包安装质量负连带责任（防止安装商倒闭后无人负责）':'Exiger que l’entreprise demeure responsable de la qualité d’installation sous-traitée.','逐行核对材料品牌、型号、尺寸、颜色，与确认的完全一致':'Vérifier marque, modèle, dimensions et couleur ligne par ligne.','施工范围含：旧窗拆除清运、外部打胶、室内收边、现场清洁':'La portée doit inclure retrait, disposition, calfeutrage extérieur, finition intérieure et nettoyage.',
+      '安装前拍照记录全屋墙体、地板、窗台状况（保留时间戳证据）':'Avant l’installation, photographier murs, planchers et appuis avec horodatage.','如当天突然要求额外收费，要求对方出具书面变更单，不要口头同意':'Si des frais supplémentaires sont demandés, exiger un ordre de changement écrit.','确认来的是合同里说的安装团队，或核实临时换人的团队 RBQ 执照':'Confirmer l’équipe prévue au contrat ou vérifier le RBQ de toute équipe remplaçante.','保留窗户上的 ENERGY STAR 标签（申请 Rénoclimat 补贴时需要）':'Conserver les étiquettes ENERGY STAR pour le dossier Rénoclimat.','安装完成后，当场逐一测试每扇窗门的开关、锁定功能，不合格考虑拒绝签收':'Tester chaque ouverture et verrouillage avant d’accepter les travaux.',
+      '水平和垂直度':'Niveau et aplomb','开关功能逐一测试':'Test d’ouverture et fermeture','金属件完整性':'Quincaillerie complète','玻璃检查':'Inspection du vitrage','密封和隔热':'Étanchéité et isolation','排水坡度':'Pente de drainage','防水膜 / flashing':'Membrane / solin','保温材料使用方式':'Pose des matériaux isolants','预留缝隙 / expansion gap':'Jeu de dilatation','与安装人员共同验收':'Inspection avec l’installateur','外观和施工现场':'Finition et chantier','发现问题怎么处理':'Que faire si vous voyez un problème',
+      '拍照记录所有窗户安装完成状态（带日期戳）':'Photographier toutes les installations terminées avec date.','维修后结算：直到所有维修完成，再释放最后的 10%':'Libérer la retenue finale seulement après toutes les corrections.','发现任何问题，当天发书面邮件通知（不要只打电话），建立证据链':'Signaler tout problème par courriel le jour même; ne pas se limiter aux appels.','收到发票后核对：金额、型号、数量是否与合同一致':'Comparer facture, montant, modèles et quantités avec le contrat.','预约 Rénoclimat 二次评估（Post-Retrofit）':'Planifier l’évaluation Rénoclimat après travaux.','索取产品质保书和安装质保书原件，妥善保存':'Demander et conserver les garanties originales.','一年后做一次检查：缝隙均匀度、密封条完好度、有无起雾或结冰':'Faire une inspection après un an : jeux, coupe-froid, buée, glace, fonctionnement.',
+      '所有沟通发送书面邮件，保留时间戳——如果邮件无效，下一步是发送挂号信形式的“正式催告函”':'Communiquer par écrit et conserver les horodatages. Si nécessaire, envoyer une mise en demeure par courrier recommandé.','向 RBQ 投诉承包商（rbq.gouv.qc.ca）——RBQ可暂停/吊销执照，施压最强':'Déposer une plainte à la RBQ; elle peut suspendre ou révoquer une licence.','向 OPC 投诉（Office de la protection du consommateur）':'Déposer une plainte à l’Office de la protection du consommateur (OPC).','走小额法庭（Cour des petites créances），$15,000以下可自己代理':'Utiliser la Cour des petites créances pour les dossiers de 15 000 $ ou moins.','多单位建筑：联合其他住户联名投诉，效果远大于单独投诉':'Pour les immeubles à logements, une plainte collective est souvent plus efficace.',
+      '本地服务商':'Fournisseur local','需核实':'À vérifier','书面确认':'Confirmation écrite','经销商核实':'Vérifier le détaillant','供应商核实':'Vérifier le fournisseur','联系方式需进一步核实':'Coordonnées à vérifier','核心优势：':'Atout principal :','签约提醒：':'Rappel avant contrat :','联系方式：':'Contact :','官网：':'Site web :','核实：':'À vérifier :','RBQ、邮箱、保修与补贴资格请在签约前再次核实。':'Vérifier RBQ, courriel, garantie et admissibilité avant signature.','查看官网':'Voir le site','SELECT':'CHOISIR','SELECTED':'CHOISI','成立年份':'Année','保修':'Garantie','需验证':'À vérifier','推荐优先':'Prioritaire','建议':'Recommandé',
+      '请输入有效邮箱。':'Veuillez entrer une adresse courriel valide.','请填写电话号码。':'Veuillez entrer un numéro de téléphone.','请填写邮政编码。':'Veuillez entrer un code postal.','请勾选 I am human。':'Veuillez cocher « I am human ».','请至少选择 1 家公司后再提交询价。':'Veuillez sélectionner au moins une entreprise avant de soumettre.','第':'Question','题，共':'sur','题':'','填入预算后显示':'Entrez un budget','年':'ans','不做 Rénoclimat 评估将无法申请任何补贴':'Sans évaluation Rénoclimat, aucune subvention ne peut être demandée.'
+    }
+  };
+
+  const zhTitle = document.title;
+  const titleMap = {
+    en: 'Montreal Window Guide 2026 · Provider Matching, Rebates & Checklist',
+    fr: 'Guide Portes et Fenêtres Montréal 2026 · Fournisseurs, subventions et checklist',
+    zh: zhTitle
+  };
+  const originalText = new WeakMap();
+  const originalPlaceholder = new WeakMap();
+  const originalTitle = new WeakMap();
+  let currentLang = localStorage.getItem('mwg_lang') || 'zh';
+
+  function translateCore(core, lang){
+    if (lang === 'zh') return core;
+    const dict = FULL[lang] || {};
+    if (dict[core] !== undefined) return dict[core];
+    // Patterns for dynamic UI text
+    let m;
+    if ((m = core.match(/^第\s*(\d+)\s*题，共\s*(\d+)\s*题$/))) return lang === 'fr' ? `Question ${m[1]} sur ${m[2]}` : `Question ${m[1]} of ${m[2]}`;
+    if ((m = core.match(/^已选择\s*(\d+)\s*\/\s*3\s*家$/))) return lang === 'fr' ? `Sélectionné ${m[1]} / 3` : `Selected ${m[1]} / 3`;
+    if ((m = core.match(/^(\d+)\s*个 Opening × \$150（窗\s*(\d+)\s*\+ 门估算\s*(\d+)）$/))) return lang === 'fr' ? `${m[1]} ouvertures × 150 $ (fenêtres ${m[2]} + portes estimées ${m[3]})` : `${m[1]} openings × $150 (windows ${m[2]} + estimated doors ${m[3]})`;
+    if ((m = core.match(/^参考区间（工具 1 联动估算）：(.*)请填入您认可的中间值$/))) return lang === 'fr' ? `Fourchette suggérée (outil 1) : ${m[1]} entrez le montant médian souhaité` : `Suggested range (linked to Tool 1): ${m[1]} enter your preferred midpoint`;
+    if ((m = core.match(/^(.*)\s*年$/)) && /\d/.test(m[1])) return lang === 'fr' ? `${m[1]} ans` : `${m[1]} years`;
+    if (core.includes('用水平仪检查每扇窗框')) return lang === 'fr' ? 'Utilisez un niveau pour vérifier chaque cadre. Un cadre mal aligné peut rendre l’ouverture difficile et user prématurément les coupe-froid. En cas de défaut, retenez le paiement final jusqu’à correction.' : 'Use a level to check every frame. A misaligned frame can make operation difficult and cause early weatherstrip wear. If defects are found, hold the final payment until corrected.';
+    if (core.includes('每扇窗、每扇门都要亲手开关三次以上')) return lang === 'fr' ? 'Ouvrez et fermez chaque porte et fenêtre au moins trois fois. Vérifiez la fluidité, les espaces visibles, le test de la feuille de papier et le verrouillage. Les portes doivent fonctionner de l’intérieur et de l’extérieur.' : 'Open and close every door/window at least three times. Check smooth operation, visible gaps, paper test, and locking engagement. Doors should operate from both inside and outside.';
+    if (core.includes('逐一检查对照合同上的规格')) return lang === 'fr' ? 'Vérifiez poignées, serrures, charnières, moustiquaires et accessoires selon le contrat. Recherchez jeu, pièces manquantes, rayures, bruits ou mauvais alignement.' : 'Check handles, locks, hinges, screens, and accessories against the contract. Look for looseness, missing pieces, scratches, noise, or misalignment.';
+    if (core.includes('在自然光下从不同角度看每块玻璃')) return lang === 'fr' ? 'Inspectez chaque vitrage à la lumière naturelle : rayures, fissures, bulles, déformation, buée entre les vitres et continuité du scellant.' : 'Inspect every glass unit in natural light: scratches, cracks, bubbles, distortion, fogging between panes, and continuous sealant around edges.';
+    if (core.includes('用手沿窗框四周慢慢移动')) return lang === 'fr' ? 'Passez la main autour du cadre pour détecter les infiltrations. Le calfeutrage extérieur doit être continu et la mousse intérieure suffisante, sans vides.' : 'Move your hand around the frame to detect drafts. Exterior caulking should be continuous and interior foam should be complete with no gaps.';
+    if (core.includes('检查窗台或门槛是否向外有轻微倾斜')) return lang === 'fr' ? 'Vérifiez que l’appui ou le seuil présente une légère pente vers l’extérieur afin que l’eau s’écoule dehors et ne revienne pas vers l’intérieur.' : 'Check that the sill or threshold slopes slightly outward so water drains outside and does not flow back indoors.';
+    if (core.includes('确认底部 sill 以及两侧 jamb')) return lang === 'fr' ? 'Confirmez la présence d’une membrane ou d’un solin au seuil et sur la partie basse des montants. Le calfeutrage seul ne remplace pas l’étanchéité.' : 'Confirm waterproof membrane/flashing at the sill and lower jambs. Caulking alone does not replace proper waterproofing.';
+    if (core.includes('泡沫填充应连续、均匀')) return lang === 'fr' ? 'La mousse doit être continue et uniforme, sans pression excessive sur le cadre. La laine minérale ne doit pas être compactée.' : 'Foam should be continuous and even, without excessive pressure on the frame. Mineral wool should not be over-compressed.';
+    if (core.includes('窗框与墙体开口之间应保留合理安装间隙')) return lang === 'fr' ? 'Un jeu d’installation raisonnable doit être conservé entre le cadre et l’ouverture pour permettre la dilatation et éviter les blocages ou fissures.' : 'A reasonable installation gap should remain between the frame and opening to allow expansion and avoid binding, cracking, or premature seal wear.';
+    if (core.includes('验收必须在安装人员离开前完成')) return lang === 'fr' ? 'L’inspection doit être faite avant le départ des installateurs. Photographiez, numérotez et inscrivez les problèmes dans les notes de réception.' : 'Inspection should be completed before the installers leave. Photograph, number, and record issues in the acceptance notes.';
+    if (core.includes('窗框和墙面之间的收边是否整齐')) return lang === 'fr' ? 'Vérifiez la finition intérieure/extérieure, les couleurs, les résidus de colle ou de calfeutrage, et le nettoyage complet du chantier.' : 'Check interior/exterior finishing, colours, adhesive or caulking residue, and complete jobsite cleanup.';
+    if (core.includes('当天拍照，当天发邮件给承包商')) return lang === 'fr' ? 'Photographiez le jour même et envoyez un courriel détaillé avec photos et numéros de problèmes. Ne signez pas l’acceptation finale avant correction.' : 'Take photos the same day and email a numbered issue list with photos. Do not sign final acceptance before issues are resolved.';
+    return core;
+  }
+
+  function translateTextNodes(lang){
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        const p = node.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        const tag = p.tagName;
+        if (tag === 'SCRIPT' || tag === 'STYLE' || p.closest('[data-no-i18n]')) return NodeFilter.FILTER_REJECT;
+        if (!node.textContent.trim()) return NodeFilter.FILTER_SKIP;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node => {
+      if (!originalText.has(node)) originalText.set(node, node.textContent);
+      const orig = originalText.get(node);
+      const lead = (orig.match(/^\s*/) || [''])[0];
+      const trail = (orig.match(/\s*$/) || [''])[0];
+      const core = orig.trim();
+      const translated = translateCore(core, lang);
+      node.textContent = lead + translated + trail;
+    });
+  }
+
+  function translateAttrs(lang){
+    document.querySelectorAll('[placeholder]').forEach(el => {
+      if (!originalPlaceholder.has(el)) originalPlaceholder.set(el, el.getAttribute('placeholder'));
+      const core = (originalPlaceholder.get(el) || '').trim();
+      el.setAttribute('placeholder', translateCore(core, lang));
+    });
+    document.querySelectorAll('[title]').forEach(el => {
+      if (!originalTitle.has(el)) originalTitle.set(el, el.getAttribute('title'));
+      const core = (originalTitle.get(el) || '').trim();
+      el.setAttribute('title', translateCore(core, lang));
+    });
+  }
+
+  function applyFullLang(lang){
+    currentLang = lang;
+    document.title = titleMap[lang] || titleMap.zh;
+    translateTextNodes(lang);
+    translateAttrs(lang);
+  }
+
+  const prevSetLang = window.setLang;
+  window.setLang = function(lang){
+    currentLang = lang || 'zh';
+    if (typeof prevSetLang === 'function') prevSetLang(currentLang);
+    applyFullLang(currentLang);
+    localStorage.setItem('mwg_lang', currentLang);
+  };
+
+  function wrap(name){
+    const fn = window[name];
+    if (typeof fn !== 'function') return;
+    window[name] = function(){
+      const out = fn.apply(this, arguments);
+      setTimeout(() => applyFullLang(currentLang), 0);
+      return out;
+    };
+  }
+  ['renderProviders','renderQuestion','nextQuestion','restartQuiz','calcRebate','calcROI','renderEstItems','addEstItem','toggleEstimator','openQuoteModal','submitQuoteRequest','updateSelectedBar'].forEach(wrap);
+
+  setTimeout(() => window.setLang(localStorage.getItem('mwg_lang') || 'zh'), 0);
+})();
+
+</script>
+</body>
+</html>
