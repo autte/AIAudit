@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "AuditFlow AI | Secure Fraud Investigation",
   description: "High-velocity onsite risk engines for fraud teams.",
+   verification: {
+    google: "JXTqvd5eiygKROrD-BgHo-tAuTQRdKArcKks1lnsgdk",
+  },
 };
 
 export default function RootLayout({
